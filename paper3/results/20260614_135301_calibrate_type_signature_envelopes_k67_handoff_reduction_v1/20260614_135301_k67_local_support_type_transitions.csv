@@ -1,0 +1,25 @@
+support_type_transition,pair_count
+C B B->C A B,29914
+C B B->C B A,26870
+B B C->B A C,23109
+B C B->B C A,17121
+C C B->C A B,15231
+B C C->B A C,14753
+B C C->B C A,14452
+B B C->B C A,11458
+B B C->A B C,10917
+C B C->C B A,9885
+B C B->A C B,8719
+B C B->B A C,8246
+C C B->C B A,8077
+C B B->A C B,7731
+C C B->A C B,7426
+B C B->C A B,6400
+C B C->C A B,5133
+B C B->C B A,4552
+C B C->A B C,4517
+C B C->B A C,2700
+B C C->A B C,2681
+B C B->A B C,2157
+C B C->A C B,1954
+C B C->B C A,1837

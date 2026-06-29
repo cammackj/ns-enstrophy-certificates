@@ -1,0 +1,390 @@
+{
+  "actual_k45_atlas_instantiation_packaged": true,
+  "all_later_manifest_json": "",
+  "artifact_backed_rows": [
+    {
+      "closed_for_certificate_form": true,
+      "evidence": "bridge_charts_rounded_certificate_packaged: The skeleton bridge ledger has 57 supports: 47 are closed by S4=0 and strip membership, leaving 10 selector-bearing skeleton supports. Skeleton survivor screen paper3\\results\\20260613_030852_screen_k34_selector_strip_k34_skeleton_selector_survivors_float64_v1\\20260613_030852_selector_strip_summary.json; above-endpoint screen survivors=4. Rounded bridge certificate paper3\\results\\20260613_074717_audit_k34_bridge_tangent_k34_bridge_boundary_tangent_rounded_certificate_v1\\20260613_074717_k34_bridge_tangent_audit.json; rows=6; all escape signs certified=True; minimum certified radius=0.01136467284454005 on 10 21 29 upper. Artifact note: For optional artifact-free form, replace the rounded float derivative budgets by interval/rational outward enclosures; no new bridge search is indicated. residual_boundary_escape_charts_packaged: Classify the 59 selector-bearing residual supports by selected signature (C->C->B, A->C->C, A->D->B); the other residual supports are closed by S4=0. Single-band screen paper3\\results\\20260613_024533_screen_k34_selector_strip_k34_single_band_selector_strip_screen_v1\\20260613_024533_selector_strip_summary.json; supports screened=53; above endpoint=17; within 1e-3 below=3. Minimum residual X-fraction among above-endpoint candidates=0.09440071723600187 on 10 20 22. This shows the scalar G4 strip alone is insufficient; the finite tube must include a residual-mass/leakage coordinate. Targeted residual tube screen paper3\\results\\20260613_080720_screen_k34_selector_strip_k34_residual_tube_above_endpoint_delta003_v1\\20260613_080720_selector_strip_summary.json; delta_res<=0.03; supports=17; all excluded=True; minimum gap=0.0005542818761423256 on 8 16 24. Constrained residual-tube replay paper3\\results\\20260613_124730_certify_k34_residual_tube_k34_residual_tube_tight_8_16_24_certificate_v1\\20260613_124730_residual_tube_certificate_summary.json; paper3\\results\\20260613_124901_certify_k34_residual_tube_k34_residual_tube_17support_certificate_v1\\20260613_124901_residual_tube_certificate_summary.json; paper3\\results\\20260613_125000_certify_k34_residual_tube_k34_residual_tube_tight_9_10_25_10_20_22_certificate_v1\\20260613_125000_residual_tube_certificate_summary.json; delta_res<=0.03; supports=17; above endpoint=3 (10 20 22, 8 16 24, 9 10 25); minimum positive gap among non-escape residual supports=0.0021348985824343088 on 8 22 26; max constraint violation=1.7140681651817147e-09. Residual-boundary tangent certificates parsed=3; all escape signs certified=True; minimum certified radius=0.036407184119710716 on 9 10 25. Artifact note: State the residual-mass lemma as: below-endpoint residual supports are excluded by constrained replay, and the above-endpoint residual-boundary atoms are finite one-sided escape charts.  Optional artifact-free form would intervalize the rounded tangent budgets.",
+      "gate": "K34",
+      "metric": "bridge_radius=0.01136467284454005; residual_radius=0.036407184119710716",
+      "row_family": "true_branch",
+      "source": "paper3\\results\\20260613_130427_audit_k34_transition_cover_k34_transition_cover_audit_v28_endpoint_packaged_paper_ready\\20260613_130427_k34_transition_cover_audit.json",
+      "status": "closed_certificate_form_artifact_backed",
+      "theorem_grade_note": "Rounded bridge and residual tangent budgets are closed in certificate-form with cited finite ledgers; outward interval polish is optional for a fully artifact-free presentation."
+    },
+    {
+      "closed_for_certificate_form": true,
+      "evidence": "Artifact note: Certificate-form route uses repository ledgers; optional artifact-free presentation would use fully outward-rounded interval enclosures for the rounded bridge, residual, raw-below, and dense k4 tensor inputs.",
+      "gate": "K34",
+      "metric": "quotient_gate=True",
+      "row_family": "charged_floor",
+      "source": "paper3\\results\\20260613_130427_audit_k34_transition_cover_k34_transition_cover_audit_v28_endpoint_packaged_paper_ready\\20260613_130427_k34_transition_cover_audit.json",
+      "status": "closed_certificate_form_artifact_backed",
+      "theorem_grade_note": "Positive transition cost is closed in certificate-form with cited finite ledgers; a fully artifact-free form would intervalize the rounded ledgers."
+    }
+  ],
+  "certificate_form_open_rows": [],
+  "certificate_form_rows_closed": true,
+  "declared_concrete_gates": [
+    "K34",
+    "K45",
+    "K56",
+    "K67"
+  ],
+  "declared_gate_count": 4,
+  "gate_rows": [
+    {
+      "closed_for_certificate_form": true,
+      "evidence": "U3 is imported from the Paper 2 exact k=3 Krawczyk/KKT chart; U4 is the Paper 3 radius-0.30 full finite k4 chart with G4<=-2.57935480298416e-05 and DG4[F]<=-0.31253357722405578.",
+      "gate": "K34",
+      "metric": "V13 gap=0.010155739007683441",
+      "row_family": "endpoint",
+      "source": "paper3\\results\\20260613_130427_audit_k34_transition_cover_k34_transition_cover_audit_v28_endpoint_packaged_paper_ready\\20260613_130427_k34_transition_cover_audit.json",
+      "status": "closed_certificate_form",
+      "theorem_grade_note": ""
+    },
+    {
+      "closed_for_certificate_form": true,
+      "evidence": "bridge_charts_rounded_certificate_packaged: The skeleton bridge ledger has 57 supports: 47 are closed by S4=0 and strip membership, leaving 10 selector-bearing skeleton supports. Skeleton survivor screen paper3\\results\\20260613_030852_screen_k34_selector_strip_k34_skeleton_selector_survivors_float64_v1\\20260613_030852_selector_strip_summary.json; above-endpoint screen survivors=4. Rounded bridge certificate paper3\\results\\20260613_074717_audit_k34_bridge_tangent_k34_bridge_boundary_tangent_rounded_certificate_v1\\20260613_074717_k34_bridge_tangent_audit.json; rows=6; all escape signs certified=True; minimum certified radius=0.01136467284454005 on 10 21 29 upper. Artifact note: For optional artifact-free form, replace the rounded float derivative budgets by interval/rational outward enclosures; no new bridge search is indicated. residual_boundary_escape_charts_packaged: Classify the 59 selector-bearing residual supports by selected signature (C->C->B, A->C->C, A->D->B); the other residual supports are closed by S4=0. Single-band screen paper3\\results\\20260613_024533_screen_k34_selector_strip_k34_single_band_selector_strip_screen_v1\\20260613_024533_selector_strip_summary.json; supports screened=53; above endpoint=17; within 1e-3 below=3. Minimum residual X-fraction among above-endpoint candidates=0.09440071723600187 on 10 20 22. This shows the scalar G4 strip alone is insufficient; the finite tube must include a residual-mass/leakage coordinate. Targeted residual tube screen paper3\\results\\20260613_080720_screen_k34_selector_strip_k34_residual_tube_above_endpoint_delta003_v1\\20260613_080720_selector_strip_summary.json; delta_res<=0.03; supports=17; all excluded=True; minimum gap=0.0005542818761423256 on 8 16 24. Constrained residual-tube replay paper3\\results\\20260613_124730_certify_k34_residual_tube_k34_residual_tube_tight_8_16_24_certificate_v1\\20260613_124730_residual_tube_certificate_summary.json; paper3\\results\\20260613_124901_certify_k34_residual_tube_k34_residual_tube_17support_certificate_v1\\20260613_124901_residual_tube_certificate_summary.json; paper3\\results\\20260613_125000_certify_k34_residual_tube_k34_residual_tube_tight_9_10_25_10_20_22_certificate_v1\\20260613_125000_residual_tube_certificate_summary.json; delta_res<=0.03; supports=17; above endpoint=3 (10 20 22, 8 16 24, 9 10 25); minimum positive gap among non-escape residual supports=0.0021348985824343088 on 8 22 26; max constraint violation=1.7140681651817147e-09. Residual-boundary tangent certificates parsed=3; all escape signs certified=True; minimum certified radius=0.036407184119710716 on 9 10 25. Artifact note: State the residual-mass lemma as: below-endpoint residual supports are excluded by constrained replay, and the above-endpoint residual-boundary atoms are finite one-sided escape charts.  Optional artifact-free form would intervalize the rounded tangent budgets.",
+      "gate": "K34",
+      "metric": "bridge_radius=0.01136467284454005; residual_radius=0.036407184119710716",
+      "row_family": "true_branch",
+      "source": "paper3\\results\\20260613_130427_audit_k34_transition_cover_k34_transition_cover_audit_v28_endpoint_packaged_paper_ready\\20260613_130427_k34_transition_cover_audit.json",
+      "status": "closed_certificate_form_artifact_backed",
+      "theorem_grade_note": "Rounded bridge and residual tangent budgets are closed in certificate-form with cited finite ledgers; outward interval polish is optional for a fully artifact-free presentation."
+    },
+    {
+      "closed_for_certificate_form": true,
+      "evidence": "Artifact note: Certificate-form route uses repository ledgers; optional artifact-free presentation would use fully outward-rounded interval enclosures for the rounded bridge, residual, raw-below, and dense k4 tensor inputs.",
+      "gate": "K34",
+      "metric": "quotient_gate=True",
+      "row_family": "charged_floor",
+      "source": "paper3\\results\\20260613_130427_audit_k34_transition_cover_k34_transition_cover_audit_v28_endpoint_packaged_paper_ready\\20260613_130427_k34_transition_cover_audit.json",
+      "status": "closed_certificate_form_artifact_backed",
+      "theorem_grade_note": "Positive transition cost is closed in certificate-form with cited finite ledgers; a fully artifact-free form would intervalize the rounded ledgers."
+    },
+    {
+      "closed_for_certificate_form": true,
+      "evidence": "The K34 finite-atlas transition theorem assigns all residual rows to endpoint, bridge, residual, raw-below, no-selector, or charged alternatives; no X_rank row is introduced.",
+      "gate": "K34",
+      "metric": "",
+      "row_family": "rank_exception",
+      "source": "paper3\\results\\20260613_130427_audit_k34_transition_cover_k34_transition_cover_audit_v28_endpoint_packaged_paper_ready\\20260613_130427_k34_transition_cover_audit.json",
+      "status": "closed_empty",
+      "theorem_grade_note": ""
+    },
+    {
+      "closed_for_certificate_form": true,
+      "evidence": "Psi45(k4)=-0.009508761364121595, Psi45(k5)=0.015178531316755076; D Psi45(k4)[F]=-4.893291757197492, D Psi45(k5)[F]=2.1464688049619323; min |D Psi45|=2.1464688049619323.",
+      "gate": "K45",
+      "metric": 2.1464688049619323,
+      "row_family": "endpoint",
+      "source": "paper3\\results\\20260614_000621_package_k45_transition_certificate_k45_transition_certificate_package_v1\\20260614_000621_k45_transition_certificate_package.json",
+      "status": "closed_certificate_form",
+      "theorem_grade_note": ""
+    },
+    {
+      "closed_for_certificate_form": true,
+      "evidence": "15 true two-mode charts; branch target p45=0.016; displayed bound=0.015375505962416292; margin=0.0006244940375837085; all-15 violations=0.",
+      "gate": "K45",
+      "metric": 0.0006244940375837085,
+      "row_family": "true_branch",
+      "source": "paper3\\results\\20260614_000621_package_k45_transition_certificate_k45_transition_certificate_package_v1\\20260614_000621_k45_transition_certificate_package.json",
+      "status": "closed_certificate_form",
+      "theorem_grade_note": ""
+    },
+    {
+      "closed_for_certificate_form": true,
+      "evidence": "All K45 finite proof obligations are assigned to support separation, product-loss, branch incompatibility, nonlocal split, overlap, or transfer-coordinate cancellation rows.",
+      "gate": "K45",
+      "metric": "",
+      "row_family": "charged_floor",
+      "source": "paper3\\results\\20260614_000621_package_k45_transition_certificate_k45_transition_certificate_package_v1\\20260614_000621_k45_transition_certificate_package.json",
+      "status": "closed_certificate_form",
+      "theorem_grade_note": ""
+    },
+    {
+      "closed_for_certificate_form": true,
+      "evidence": "The K45 package introduces no rank exception row; the finite rows are assigned by the six-row certificate.",
+      "gate": "K45",
+      "metric": "",
+      "row_family": "rank_exception",
+      "source": "paper3\\results\\20260614_000621_package_k45_transition_certificate_k45_transition_certificate_package_v1\\20260614_000621_k45_transition_certificate_package.json",
+      "status": "closed_empty",
+      "theorem_grade_note": ""
+    },
+    {
+      "closed_for_certificate_form": true,
+      "evidence": "Psi56(k5)=-0.009325268705047103, Psi56(k6)=0.002675267830940884; D Psi56(k5)[F]=0.17788831373664493, D Psi56(k6)[F]=-0.6494956443403401; orientation=toward_crossing/toward_crossing.",
+      "gate": "K56",
+      "metric": 0.17788831373664493,
+      "row_family": "endpoint",
+      "source": "paper3\\results\\20260614_094249_package_k45_transition_certificate_k56_transition_certificate_package_v1\\20260614_094249_k56_transition_certificate_package.json",
+      "status": "closed_certificate_form",
+      "theorem_grade_note": ""
+    },
+    {
+      "closed_for_certificate_form": true,
+      "evidence": "K56 support audit has true_two_family_support_count=0.",
+      "gate": "K56",
+      "metric": 0,
+      "row_family": "true_branch",
+      "source": "paper3\\results\\20260614_094249_package_k45_transition_certificate_k56_transition_certificate_package_v1\\20260614_094249_k56_transition_certificate_package.json",
+      "status": "closed_empty",
+      "theorem_grade_note": ""
+    },
+    {
+      "closed_for_certificate_form": true,
+      "evidence": "After short-crossing endpoint collars, product-loss rows, nonlocal split, and overlap/remainder priority, no unassigned K56 zero-defect crossing witness remains.",
+      "gate": "K56",
+      "metric": "",
+      "row_family": "charged_floor",
+      "source": "paper3\\results\\20260614_094249_package_k45_transition_certificate_k56_transition_certificate_package_v1\\20260614_094249_k56_transition_certificate_package.json",
+      "status": "closed_certificate_form",
+      "theorem_grade_note": ""
+    },
+    {
+      "closed_for_certificate_form": true,
+      "evidence": "The K56 package introduces no rank exception row; all finite support roles are assigned above.",
+      "gate": "K56",
+      "metric": "",
+      "row_family": "rank_exception",
+      "source": "paper3\\results\\20260614_094249_package_k45_transition_certificate_k56_transition_certificate_package_v1\\20260614_094249_k56_transition_certificate_package.json",
+      "status": "closed_empty",
+      "theorem_grade_note": ""
+    },
+    {
+      "closed_for_certificate_form": true,
+      "evidence": "Psi67(k6)=-0.0034125424560062026, Psi67(k7)=0.0022963471637655834; D Psi67(k6)[F]=2.9785429952729077, D Psi67(k7)[F]=7.059931388270286; endpoint type=mixed_source_short_crossing_target_capture.",
+      "gate": "K67",
+      "metric": 2.9785429952729077,
+      "row_family": "endpoint",
+      "source": "paper3\\results\\20260614_135301_calibrate_type_signature_envelopes_k67_handoff_reduction_v1\\20260614_135301_k67_handoff_reduction.json",
+      "status": "closed_certificate_form",
+      "theorem_grade_note": ""
+    },
+    {
+      "closed_for_certificate_form": true,
+      "evidence": "Shell-role true two-family support count is zero; the concrete mode-refinement residue reduces to beta_*=70 80 142 -> 70 80 158 with type signature 70(B), 80(C), 142(B), 158(A). The analytic non-D cap is 0.01494035761667992, giving defect floor 0.9521547642428642.",
+      "gate": "K67",
+      "metric": 0.9521547642428642,
+      "row_family": "true_branch",
+      "source": "paper3\\results\\20260614_135301_calibrate_type_signature_envelopes_k67_handoff_reduction_v1\\20260614_135301_k67_handoff_reduction.json",
+      "status": "closed_certificate_form",
+      "theorem_grade_note": ""
+    },
+    {
+      "closed_for_certificate_form": true,
+      "evidence": "The K67 shell-role local/nonlocal rows are assigned to product-loss, overlap/remainder, mass-split, captured, or non-advancing rows; the only concrete branch/charge promotion residue is beta_*, which is promoted to a dense-defect row by the analytic non-D high-shell discharge.",
+      "gate": "K67",
+      "metric": "",
+      "row_family": "charged_floor",
+      "source": "paper3\\results\\20260614_135301_calibrate_type_signature_envelopes_k67_handoff_reduction_v1\\20260614_135301_k67_handoff_reduction.json",
+      "status": "closed_certificate_form",
+      "theorem_grade_note": ""
+    },
+    {
+      "closed_for_certificate_form": true,
+      "evidence": "The K67 shell-role quotient introduces no rank exception, and the concrete beta_* promotion does not introduce an X_rank row.",
+      "gate": "K67",
+      "metric": "",
+      "row_family": "rank_exception",
+      "source": "paper3\\results\\20260614_135301_calibrate_type_signature_envelopes_k67_handoff_reduction_v1\\20260614_135301_k67_handoff_reduction.json",
+      "status": "closed_empty",
+      "theorem_grade_note": ""
+    }
+  ],
+  "generated_charged_ledger_completion_packaged": true,
+  "interval_polish_rows": [
+    {
+      "closed_for_certificate_form": true,
+      "evidence": "bridge_charts_rounded_certificate_packaged: The skeleton bridge ledger has 57 supports: 47 are closed by S4=0 and strip membership, leaving 10 selector-bearing skeleton supports. Skeleton survivor screen paper3\\results\\20260613_030852_screen_k34_selector_strip_k34_skeleton_selector_survivors_float64_v1\\20260613_030852_selector_strip_summary.json; above-endpoint screen survivors=4. Rounded bridge certificate paper3\\results\\20260613_074717_audit_k34_bridge_tangent_k34_bridge_boundary_tangent_rounded_certificate_v1\\20260613_074717_k34_bridge_tangent_audit.json; rows=6; all escape signs certified=True; minimum certified radius=0.01136467284454005 on 10 21 29 upper. Artifact note: For optional artifact-free form, replace the rounded float derivative budgets by interval/rational outward enclosures; no new bridge search is indicated. residual_boundary_escape_charts_packaged: Classify the 59 selector-bearing residual supports by selected signature (C->C->B, A->C->C, A->D->B); the other residual supports are closed by S4=0. Single-band screen paper3\\results\\20260613_024533_screen_k34_selector_strip_k34_single_band_selector_strip_screen_v1\\20260613_024533_selector_strip_summary.json; supports screened=53; above endpoint=17; within 1e-3 below=3. Minimum residual X-fraction among above-endpoint candidates=0.09440071723600187 on 10 20 22. This shows the scalar G4 strip alone is insufficient; the finite tube must include a residual-mass/leakage coordinate. Targeted residual tube screen paper3\\results\\20260613_080720_screen_k34_selector_strip_k34_residual_tube_above_endpoint_delta003_v1\\20260613_080720_selector_strip_summary.json; delta_res<=0.03; supports=17; all excluded=True; minimum gap=0.0005542818761423256 on 8 16 24. Constrained residual-tube replay paper3\\results\\20260613_124730_certify_k34_residual_tube_k34_residual_tube_tight_8_16_24_certificate_v1\\20260613_124730_residual_tube_certificate_summary.json; paper3\\results\\20260613_124901_certify_k34_residual_tube_k34_residual_tube_17support_certificate_v1\\20260613_124901_residual_tube_certificate_summary.json; paper3\\results\\20260613_125000_certify_k34_residual_tube_k34_residual_tube_tight_9_10_25_10_20_22_certificate_v1\\20260613_125000_residual_tube_certificate_summary.json; delta_res<=0.03; supports=17; above endpoint=3 (10 20 22, 8 16 24, 9 10 25); minimum positive gap among non-escape residual supports=0.0021348985824343088 on 8 22 26; max constraint violation=1.7140681651817147e-09. Residual-boundary tangent certificates parsed=3; all escape signs certified=True; minimum certified radius=0.036407184119710716 on 9 10 25. Artifact note: State the residual-mass lemma as: below-endpoint residual supports are excluded by constrained replay, and the above-endpoint residual-boundary atoms are finite one-sided escape charts.  Optional artifact-free form would intervalize the rounded tangent budgets.",
+      "gate": "K34",
+      "metric": "bridge_radius=0.01136467284454005; residual_radius=0.036407184119710716",
+      "row_family": "true_branch",
+      "source": "paper3\\results\\20260613_130427_audit_k34_transition_cover_k34_transition_cover_audit_v28_endpoint_packaged_paper_ready\\20260613_130427_k34_transition_cover_audit.json",
+      "status": "closed_certificate_form_artifact_backed",
+      "theorem_grade_note": "Rounded bridge and residual tangent budgets are closed in certificate-form with cited finite ledgers; outward interval polish is optional for a fully artifact-free presentation."
+    },
+    {
+      "closed_for_certificate_form": true,
+      "evidence": "Artifact note: Certificate-form route uses repository ledgers; optional artifact-free presentation would use fully outward-rounded interval enclosures for the rounded bridge, residual, raw-below, and dense k4 tensor inputs.",
+      "gate": "K34",
+      "metric": "quotient_gate=True",
+      "row_family": "charged_floor",
+      "source": "paper3\\results\\20260613_130427_audit_k34_transition_cover_k34_transition_cover_audit_v28_endpoint_packaged_paper_ready\\20260613_130427_k34_transition_cover_audit.json",
+      "status": "closed_certificate_form_artifact_backed",
+      "theorem_grade_note": "Positive transition cost is closed in certificate-form with cited finite ledgers; a fully artifact-free form would intervalize the rounded ledgers."
+    }
+  ],
+  "k45_branch_normality_instantiated": true,
+  "k45_endpoint_summary": {
+    "D_Psi45_at_k4": -4.893291757197492,
+    "D_Psi45_at_k5": 2.1464688049619323,
+    "Psi45_k4": -0.009508761364121595,
+    "Psi45_k5": 0.015178531316755076,
+    "endpoint_orientation": "ordinary_capture_escape",
+    "min_abs_endpoint_tangent": 2.1464688049619323,
+    "passes_nonzero_tangent_gate": true,
+    "transfer_separation": 0.02468729268087667
+  },
+  "k45_extraction_new_signature_rank_descent_discharged": true,
+  "k45_extraction_obstruction_reduced_to_finite_ledger": true,
+  "k45_generated_route_closed_at_manuscript_level": true,
+  "missing_declared_rows": [],
+  "remaining_global_promotion_gate": "structural K45-generated route closed at manuscript level: local rows, no-new-signature/X_rank, endpoint margins, branch-normality, charged ledger completion, actual-atlas instantiation, K45 extraction, and new-signature rank descent are discharged.  Remaining work is final cross-paper integration and artifact/public-repo policy; outward-rounded certificate packaging is optional for a fully artifact-free presentation",
+  "row_families": [
+    "endpoint",
+    "true_branch",
+    "charged_floor",
+    "rank_exception"
+  ],
+  "shell_role_validation_gates": [
+    "K67"
+  ],
+  "shell_role_validations": [
+    {
+      "D_Psi67_at_k6": 2.9785429952729077,
+      "D_Psi67_at_k7": 7.059931388270286,
+      "D_R_minus_Sigma6_at_k6": -1.2249669148425621,
+      "D_R_minus_Sigma6_at_k7": -44.4100109900247,
+      "D_R_minus_Sigma7_at_k6": -4.20350991011547,
+      "D_R_minus_Sigma7_at_k7": -51.46994237829499,
+      "Psi67_k6": -0.0034125424560062026,
+      "Psi67_k7": 0.0022963471637655834,
+      "beta_star_analytic_non_d_cap": 0.01494035761667992,
+      "beta_star_analytic_non_d_defect_floor": 0.9521547642428642,
+      "beta_star_analytic_status": "closed by Corollary cor:k67-beta-star-analytic-non-d-discharge; no Type-D shell appears and N_beta=70, so C_supp <= 1/(8 sqrt(70)).",
+      "beta_star_candidate_R_cap": 0.008,
+      "beta_star_candidate_defect_floor": 0.9743806744204196,
+      "beta_star_chart": "70 80 142 -> 70 80 158",
+      "beta_star_concrete_promotion_status": "load-bearing route is now analytic: beta_* is a non-D high-shell branch cell with C_supp <= 1/(8 sqrt(70)) and dense-defect floor above 0.952. The four-shell support replay and branch-specific R<=0.008 remain optional numerical corroboration/polish, not the proof dependency.",
+      "beta_star_defect_scale": 0.31226427,
+      "beta_star_min_shell": 70,
+      "beta_star_observed_max_R": 0.007482896093279123,
+      "beta_star_observed_max_signed_cross": 0.01708637736737728,
+      "beta_star_support_cap_defect_floor": 0.9519637645382868,
+      "beta_star_support_cap_margin_fraction": 0.055024719113153334,
+      "beta_star_support_cap_slack": 0.0008253707866972999,
+      "beta_star_support_cap_target": 0.015,
+      "beta_star_support_cert_hessian_counts": "275 neg / 38 flat / 23 pos",
+      "beta_star_support_cert_interval_upper": "0.01417462921",
+      "beta_star_support_cert_interval_width": "1.758e-23",
+      "beta_star_support_cert_max_positive_hessian_diag": 1.376425e-10,
+      "beta_star_support_cert_projected_grad_norm": "1.150e-06",
+      "beta_star_support_cert_relay_improving_modes": 3,
+      "beta_star_support_cert_relay_worst_gradient": -1.89517e-09,
+      "beta_star_support_cert_source": "scripts\\gap3\\results\\2026-06-14\\certify_block_maximum_gpu_k3_shells_174734.txt",
+      "beta_star_support_cert_status": "PARTIAL (proj_grad=1.15e-06, 23 above-thresh positive Hessian entries)",
+      "beta_star_support_cert_value": "0.014174629213302698777821892535607273674256777733254",
+      "beta_star_support_global_cert": "PASS (P8 scan; 4096 starts)",
+      "beta_star_type_signature": "70(B), 80(C), 142(B), 158(A)",
+      "branch_audit_charts_checked": 1031,
+      "branch_audit_exception_charts": "70 80 142 -> 70 80 158",
+      "branch_audit_violation_count": 3,
+      "concrete_mode_refinement_status": "concrete two-mode refinement witnesses detected; branch/charge classification required",
+      "concrete_one_mode_support_pair_count": 18931619,
+      "concrete_promotion_closed": true,
+      "concrete_two_mode_shapes": [
+        {
+          "distinct_union_shell_count": 4,
+          "one_mode_support_pair_count": 145151,
+          "replacement_shape": "clean_distinct",
+          "replacement_type": "B->A",
+          "shared_distinct_shell_count": 2,
+          "two_mode_support_pair_count": 673
+        },
+        {
+          "distinct_union_shell_count": 3,
+          "one_mode_support_pair_count": 764,
+          "replacement_shape": "k6_duplicate;dropped_still_shared",
+          "replacement_type": "B->A",
+          "shared_distinct_shell_count": 2,
+          "two_mode_support_pair_count": 0
+        },
+        {
+          "distinct_union_shell_count": 4,
+          "one_mode_support_pair_count": 81620,
+          "replacement_shape": "clean_distinct",
+          "replacement_type": "C->A",
+          "shared_distinct_shell_count": 2,
+          "two_mode_support_pair_count": 358
+        },
+        {
+          "distinct_union_shell_count": 3,
+          "one_mode_support_pair_count": 319,
+          "replacement_shape": "k6_duplicate;dropped_still_shared",
+          "replacement_type": "C->A",
+          "shared_distinct_shell_count": 2,
+          "two_mode_support_pair_count": 0
+        },
+        {
+          "distinct_union_shell_count": 5,
+          "one_mode_support_pair_count": 18550410,
+          "replacement_shape": "clean_distinct",
+          "replacement_type": "non_single_shell_replacement",
+          "shared_distinct_shell_count": 1,
+          "two_mode_support_pair_count": 0
+        },
+        {
+          "distinct_union_shell_count": 4,
+          "one_mode_support_pair_count": 153355,
+          "replacement_shape": "k6_duplicate",
+          "replacement_type": "non_single_shell_replacement",
+          "shared_distinct_shell_count": 1,
+          "two_mode_support_pair_count": 0
+        }
+      ],
+      "concrete_two_mode_support_pair_count": 1031,
+      "coordinate": "Psi67=S_{Sigma7_core}-S_{Sigma6_core}",
+      "endpoint_type": "mixed_source_short_crossing_target_capture",
+      "evidence": "No true two-family shell-role bridge supports; local handoffs reduce to B->A/C->A replacement directions; nonlocal handoffs reduce to four product-loss templates; endpoint tangents give mixed source-short-crossing/target-capture collar; concrete refinement reduces the residual first to a finite clean B/C->A branch row and then to the single beta_* parallelogram cell, whose support is non-D with minimum shell 70 and is analytically dense-capped.",
+      "gate": "K67",
+      "included_in_declared_z_atlas_closure": true,
+      "local_handoff_pair_count_shared_ge_2": 245840,
+      "local_replacement_shape_count": 4,
+      "local_replacement_type_count": 2,
+      "min_abs_endpoint_tangent": 2.9785429952729077,
+      "nonlocal_handoff_pair_count_shared_le_1": 424185746,
+      "nonlocal_split_product_template_count": 4,
+      "nonlocal_union_size_template_count": 4,
+      "passes_source_short_crossing": true,
+      "passes_target_capture_repulsion": true,
+      "reason_not_z_atlas_gate": "K67 is now included in the seed/dense Z_atlas closure: shell-role validation removes endpoint and broad branch rows, and the single beta_* concrete promotion residue is analytically discharged by the non-D high-shell branch envelope.",
+      "source_beta_branch_jsons": "paper3\\results\\20260614_173056_audit_k45_two_mode_local_charts_k67_beta_star_max_R_branch_v1\\20260614_173056_k45_two_mode_local_chart_audit.json; paper3\\results\\20260614_173250_audit_k45_two_mode_local_charts_k67_beta_star_max_R_branch_v2\\20260614_173250_k45_two_mode_local_chart_audit.json; paper3\\results\\20260614_174130_audit_k45_two_mode_local_charts_k67_beta_star_max_R_branch_v3_cap008_stress\\20260614_174130_k45_two_mode_local_chart_audit.json",
+      "source_branch_merged_json": "paper3\\results\\20260614_165554_audit_k45_two_mode_local_charts_k67_branch_twowitness_full_merged_v1\\20260614_165554_k45_two_mode_local_chart_audit.json",
+      "source_handoff_json": "paper3\\results\\20260614_135301_calibrate_type_signature_envelopes_k67_handoff_reduction_v1\\20260614_135301_k67_handoff_reduction.json",
+      "source_mode_refinement_json": "paper3\\results\\20260614_153838_calibrate_type_signature_envelopes_k67_mode_refinement_overlap_audit_v2_full_pairs\\20260614_153838_k67_mode_refinement_overlap_audit.json",
+      "source_prefilter_json": "paper3\\results\\20260614_123030_calibrate_type_signature_envelopes_k67_preflight_v1\\20260614_123030_k67_preflight.json",
+      "status": "closed_shell_role_certificate_form_with_analytic_beta_discharge",
+      "true_two_family_support_count": 0,
+      "validation_family": "shell_role_dense_validation"
+    }
+  ],
+  "sources": {
+    "k34_audit_json": "paper3\\results\\20260613_130427_audit_k34_transition_cover_k34_transition_cover_audit_v28_endpoint_packaged_paper_ready\\20260613_130427_k34_transition_cover_audit.json",
+    "k45_package_json": "paper3\\results\\20260614_000621_package_k45_transition_certificate_k45_transition_certificate_package_v1\\20260614_000621_k45_transition_certificate_package.json",
+    "k45_preflight_json": "paper3\\results\\20260613_195447_calibrate_type_signature_envelopes_k45_preflight_v2\\20260613_195447_k45_preflight.json",
+    "k45_tangent_k4_s4sel_json": "paper3\\results\\20260613_195734_autodiff_k4_selector_derivatives_k45_tangent_k4_s4sel_cuda_v1\\20260613_195734_k4_selector_autodiff_derivatives.json",
+    "k45_tangent_k4_s5core_json": "paper3\\results\\20260613_195750_autodiff_k4_selector_derivatives_k45_tangent_k4_s5core_cuda_v1\\20260613_195750_k4_selector_autodiff_derivatives.json",
+    "k45_tangent_k5_s4sel_json": "paper3\\results\\20260613_195805_autodiff_k4_selector_derivatives_k45_tangent_k5_s4sel_cuda_v1\\20260613_195805_k4_selector_autodiff_derivatives.json",
+    "k45_tangent_k5_s5core_json": "paper3\\results\\20260613_195823_autodiff_k4_selector_derivatives_k45_tangent_k5_s5core_cuda_v1\\20260613_195823_k4_selector_autodiff_derivatives.json",
+    "k56_package_json": "paper3\\results\\20260614_094249_package_k45_transition_certificate_k56_transition_certificate_package_v1\\20260614_094249_k56_transition_certificate_package.json",
+    "k67_beta_branch_jsons": [
+      "paper3\\results\\20260614_173056_audit_k45_two_mode_local_charts_k67_beta_star_max_R_branch_v1\\20260614_173056_k45_two_mode_local_chart_audit.json",
+      "paper3\\results\\20260614_173250_audit_k45_two_mode_local_charts_k67_beta_star_max_R_branch_v2\\20260614_173250_k45_two_mode_local_chart_audit.json",
+      "paper3\\results\\20260614_174130_audit_k45_two_mode_local_charts_k67_beta_star_max_R_branch_v3_cap008_stress\\20260614_174130_k45_two_mode_local_chart_audit.json"
+    ],
+    "k67_beta_support_cert_log": "scripts\\gap3\\results\\2026-06-14\\certify_block_maximum_gpu_k3_shells_174734.txt",
+    "k67_branch_merged_json": "paper3\\results\\20260614_165554_audit_k45_two_mode_local_charts_k67_branch_twowitness_full_merged_v1\\20260614_165554_k45_two_mode_local_chart_audit.json",
+    "k67_handoff_json": "paper3\\results\\20260614_135301_calibrate_type_signature_envelopes_k67_handoff_reduction_v1\\20260614_135301_k67_handoff_reduction.json",
+    "k67_mode_refinement_json": "paper3\\results\\20260614_153838_calibrate_type_signature_envelopes_k67_mode_refinement_overlap_audit_v2_full_pairs\\20260614_153838_k67_mode_refinement_overlap_audit.json",
+    "k67_preflight_json": "paper3\\results\\20260614_123030_calibrate_type_signature_envelopes_k67_preflight_v1\\20260614_123030_k67_preflight.json",
+    "k67_tangent_k6_s6core_json": "paper3\\results\\20260614_141011_autodiff_k4_selector_derivatives_k67_tangent_k6_s6core_v1\\20260614_141011_k4_selector_autodiff_derivatives.json",
+    "k67_tangent_k6_s7core_json": "paper3\\results\\20260614_141026_autodiff_k4_selector_derivatives_k67_tangent_k6_s7core_v1\\20260614_141026_k4_selector_autodiff_derivatives.json",
+    "k67_tangent_k7_s6core_json": "paper3\\results\\20260614_141041_autodiff_k4_selector_derivatives_k67_tangent_k7_s6core_v1\\20260614_141041_k4_selector_autodiff_derivatives.json",
+    "k67_tangent_k7_s7core_json": "paper3\\results\\20260614_141149_autodiff_k4_selector_derivatives_k67_tangent_k7_s7core_v1\\20260614_141149_k4_selector_autodiff_derivatives.json"
+  },
+  "status": "Paper 3 all-later atlas audit package",
+  "unconditional_all_later_closed": false
+}

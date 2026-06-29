@@ -1,0 +1,7 @@
+gate,status,evidence
+support-atlas separation,closed_certificate_form,"Finite W45 catalogue separates endpoint, k4-only, k5-only, overlap, and remainder roles; support role counts={'bridge_k4_selector_side_only': 172, 'bridge_k5_core_side_only': 850, 'bridge_overlap_family_only': 195, 'bridge_remainder_no_transfer_family': 428, 'endpoint_chart': 822}."
+local zero-mode split charts,closed_analytic_product_loss,31 local shell handoffs have no shared concrete mode; product penalty <= 0.35355339059327373.
+local one-mode-only split charts,closed_analytic_product_loss,1672 local shell handoffs have one-mode but no two-mode witness; product penalty <= 0.5.
+local true two-mode branch charts,closed_certificate_form,"15 true two-mode charts; branch target rho=5e-05, p=0.016; displayed bound=0.015375505962416292 from focused_worst_chart_replay; margin=0.0006244940375837085; all-15 violations=0."
+nonlocal mass-splitting charts,closed_certificate_form,144482 nonlocal handoff pairs split by shared-shell count; max side split product penalty=0.7071067811865476.
+overlap and remainder charts,closed_by_transfer_coordinate,623 bridge supports are overlap-only or outside-transfer-family remainder; overlap families cancel from Psi45 and remainders carry no endpoint transfer family.

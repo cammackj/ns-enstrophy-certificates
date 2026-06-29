@@ -1,0 +1,7 @@
+replacement_type,replacement_shape,shared_distinct_shell_count,distinct_union_shell_count,one_mode_support_pair_count,two_mode_support_pair_count
+B->A,clean_distinct,2,4,145151,673
+B->A,k6_duplicate;dropped_still_shared,2,3,764,0
+C->A,clean_distinct,2,4,81620,358
+C->A,k6_duplicate;dropped_still_shared,2,3,319,0
+non_single_shell_replacement,clean_distinct,1,5,18550410,0
+non_single_shell_replacement,k6_duplicate,1,4,153355,0

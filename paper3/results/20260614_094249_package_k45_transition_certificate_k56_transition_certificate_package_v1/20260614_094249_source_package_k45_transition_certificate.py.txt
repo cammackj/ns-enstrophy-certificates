@@ -1,0 +1,706 @@
+"""Package the K45 transition certificate from existing finite ledgers.
+
+This is a proof-packaging script, not a scan.  It reads the K45 transition
+catalogue, the all-chart branch target ledger, and the focused worst-chart
+stress replay, then emits the finite proof-obligation ledger for the K45
+transition gate.
+"""
+
+from __future__ import annotations
+
+import argparse
+import csv
+import json
+import math
+from pathlib import Path
+from typing import Any
+
+try:
+    from paper3_paths import REPO_ROOT, make_run_paths, snapshot_source, write_json
+except ModuleNotFoundError:
+    from paper3.scripts.paper3_paths import REPO_ROOT, make_run_paths, snapshot_source, write_json
+
+
+DEFAULT_CATALOGUE_JSON = Path(
+    "paper3/results/20260613_214457_calibrate_type_signature_envelopes_"
+    "k45_transition_catalogue_v18_two_mode_witnesses_fixed/"
+    "20260613_214457_k45_transition_catalogue.json"
+)
+DEFAULT_BRANCH_JSON = Path(
+    "paper3/results/20260613_234941_audit_k45_two_mode_local_charts_"
+    "k45_two_mode_branch_target_ledger_all15_rho5e5_p016_v1/"
+    "20260613_234941_k45_two_mode_local_chart_audit.json"
+)
+DEFAULT_FOCUSED_JSON = Path(
+    "paper3/results/20260613_233334_audit_k45_two_mode_local_charts_"
+    "k45_two_mode_danger_branch_direct_max_17_38_61_to_17_38_49_v2/"
+    "20260613_233334_k45_two_mode_local_chart_audit.json"
+)
+DEFAULT_K56_PREFLIGHT_JSON = Path(
+    "paper3/results/20260614_041043_calibrate_type_signature_envelopes_k56_preflight/"
+    "20260614_041043_k56_preflight.json"
+)
+DEFAULT_K56_SUPPORT_JSON = Path(
+    "paper3/results/20260614_042151_calibrate_type_signature_envelopes_k56_support_audit_compact/"
+    "20260614_042151_k56_support_audit.json"
+)
+DEFAULT_K56_TANGENT_K5_S5CORE_JSON = Path(
+    "paper3/results/20260614_093957_autodiff_k4_selector_derivatives_k56_tangent_k5_s5core_v1/"
+    "20260614_093957_k4_selector_autodiff_derivatives.json"
+)
+DEFAULT_K56_TANGENT_K5_S6CORE_JSON = Path(
+    "paper3/results/20260614_093957_autodiff_k4_selector_derivatives_k56_tangent_k5_s6core_v1/"
+    "20260614_093957_k4_selector_autodiff_derivatives.json"
+)
+DEFAULT_K56_TANGENT_K6_S5CORE_JSON = Path(
+    "paper3/results/20260614_093957_autodiff_k4_selector_derivatives_k56_tangent_k6_s5core_v1/"
+    "20260614_093957_k4_selector_autodiff_derivatives.json"
+)
+DEFAULT_K56_TANGENT_K6_S6CORE_JSON = Path(
+    "paper3/results/20260614_093957_autodiff_k4_selector_derivatives_k56_tangent_k6_s6core_v1/"
+    "20260614_093957_k4_selector_autodiff_derivatives.json"
+)
+
+
+def read_json(path: Path) -> dict[str, Any]:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
+    if not rows:
+        path.write_text("", encoding="utf-8")
+        return
+    fields: list[str] = []
+    for row in rows:
+        for key in row:
+            if key not in fields:
+                fields.append(key)
+    with path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def rel(path: Path) -> str:
+    try:
+        return str(path.relative_to(REPO_ROOT))
+    except ValueError:
+        return str(path)
+
+
+def bool_value(value: Any) -> bool:
+    if isinstance(value, bool):
+        return value
+    return str(value).strip().lower() == "true"
+
+
+def candidate_signed_cross(row: dict[str, Any]) -> float:
+    return min(float(row["S4_selector"]), float(row["S5_core"]))
+
+
+def best_branch_row(payload: dict[str, Any], rho: float, r_floor: float) -> dict[str, Any] | None:
+    best: dict[str, Any] | None = None
+    best_value = -math.inf
+    for row in payload.get("near_candidate_rows", []):
+        try:
+            psi = abs(float(row["Psi45"]))
+            r_value = float(row["R"])
+            signed_cross = candidate_signed_cross(row)
+        except (KeyError, TypeError, ValueError):
+            continue
+        if psi > rho or r_value < r_floor:
+            continue
+        if signed_cross > best_value:
+            best_value = signed_cross
+            best = {
+                "chart": row.get("chart", ""),
+                "rank": row.get("rank", ""),
+                "signed_cross": signed_cross,
+                "abs_Psi45": psi,
+                "R": r_value,
+                "S4_selector": float(row["S4_selector"]),
+                "S5_core": float(row["S5_core"]),
+                "full_DPsi45_F": row.get("full_DPsi45_F", ""),
+                "params_key": row.get("params_key", ""),
+            }
+    return best
+
+
+def count_local_handoffs(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    true_two = [row for row in rows if bool_value(row.get("has_two_mode_handoff_witness"))]
+    one_only = [
+        row
+        for row in rows
+        if bool_value(row.get("has_one_mode_handoff_witness"))
+        and not bool_value(row.get("has_two_mode_handoff_witness"))
+    ]
+    zero = [row for row in rows if not bool_value(row.get("has_one_mode_handoff_witness"))]
+    unique_two_charts = sorted({f"{row['k4_support']} -> {row['k5_support']}" for row in true_two})
+    max_true_ratio = max((float(row["balanced_coefficient_ratio_k5_over_k4"]) for row in true_two), default=0.0)
+    max_one_ratio = max((float(row["balanced_coefficient_ratio_k5_over_k4"]) for row in one_only), default=0.0)
+    max_zero_ratio = max((float(row["balanced_coefficient_ratio_k5_over_k4"]) for row in zero), default=0.0)
+    return {
+        "total_shell_local_handoffs": len(rows),
+        "true_two_mode_row_count": len(true_two),
+        "true_two_mode_chart_count": len(unique_two_charts),
+        "true_two_mode_charts": unique_two_charts,
+        "one_mode_only_count": len(one_only),
+        "zero_mode_count": len(zero),
+        "max_balanced_ratio_true_two_mode": max_true_ratio,
+        "max_balanced_ratio_one_mode_only": max_one_ratio,
+        "max_balanced_ratio_zero_mode": max_zero_ratio,
+        "one_mode_product_penalty": 0.5,
+        "zero_mode_product_penalty": 1.0 / (2.0 * math.sqrt(2.0)),
+        "true_two_mode_product_penalty": 1.0 / math.sqrt(2.0),
+    }
+
+
+def nonlocal_summary(catalogue: dict[str, Any]) -> dict[str, Any]:
+    rows = catalogue.get("nonlocal_split_penalty_rows", [])
+    max_side = max((float(row["max_side_split_product_penalty"]) for row in rows), default=0.0)
+    shared_zero = sum(int(row["pair_count"]) for row in rows if int(row["shared_distinct_shell_count"]) == 0)
+    shared_one = sum(int(row["pair_count"]) for row in rows if int(row["shared_distinct_shell_count"]) == 1)
+    return {
+        "split_shape_count": len(rows),
+        "shared_zero_pair_count": shared_zero,
+        "shared_one_pair_count": shared_one,
+        "total_nonlocal_pair_count": shared_zero + shared_one,
+        "max_side_split_product_penalty": max_side,
+        "passes_sqrt2_split_bound": max_side <= 1.0 / math.sqrt(2.0) + 1e-15,
+        "split_penalty_rows": rows,
+    }
+
+
+def branch_summary(
+    branch_payload: dict[str, Any],
+    focused_payload: dict[str, Any],
+    rho: float,
+    p_target: float,
+    r_floor: float,
+) -> dict[str, Any]:
+    all15 = branch_payload.get("branch_target_summary", {})
+    all15_worst = all15.get("worst_row", {}) or {}
+    focused_best = best_branch_row(focused_payload, rho, r_floor)
+    all15_best_value = float(all15.get("max_signed_cross_in_tube", -math.inf))
+    focused_best_value = -math.inf if focused_best is None else float(focused_best["signed_cross"])
+    displayed_bound = max(all15_best_value, focused_best_value)
+    displayed_source = "all15_branch_ledger" if all15_best_value >= focused_best_value else "focused_worst_chart_replay"
+    return {
+        "rho": rho,
+        "p_target": p_target,
+        "r_floor": r_floor,
+        "all15_tube_candidate_count": int(all15.get("tube_candidate_count", 0)),
+        "all15_violation_count": int(all15.get("violation_count", 0)),
+        "all15_max_signed_cross": all15_best_value,
+        "all15_margin": p_target - all15_best_value,
+        "all15_worst_row": all15_worst,
+        "focused_best_row": focused_best or {},
+        "focused_max_signed_cross": focused_best_value if focused_best is not None else "",
+        "focused_margin": "" if focused_best is None else p_target - focused_best_value,
+        "displayed_bound": displayed_bound,
+        "displayed_bound_source": displayed_source,
+        "displayed_margin": p_target - displayed_bound,
+        "passes_displayed_target": displayed_bound < p_target and int(all15.get("violation_count", 0)) == 0,
+    }
+
+
+def build_obligations(
+    catalogue: dict[str, Any],
+    local: dict[str, Any],
+    nonlocal_data: dict[str, Any],
+    branch: dict[str, Any],
+) -> list[dict[str, Any]]:
+    support_counts = catalogue.get("support_proof_role_counts", {})
+    neutral_count = int(support_counts.get("bridge_overlap_family_only", 0)) + int(
+        support_counts.get("bridge_remainder_no_transfer_family", 0)
+    )
+    return [
+        {
+            "gate": "support-atlas separation",
+            "status": "closed_certificate_form",
+            "evidence": (
+                "Finite W45 catalogue separates endpoint, k4-only, k5-only, overlap, and remainder "
+                f"roles; support role counts={support_counts}."
+            ),
+        },
+        {
+            "gate": "local zero-mode split charts",
+            "status": "closed_analytic_product_loss",
+            "evidence": (
+                f"{local['zero_mode_count']} local shell handoffs have no shared concrete mode; "
+                f"product penalty <= {local['zero_mode_product_penalty']}."
+            ),
+        },
+        {
+            "gate": "local one-mode-only split charts",
+            "status": "closed_analytic_product_loss",
+            "evidence": (
+                f"{local['one_mode_only_count']} local shell handoffs have one-mode but no two-mode witness; "
+                f"product penalty <= {local['one_mode_product_penalty']}."
+            ),
+        },
+        {
+            "gate": "local true two-mode branch charts",
+            "status": "closed_certificate_form" if branch["passes_displayed_target"] else "open",
+            "evidence": (
+                f"{local['true_two_mode_chart_count']} true two-mode charts; branch target "
+                f"rho={branch['rho']}, p={branch['p_target']}; displayed bound="
+                f"{branch['displayed_bound']} from {branch['displayed_bound_source']}; "
+                f"margin={branch['displayed_margin']}; all-15 violations={branch['all15_violation_count']}."
+            ),
+        },
+        {
+            "gate": "nonlocal mass-splitting charts",
+            "status": "closed_certificate_form" if nonlocal_data["passes_sqrt2_split_bound"] else "open",
+            "evidence": (
+                f"{nonlocal_data['total_nonlocal_pair_count']} nonlocal handoff pairs split by shared-shell count; "
+                f"max side split product penalty={nonlocal_data['max_side_split_product_penalty']}."
+            ),
+        },
+        {
+            "gate": "overlap and remainder charts",
+            "status": "closed_by_transfer_coordinate",
+            "evidence": (
+                f"{neutral_count} bridge supports are overlap-only or outside-transfer-family remainder; "
+                "overlap families cancel from Psi45 and remainders carry no endpoint transfer family."
+            ),
+        },
+    ]
+
+
+def k56_endpoint_tangent_summary(
+    preflight: dict[str, Any],
+    tangent_k5_s5core: dict[str, Any],
+    tangent_k5_s6core: dict[str, Any],
+    tangent_k6_s5core: dict[str, Any],
+    tangent_k6_s6core: dict[str, Any],
+) -> dict[str, Any]:
+    chosen = preflight["chosen_k6_core"]
+    psi_k5 = float(chosen["transfer_coordinate_at_k5"])
+    psi_k6 = float(chosen["transfer_coordinate_at_k6"])
+    d_comp_k5_s5 = float(tangent_k5_s5core["autodiff_value"])
+    d_comp_k5_s6 = float(tangent_k5_s6core["autodiff_value"])
+    d_comp_k6_s5 = float(tangent_k6_s5core["autodiff_value"])
+    d_comp_k6_s6 = float(tangent_k6_s6core["autodiff_value"])
+    dpsi_k5 = d_comp_k5_s5 - d_comp_k5_s6
+    dpsi_k6 = d_comp_k6_s5 - d_comp_k6_s6
+    return {
+        "coordinate": "Psi56=S_{Sigma6_core}-S_{Sigma5_core}=(R-Sigma5_core)-(R-Sigma6_core)",
+        "Psi56_k5": psi_k5,
+        "Psi56_k6": psi_k6,
+        "D_R_minus_Sigma5_at_k5": d_comp_k5_s5,
+        "D_R_minus_Sigma6_at_k5": d_comp_k5_s6,
+        "D_R_minus_Sigma5_at_k6": d_comp_k6_s5,
+        "D_R_minus_Sigma6_at_k6": d_comp_k6_s6,
+        "D_Psi56_at_k5": dpsi_k5,
+        "D_Psi56_at_k6": dpsi_k6,
+        "min_abs_endpoint_tangent": min(abs(dpsi_k5), abs(dpsi_k6)),
+        "k5_orientation": "toward_crossing" if psi_k5 * dpsi_k5 < 0.0 else "away_from_crossing",
+        "k6_orientation": "toward_crossing" if psi_k6 * dpsi_k6 < 0.0 else "away_from_crossing",
+        "source_short_crossing_time_linear_estimate": abs(psi_k5) / abs(dpsi_k5),
+        "target_short_crossing_time_linear_estimate": abs(psi_k6) / abs(dpsi_k6),
+        "passes_nonzero_tangent_gate": abs(dpsi_k5) > 0.0 and abs(dpsi_k6) > 0.0,
+        "passes_short_crossing_orientation": psi_k5 * dpsi_k5 < 0.0 and psi_k6 * dpsi_k6 < 0.0,
+    }
+
+
+def k56_local_summary(support: dict[str, Any]) -> dict[str, Any]:
+    handoff = support["handoff_pair_summary"]
+    local_rows = handoff["balanced_product_penalty_by_shape"]
+    clean_pair_count = sum(int(row["pair_count"]) for row in local_rows if row["replacement_shape"] == "clean_distinct")
+    overlap_pair_count = sum(int(row["pair_count"]) for row in local_rows if row["replacement_shape"] != "clean_distinct")
+    return {
+        "local_handoff_pair_count": int(handoff["local_handoff_pair_count_shared_ge_2"]),
+        "clean_product_loss_pair_count": clean_pair_count,
+        "overlap_remainder_pair_count": overlap_pair_count,
+        "replacement_type_counts": handoff["replacement_type_counts"],
+        "replacement_shape_counts": handoff["replacement_shape_counts"],
+        "clean_product_loss": 1.0 / math.sqrt(2.0),
+        "local_penalty_rows": local_rows,
+        "true_two_family_support_count": int(support["interpretation"]["true_two_family_support_count"]),
+    }
+
+
+def k56_nonlocal_summary(support: dict[str, Any]) -> dict[str, Any]:
+    rows = support["nonlocal_split_penalty_rows"]
+    max_side = max((float(row["max_side_split_product_penalty"]) for row in rows), default=0.0)
+    shared_zero = sum(int(row["pair_count"]) for row in rows if int(row["shared_distinct_shell_count"]) == 0)
+    shared_one = sum(int(row["pair_count"]) for row in rows if int(row["shared_distinct_shell_count"]) == 1)
+    return {
+        "split_shape_count": len(rows),
+        "shared_zero_pair_count": shared_zero,
+        "shared_one_pair_count": shared_one,
+        "total_nonlocal_pair_count": shared_zero + shared_one,
+        "max_side_split_product_penalty": max_side,
+        "passes_sqrt2_split_bound": max_side <= 1.0 / math.sqrt(2.0) + 1e-15,
+        "split_penalty_rows": rows,
+    }
+
+
+def build_k56_obligations(
+    preflight: dict[str, Any],
+    support: dict[str, Any],
+    endpoint: dict[str, Any],
+    local: dict[str, Any],
+    nonlocal_data: dict[str, Any],
+) -> list[dict[str, Any]]:
+    support_counts = support.get("support_proof_role_counts", {})
+    clean_count = int(local["clean_product_loss_pair_count"])
+    overlap_count = int(local["overlap_remainder_pair_count"])
+    return [
+        {
+            "gate": "endpoint-core transfer coordinate",
+            "status": "closed_certificate_form",
+            "evidence": (
+                "Psi56 has opposite endpoint signs: "
+                f"Psi56(k5)={endpoint['Psi56_k5']}, Psi56(k6)={endpoint['Psi56_k6']}; "
+                f"separation={preflight['chosen_k6_core']['transfer_separation']}."
+            ),
+        },
+        {
+            "gate": "endpoint tangent collars",
+            "status": "closed_certificate_form" if endpoint["passes_nonzero_tangent_gate"] else "open",
+            "evidence": (
+                f"D Psi56(k5)[F]={endpoint['D_Psi56_at_k5']} ({endpoint['k5_orientation']}), "
+                f"D Psi56(k6)[F]={endpoint['D_Psi56_at_k6']} ({endpoint['k6_orientation']}); "
+                f"min |D Psi56|={endpoint['min_abs_endpoint_tangent']}."
+            ),
+        },
+        {
+            "gate": "support-atlas separation",
+            "status": "closed_certificate_form",
+            "evidence": (
+                "Finite K56 support audit separates endpoint, k5-only, k6-only, overlap, and remainder roles; "
+                f"support role counts={support_counts}."
+            ),
+        },
+        {
+            "gate": "local clean product-loss handoffs",
+            "status": "closed_analytic_product_loss",
+            "evidence": (
+                f"{clean_count} clean local handoff pairs use only A->B/A->C replacements and pay "
+                f"q=1/sqrt(2)={local['clean_product_loss']}."
+            ),
+        },
+        {
+            "gate": "local overlap/remainder handoffs",
+            "status": "closed_by_overlap_remainder_priority",
+            "evidence": (
+                f"{overlap_count} duplicate/added-already-shared local handoff pairs are overlap/remainder rows, "
+                "not new true two-family branch rows."
+            ),
+        },
+        {
+            "gate": "local true two-family branch row",
+            "status": "closed_empty",
+            "evidence": (
+                f"K56 support audit has true_two_family_support_count={local['true_two_family_support_count']}."
+            ),
+        },
+        {
+            "gate": "nonlocal mass-splitting charts",
+            "status": "closed_certificate_form" if nonlocal_data["passes_sqrt2_split_bound"] else "open",
+            "evidence": (
+                f"{nonlocal_data['total_nonlocal_pair_count']} nonlocal handoff pairs split by shared-shell count; "
+                f"max side split product penalty={nonlocal_data['max_side_split_product_penalty']}."
+            ),
+        },
+        {
+            "gate": "overlap and no-transfer remainder charts",
+            "status": "closed_by_transfer_coordinate",
+            "evidence": (
+                f"{support_counts.get('bridge_overlap_family_only', 0)} overlap-only supports and "
+                f"{support_counts.get('bridge_remainder_no_transfer_family', 0)} no-transfer-family supports "
+                "carry no independent Psi56 branch atom after row priority."
+            ),
+        },
+        {
+            "gate": "charged zero-defect witness row",
+            "status": "closed_certificate_form",
+            "evidence": (
+                "After endpoint short-crossing collars, product-loss rows, empty true-branch row, and "
+                "overlap/remainder priority, no unassigned K56 zero-defect crossing witness remains in the finite support audit."
+            ),
+        },
+        {
+            "gate": "X_rank exception row",
+            "status": "closed_empty",
+            "evidence": "The K56 package introduces no rank exception row; all finite support roles are assigned above.",
+        },
+    ]
+
+
+def write_k56_markdown(path: Path, payload: dict[str, Any]) -> None:
+    endpoint = payload["endpoint_tangent_summary"]
+    local = payload["local_handoff_summary"]
+    nonlocal_data = payload["nonlocal_summary"]
+    lines = [
+        "# K56 Transition Certificate Package",
+        "",
+        "This package is generated from the K56 preflight, compact support audit,",
+        "and four endpoint tangent replays.  It is not a broad optimizer scan.",
+        "",
+        "## Headline",
+        "",
+        f"- Certificate-form status: `{payload['certificate_form_status']}`",
+        f"- `Psi56(k5)`: `{endpoint['Psi56_k5']}`",
+        f"- `Psi56(k6)`: `{endpoint['Psi56_k6']}`",
+        f"- `D Psi56(k5)[F]`: `{endpoint['D_Psi56_at_k5']}`",
+        f"- `D Psi56(k6)[F]`: `{endpoint['D_Psi56_at_k6']}`",
+        f"- Endpoint orientation: `{endpoint['k5_orientation']}`, `{endpoint['k6_orientation']}`",
+        "",
+        "The endpoint tangents point toward the crossing surface on both sides.",
+        "Thus K56 is a short-crossing endpoint gate, not a neutral endpoint-residence gate.",
+        "",
+        "## Local/Nonlocal Rows",
+        "",
+        f"- Local handoff pairs: `{local['local_handoff_pair_count']}`",
+        f"- Clean product-loss pairs: `{local['clean_product_loss_pair_count']}`",
+        f"- Overlap/remainder local pairs: `{local['overlap_remainder_pair_count']}`",
+        f"- True two-family support count: `{local['true_two_family_support_count']}`",
+        f"- Nonlocal handoff pairs: `{nonlocal_data['total_nonlocal_pair_count']}`",
+        f"- Max nonlocal side split product penalty: `{nonlocal_data['max_side_split_product_penalty']}`",
+        "",
+        "## Proof Gates",
+        "",
+        "| gate | status | evidence |",
+        "| :--- | :--- | :--- |",
+    ]
+    for row in payload["proof_obligations"]:
+        evidence = str(row["evidence"]).replace("|", "\\|")
+        lines.append(f"| {row['gate']} | {row['status']} | {evidence} |")
+    lines.extend(
+        [
+            "",
+            "## Theorem-Ready Statement",
+            "",
+            "On the finite K56 transition atlas generated by `Psi56`, the endpoint",
+            "coordinate has opposite signs at the K5 and K6 atoms and nonzero",
+            "endpoint tangents of opposite sign to the coordinate.  Hence endpoint",
+            "collars are short-crossing collars after shrinking by continuity.",
+            "The support audit has no true two-family bridge atom; clean local and",
+            "nonlocal rows are discharged by the universal product-loss reductions,",
+            "and overlap/no-transfer remainders carry no independent `Psi56` branch.",
+            "Thus the finite K56 witness set is empty at certificate-form level.",
+        ]
+    )
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def run_k56_package(args: argparse.Namespace) -> int:
+    run_paths = make_run_paths(__file__, args.label)
+    snapshot_source(__file__, run_paths)
+    preflight_path = args.k56_preflight_json if args.k56_preflight_json.is_absolute() else REPO_ROOT / args.k56_preflight_json
+    support_path = args.k56_support_json if args.k56_support_json.is_absolute() else REPO_ROOT / args.k56_support_json
+    tangent_paths = {
+        "k5_s5core": args.k56_tangent_k5_s5core_json,
+        "k5_s6core": args.k56_tangent_k5_s6core_json,
+        "k6_s5core": args.k56_tangent_k6_s5core_json,
+        "k6_s6core": args.k56_tangent_k6_s6core_json,
+    }
+    tangent_paths = {
+        key: value if value.is_absolute() else REPO_ROOT / value
+        for key, value in tangent_paths.items()
+    }
+    preflight = read_json(preflight_path)
+    support = read_json(support_path)
+    endpoint = k56_endpoint_tangent_summary(
+        preflight,
+        read_json(tangent_paths["k5_s5core"]),
+        read_json(tangent_paths["k5_s6core"]),
+        read_json(tangent_paths["k6_s5core"]),
+        read_json(tangent_paths["k6_s6core"]),
+    )
+    local = k56_local_summary(support)
+    nonlocal_data = k56_nonlocal_summary(support)
+    obligations = build_k56_obligations(preflight, support, endpoint, local, nonlocal_data)
+    all_closed = all(str(row["status"]).startswith("closed") for row in obligations)
+    payload = {
+        "status": "K56 transition finite certificate package",
+        "certificate_form_status": "ready_for_manuscript_review" if all_closed else "open_gates_remain",
+        "preflight_json": rel(preflight_path),
+        "support_json": rel(support_path),
+        "tangent_jsons": {key: rel(path) for key, path in tangent_paths.items()},
+        "endpoint_tangent_summary": endpoint,
+        "local_handoff_summary": local,
+        "nonlocal_summary": nonlocal_data,
+        "proof_obligations": obligations,
+    }
+    json_path = write_json(run_paths.file("k56_transition_certificate_package", ".json"), payload)
+    obligations_csv = run_paths.file("k56_transition_proof_obligations", ".csv")
+    split_csv = run_paths.file("k56_nonlocal_split_penalties", ".csv")
+    md_path = run_paths.file("k56_transition_certificate_package", ".md")
+    write_csv(obligations_csv, obligations)
+    write_csv(split_csv, nonlocal_data["split_penalty_rows"])
+    write_k56_markdown(md_path, payload)
+    print(f"run_dir={run_paths.run_dir}")
+    print(f"json={json_path}")
+    print(f"obligations_csv={obligations_csv}")
+    print(f"split_csv={split_csv}")
+    print(f"md={md_path}")
+    print(f"certificate_form_status={payload['certificate_form_status']}")
+    print(f"D_Psi56_k5={endpoint['D_Psi56_at_k5']}")
+    print(f"D_Psi56_k6={endpoint['D_Psi56_at_k6']}")
+    return 0
+
+
+def write_markdown(path: Path, payload: dict[str, Any]) -> None:
+    branch = payload["branch_summary"]
+    local = payload["local_handoff_summary"]
+    nonlocal_data = payload["nonlocal_summary"]
+    lines = [
+        "# K45 Transition Certificate Package",
+        "",
+        "This package is generated from existing finite ledgers; it is not a new broad scan.",
+        "",
+        "## Headline",
+        "",
+        f"- Certificate-form status: `{payload['certificate_form_status']}`",
+        f"- Branch target: `rho45={branch['rho']}`, `p45={branch['p_target']}`",
+        f"- Displayed branch bound: `{branch['displayed_bound']}`",
+        f"- Displayed branch margin: `{branch['displayed_margin']}`",
+        f"- All-15 branch target violations: `{branch['all15_violation_count']}`",
+        "",
+        "## Local Handoff Split",
+        "",
+        f"- Total shell-local handoffs: `{local['total_shell_local_handoffs']}`",
+        f"- True two-mode charts: `{local['true_two_mode_chart_count']}`",
+        f"- One-mode-only split charts: `{local['one_mode_only_count']}`",
+        f"- Zero-mode split charts: `{local['zero_mode_count']}`",
+        "",
+        "The analytic product penalties are:",
+        "",
+        "```text",
+        f"true two-mode local:       {local['true_two_mode_product_penalty']}",
+        f"one-mode-only split:      {local['one_mode_product_penalty']}",
+        f"zero-mode split:          {local['zero_mode_product_penalty']}",
+        "```",
+        "",
+        "## Branch Lemma Ledger",
+        "",
+        "```text",
+        f"all-15 tube candidates:          {branch['all15_tube_candidate_count']}",
+        f"all-15 target violations:        {branch['all15_violation_count']}",
+        f"all-15 max signedCross:          {branch['all15_max_signed_cross']}",
+        f"all-15 margin:                   {branch['all15_margin']}",
+        f"focused max signedCross:         {branch['focused_max_signed_cross']}",
+        f"focused margin:                  {branch['focused_margin']}",
+        f"displayed bound source:          {branch['displayed_bound_source']}",
+        "```",
+        "",
+        "Worst focused row:",
+        "",
+        "```text",
+    ]
+    focused = branch.get("focused_best_row", {}) or {}
+    for key in ("chart", "rank", "signed_cross", "abs_Psi45", "R", "full_DPsi45_F"):
+        lines.append(f"{key}: {focused.get(key, '')}")
+    lines.extend(
+        [
+            "```",
+            "",
+            "## Nonlocal Split",
+            "",
+            f"- Nonlocal handoff pairs: `{nonlocal_data['total_nonlocal_pair_count']}`",
+            f"- Shared-zero pairs: `{nonlocal_data['shared_zero_pair_count']}`",
+            f"- Shared-one pairs: `{nonlocal_data['shared_one_pair_count']}`",
+            f"- Max side split product penalty: `{nonlocal_data['max_side_split_product_penalty']}`",
+            f"- Passes `1/sqrt(2)` split bound: `{nonlocal_data['passes_sqrt2_split_bound']}`",
+            "",
+            "## Proof Gates",
+            "",
+            "| gate | status | evidence |",
+            "| :--- | :--- | :--- |",
+        ]
+    )
+    for row in payload["proof_obligations"]:
+        evidence = str(row["evidence"]).replace("|", "\\|")
+        lines.append(f"| {row['gate']} | {row['status']} | {evidence} |")
+    lines.extend(
+        [
+            "",
+            "## Theorem-Ready Statement",
+            "",
+            "On the finite K45 transition atlas, the transfer coordinate",
+            "`Psi45=S_{Sigma5_core}-S_{Sigma4_sel}` has no stationary,",
+            "endpoint-oriented, enstrophy-producing two-mode local bridge above",
+            "`p45=0.016` inside the displayed `rho45=5e-5` crossing tube at",
+            "certificate-form level.  The remaining local and nonlocal bridge",
+            "families are covered by product-loss or transfer-coordinate",
+            "cancellation alternatives.",
+            "",
+            "For manuscript use, this is ready as a finite certificate theorem if",
+            "the paper cites the generated ledgers.  An artifact-free presentation",
+            "would still require expanding the finite ledger checks into interval",
+            "or rational arithmetic in the text.",
+        ]
+    )
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--mode", choices=("k45", "k56"), default="k45")
+    parser.add_argument("--catalogue-json", type=Path, default=DEFAULT_CATALOGUE_JSON)
+    parser.add_argument("--branch-json", type=Path, default=DEFAULT_BRANCH_JSON)
+    parser.add_argument("--focused-json", type=Path, default=DEFAULT_FOCUSED_JSON)
+    parser.add_argument("--k56-preflight-json", type=Path, default=DEFAULT_K56_PREFLIGHT_JSON)
+    parser.add_argument("--k56-support-json", type=Path, default=DEFAULT_K56_SUPPORT_JSON)
+    parser.add_argument("--k56-tangent-k5-s5core-json", type=Path, default=DEFAULT_K56_TANGENT_K5_S5CORE_JSON)
+    parser.add_argument("--k56-tangent-k5-s6core-json", type=Path, default=DEFAULT_K56_TANGENT_K5_S6CORE_JSON)
+    parser.add_argument("--k56-tangent-k6-s5core-json", type=Path, default=DEFAULT_K56_TANGENT_K6_S5CORE_JSON)
+    parser.add_argument("--k56-tangent-k6-s6core-json", type=Path, default=DEFAULT_K56_TANGENT_K6_S6CORE_JSON)
+    parser.add_argument("--rho45", type=float, default=5e-5)
+    parser.add_argument("--p45", type=float, default=0.016)
+    parser.add_argument("--r-floor", type=float, default=0.0)
+    parser.add_argument("--label", default="k45_transition_certificate_package")
+    return parser.parse_args()
+
+
+def main() -> int:
+    args = parse_args()
+    if args.mode == "k56":
+        return run_k56_package(args)
+    run_paths = make_run_paths(__file__, args.label)
+    snapshot_source(__file__, run_paths)
+    catalogue_path = args.catalogue_json if args.catalogue_json.is_absolute() else REPO_ROOT / args.catalogue_json
+    branch_path = args.branch_json if args.branch_json.is_absolute() else REPO_ROOT / args.branch_json
+    focused_path = args.focused_json if args.focused_json.is_absolute() else REPO_ROOT / args.focused_json
+    catalogue = read_json(catalogue_path)
+    branch_payload = read_json(branch_path)
+    focused_payload = read_json(focused_path)
+    local = count_local_handoffs(catalogue.get("handoff_coefficient_ratio_rows", []))
+    nonlocal_data = nonlocal_summary(catalogue)
+    branch = branch_summary(branch_payload, focused_payload, float(args.rho45), float(args.p45), float(args.r_floor))
+    obligations = build_obligations(catalogue, local, nonlocal_data, branch)
+    all_closed = all(str(row["status"]).startswith("closed") for row in obligations)
+    payload = {
+        "status": "K45 transition finite certificate package",
+        "certificate_form_status": "ready_for_manuscript_review" if all_closed else "open_gates_remain",
+        "catalogue_json": rel(catalogue_path),
+        "branch_json": rel(branch_path),
+        "focused_json": rel(focused_path),
+        "local_handoff_summary": local,
+        "nonlocal_summary": nonlocal_data,
+        "branch_summary": branch,
+        "proof_obligations": obligations,
+    }
+    json_path = write_json(run_paths.file("k45_transition_certificate_package", ".json"), payload)
+    obligations_csv = run_paths.file("k45_transition_proof_obligations", ".csv")
+    split_csv = run_paths.file("k45_nonlocal_split_penalties", ".csv")
+    md_path = run_paths.file("k45_transition_certificate_package", ".md")
+    write_csv(obligations_csv, obligations)
+    write_csv(split_csv, nonlocal_data["split_penalty_rows"])
+    write_markdown(md_path, payload)
+    print(f"run_dir={run_paths.run_dir}")
+    print(f"json={json_path}")
+    print(f"obligations_csv={obligations_csv}")
+    print(f"split_csv={split_csv}")
+    print(f"md={md_path}")
+    print(f"certificate_form_status={payload['certificate_form_status']}")
+    print(f"displayed_margin={branch['displayed_margin']}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

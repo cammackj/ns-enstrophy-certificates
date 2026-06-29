@@ -1,0 +1,11 @@
+gate,status,evidence
+endpoint-core transfer coordinate,closed_certificate_form,"Psi56 has opposite endpoint signs: Psi56(k5)=-0.009325268705047103, Psi56(k6)=0.002675267830940884; separation=0.012000536535987988."
+endpoint tangent collars,closed_certificate_form,"D Psi56(k5)[F]=0.17788831373664493 (toward_crossing), D Psi56(k6)[F]=-0.6494956443403401 (toward_crossing); min |D Psi56|=0.17788831373664493."
+support-atlas separation,closed_certificate_form,"Finite K56 support audit separates endpoint, k5-only, k6-only, overlap, and remainder roles; support role counts={'bridge_k5_source_side_only': 2918, 'bridge_k6_core_side_only': 3466, 'bridge_overlap_family_only': 1939, 'bridge_remainder_no_transfer_family': 3247, 'endpoint_chart': 5735}."
+local clean product-loss handoffs,closed_analytic_product_loss,16336 clean local handoff pairs use only A->B/A->C replacements and pay q=1/sqrt(2)=0.7071067811865475.
+local overlap/remainder handoffs,closed_by_overlap_remainder_priority,"117 duplicate/added-already-shared local handoff pairs are overlap/remainder rows, not new true two-family branch rows."
+local true two-family branch row,closed_empty,K56 support audit has true_two_family_support_count=0.
+nonlocal mass-splitting charts,closed_certificate_form,10097335 nonlocal handoff pairs split by shared-shell count; max side split product penalty=0.7071067811865476.
+overlap and no-transfer remainder charts,closed_by_transfer_coordinate,1939 overlap-only supports and 3247 no-transfer-family supports carry no independent Psi56 branch atom after row priority.
+charged zero-defect witness row,closed_certificate_form,"After endpoint short-crossing collars, product-loss rows, empty true-branch row, and overlap/remainder priority, no unassigned K56 zero-defect crossing witness remains in the finite support audit."
+X_rank exception row,closed_empty,The K56 package introduces no rank exception row; all finite support roles are assigned above.

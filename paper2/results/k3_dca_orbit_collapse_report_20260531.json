@@ -1,0 +1,1708 @@
+{
+  "created_at": "2026-05-31T20:45:35",
+  "source": "results/k3_shell_strata_scan_all_max7_starts24_parallel_20260531.json",
+  "target": 0.021936469459403748,
+  "cutoff": 1e-06,
+  "active_orbit_support_count": 12,
+  "dca_rows": 16,
+  "all_dca_rows_orbit_match": true,
+  "all_dca_rows_support_size_9": true,
+  "rows": [
+    {
+      "row_index": 0,
+      "shells": [
+        8,
+        10,
+        11,
+        13,
+        14
+      ],
+      "best_value": 0.021936469459265417,
+      "gap_to_target": 1.3833031942134255e-13,
+      "support_size": 9,
+      "orbit_match": true,
+      "support": [
+        {
+          "index": 1,
+          "wavevector": [
+            0,
+            1,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.16899621313828184
+        },
+        {
+          "index": 15,
+          "wavevector": [
+            1,
+            -2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007156258162440787
+        },
+        {
+          "index": 20,
+          "wavevector": [
+            1,
+            0,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.16899572072543048
+        },
+        {
+          "index": 23,
+          "wavevector": [
+            1,
+            2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.15049275735192763
+        },
+        {
+          "index": 25,
+          "wavevector": [
+            1,
+            3,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024051044547696052
+        },
+        {
+          "index": 35,
+          "wavevector": [
+            2,
+            -1,
+            -3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007155311271175908
+        },
+        {
+          "index": 40,
+          "wavevector": [
+            2,
+            1,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.15049310395748286
+        },
+        {
+          "index": 42,
+          "wavevector": [
+            2,
+            2,
+            0
+          ],
+          "shell": 8,
+          "x_fraction": 0.311489131561843
+        },
+        {
+          "index": 58,
+          "wavevector": [
+            3,
+            1,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024050871773637135
+        }
+      ]
+    },
+    {
+      "row_index": 1,
+      "shells": [
+        8,
+        10,
+        12,
+        14
+      ],
+      "best_value": 0.02193646945926458,
+      "gap_to_target": 1.3916645613676337e-13,
+      "support_size": 9,
+      "orbit_match": true,
+      "support": [
+        {
+          "index": 1,
+          "wavevector": [
+            0,
+            1,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.168995917831807
+        },
+        {
+          "index": 9,
+          "wavevector": [
+            1,
+            -2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007156380547244564
+        },
+        {
+          "index": 12,
+          "wavevector": [
+            1,
+            0,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.16899600141384827
+        },
+        {
+          "index": 13,
+          "wavevector": [
+            1,
+            2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.1504929426711971
+        },
+        {
+          "index": 15,
+          "wavevector": [
+            1,
+            3,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.02405095159511295
+        },
+        {
+          "index": 24,
+          "wavevector": [
+            2,
+            -1,
+            -3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007155521492474125
+        },
+        {
+          "index": 27,
+          "wavevector": [
+            2,
+            1,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.15049292302917633
+        },
+        {
+          "index": 29,
+          "wavevector": [
+            2,
+            2,
+            0
+          ],
+          "shell": 8,
+          "x_fraction": 0.31148911935417206
+        },
+        {
+          "index": 41,
+          "wavevector": [
+            3,
+            1,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.0240509539004934
+        }
+      ]
+    },
+    {
+      "row_index": 2,
+      "shells": [
+        8,
+        10,
+        14
+      ],
+      "best_value": 0.021936469459263475,
+      "gap_to_target": 1.4027320971443658e-13,
+      "support_size": 9,
+      "orbit_match": true,
+      "support": [
+        {
+          "index": 1,
+          "wavevector": [
+            0,
+            1,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.16899538487721677
+        },
+        {
+          "index": 9,
+          "wavevector": [
+            1,
+            -2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.000715582330608189
+        },
+        {
+          "index": 12,
+          "wavevector": [
+            1,
+            0,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.1689964863641017
+        },
+        {
+          "index": 13,
+          "wavevector": [
+            1,
+            2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.15049331521408882
+        },
+        {
+          "index": 15,
+          "wavevector": [
+            1,
+            3,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024050906182150788
+        },
+        {
+          "index": 22,
+          "wavevector": [
+            2,
+            -1,
+            -3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007156478480045759
+        },
+        {
+          "index": 25,
+          "wavevector": [
+            2,
+            1,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.15049253354640235
+        },
+        {
+          "index": 27,
+          "wavevector": [
+            2,
+            2,
+            0
+          ],
+          "shell": 8,
+          "x_fraction": 0.3114890227720175
+        },
+        {
+          "index": 37,
+          "wavevector": [
+            3,
+            1,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024051120865211894
+        }
+      ]
+    },
+    {
+      "row_index": 3,
+      "shells": [
+        8,
+        9,
+        10,
+        11,
+        13,
+        14
+      ],
+      "best_value": 0.021936469459219267,
+      "gap_to_target": 1.8448090277622953e-13,
+      "support_size": 9,
+      "orbit_match": true,
+      "support": [
+        {
+          "index": 2,
+          "wavevector": [
+            0,
+            1,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.16899627675371462
+        },
+        {
+          "index": 19,
+          "wavevector": [
+            1,
+            -2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007156468031846615
+        },
+        {
+          "index": 24,
+          "wavevector": [
+            1,
+            0,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.1689956433644484
+        },
+        {
+          "index": 29,
+          "wavevector": [
+            1,
+            2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.15049268239650085
+        },
+        {
+          "index": 31,
+          "wavevector": [
+            1,
+            3,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024051126598447808
+        },
+        {
+          "index": 45,
+          "wavevector": [
+            2,
+            -1,
+            -3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007155058663065433
+        },
+        {
+          "index": 52,
+          "wavevector": [
+            2,
+            1,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.1504931657278519
+        },
+        {
+          "index": 54,
+          "wavevector": [
+            2,
+            2,
+            0
+          ],
+          "shell": 8,
+          "x_fraction": 0.3114890390676054
+        },
+        {
+          "index": 73,
+          "wavevector": [
+            3,
+            1,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.02405091342153394
+        }
+      ]
+    },
+    {
+      "row_index": 4,
+      "shells": [
+        8,
+        10,
+        13,
+        14
+      ],
+      "best_value": 0.021936469459213875,
+      "gap_to_target": 1.8987242333956544e-13,
+      "support_size": 9,
+      "orbit_match": true,
+      "support": [
+        {
+          "index": 1,
+          "wavevector": [
+            0,
+            1,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.16899568494864875
+        },
+        {
+          "index": 13,
+          "wavevector": [
+            1,
+            -2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007156229303350271
+        },
+        {
+          "index": 16,
+          "wavevector": [
+            1,
+            0,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.16899615719843755
+        },
+        {
+          "index": 17,
+          "wavevector": [
+            1,
+            2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.15049322877874252
+        },
+        {
+          "index": 19,
+          "wavevector": [
+            1,
+            3,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024051145351763118
+        },
+        {
+          "index": 27,
+          "wavevector": [
+            2,
+            -1,
+            -3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007156355277993275
+        },
+        {
+          "index": 32,
+          "wavevector": [
+            2,
+            1,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.150492608990125
+        },
+        {
+          "index": 34,
+          "wavevector": [
+            2,
+            2,
+            0
+          ],
+          "shell": 8,
+          "x_fraction": 0.3114889624622248
+        },
+        {
+          "index": 48,
+          "wavevector": [
+            3,
+            1,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024050953811649487
+        }
+      ]
+    },
+    {
+      "row_index": 5,
+      "shells": [
+        8,
+        10,
+        11,
+        14
+      ],
+      "best_value": 0.021936469459191206,
+      "gap_to_target": 2.1254178972363036e-13,
+      "support_size": 9,
+      "orbit_match": true,
+      "support": [
+        {
+          "index": 1,
+          "wavevector": [
+            0,
+            1,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.16899612795494195
+        },
+        {
+          "index": 11,
+          "wavevector": [
+            1,
+            -2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.000715552027682647
+        },
+        {
+          "index": 16,
+          "wavevector": [
+            1,
+            0,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.1689957839635814
+        },
+        {
+          "index": 19,
+          "wavevector": [
+            1,
+            2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.1504928240631099
+        },
+        {
+          "index": 21,
+          "wavevector": [
+            1,
+            3,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.02405104176348775
+        },
+        {
+          "index": 30,
+          "wavevector": [
+            2,
+            -1,
+            -3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007156216607325564
+        },
+        {
+          "index": 33,
+          "wavevector": [
+            2,
+            1,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.15049302991598887
+        },
+        {
+          "index": 35,
+          "wavevector": [
+            2,
+            2,
+            0
+          ],
+          "shell": 8,
+          "x_fraction": 0.3114890310766743
+        },
+        {
+          "index": 47,
+          "wavevector": [
+            3,
+            1,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024050987573538365
+        }
+      ]
+    },
+    {
+      "row_index": 6,
+      "shells": [
+        8,
+        10,
+        12,
+        13,
+        14
+      ],
+      "best_value": 0.02193646945917537,
+      "gap_to_target": 2.2837634561234665e-13,
+      "support_size": 9,
+      "orbit_match": true,
+      "support": [
+        {
+          "index": 1,
+          "wavevector": [
+            0,
+            1,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.16899616943763215
+        },
+        {
+          "index": 13,
+          "wavevector": [
+            1,
+            -2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007155799467700246
+        },
+        {
+          "index": 16,
+          "wavevector": [
+            1,
+            0,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.16899574064402045
+        },
+        {
+          "index": 17,
+          "wavevector": [
+            1,
+            2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.15049264825225322
+        },
+        {
+          "index": 19,
+          "wavevector": [
+            1,
+            3,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024050955189759225
+        },
+        {
+          "index": 29,
+          "wavevector": [
+            2,
+            -1,
+            -3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007155739585641512
+        },
+        {
+          "index": 34,
+          "wavevector": [
+            2,
+            1,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.1504931929299786
+        },
+        {
+          "index": 36,
+          "wavevector": [
+            2,
+            2,
+            0
+          ],
+          "shell": 8,
+          "x_fraction": 0.3114890451252425
+        },
+        {
+          "index": 52,
+          "wavevector": [
+            3,
+            1,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024051094515481573
+        }
+      ]
+    },
+    {
+      "row_index": 7,
+      "shells": [
+        8,
+        9,
+        10,
+        12,
+        13,
+        14
+      ],
+      "best_value": 0.021936469459172697,
+      "gap_to_target": 2.310512892123029e-13,
+      "support_size": 9,
+      "orbit_match": true,
+      "support": [
+        {
+          "index": 2,
+          "wavevector": [
+            0,
+            1,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.16899561759981271
+        },
+        {
+          "index": 17,
+          "wavevector": [
+            1,
+            -2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007155791988439821
+        },
+        {
+          "index": 20,
+          "wavevector": [
+            1,
+            0,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.16899619502212807
+        },
+        {
+          "index": 23,
+          "wavevector": [
+            1,
+            2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.1504931097364525
+        },
+        {
+          "index": 25,
+          "wavevector": [
+            1,
+            3,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024050953711427597
+        },
+        {
+          "index": 39,
+          "wavevector": [
+            2,
+            -1,
+            -3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007157226506821322
+        },
+        {
+          "index": 46,
+          "wavevector": [
+            2,
+            1,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.1504927251142077
+        },
+        {
+          "index": 48,
+          "wavevector": [
+            2,
+            2,
+            0
+          ],
+          "shell": 8,
+          "x_fraction": 0.31148892213589363
+        },
+        {
+          "index": 67,
+          "wavevector": [
+            3,
+            1,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024051174830187278
+        }
+      ]
+    },
+    {
+      "row_index": 8,
+      "shells": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "best_value": 0.02193646945912133,
+      "gap_to_target": 2.8241645133597615e-13,
+      "support_size": 9,
+      "orbit_match": true,
+      "support": [
+        {
+          "index": 2,
+          "wavevector": [
+            0,
+            1,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.1689957465722409
+        },
+        {
+          "index": 19,
+          "wavevector": [
+            1,
+            -2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007156719423138055
+        },
+        {
+          "index": 24,
+          "wavevector": [
+            1,
+            0,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.16899608916341682
+        },
+        {
+          "index": 29,
+          "wavevector": [
+            1,
+            2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.15049298456487953
+        },
+        {
+          "index": 31,
+          "wavevector": [
+            1,
+            3,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024050814480302475
+        },
+        {
+          "index": 47,
+          "wavevector": [
+            2,
+            -1,
+            -3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007156844156590397
+        },
+        {
+          "index": 54,
+          "wavevector": [
+            2,
+            1,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.1504928951010948
+        },
+        {
+          "index": 56,
+          "wavevector": [
+            2,
+            2,
+            0
+          ],
+          "shell": 8,
+          "x_fraction": 0.31148908031073763
+        },
+        {
+          "index": 77,
+          "wavevector": [
+            3,
+            1,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024051033448925358
+        }
+      ]
+    },
+    {
+      "row_index": 9,
+      "shells": [
+        8,
+        9,
+        10,
+        12,
+        14
+      ],
+      "best_value": 0.021936469459121005,
+      "gap_to_target": 2.827425793494598e-13,
+      "support_size": 9,
+      "orbit_match": true,
+      "support": [
+        {
+          "index": 2,
+          "wavevector": [
+            0,
+            1,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.1689962791026616
+        },
+        {
+          "index": 13,
+          "wavevector": [
+            1,
+            -2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007156547120390599
+        },
+        {
+          "index": 16,
+          "wavevector": [
+            1,
+            0,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.16899560989955154
+        },
+        {
+          "index": 19,
+          "wavevector": [
+            1,
+            2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.15049265952630977
+        },
+        {
+          "index": 21,
+          "wavevector": [
+            1,
+            3,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024051056863252027
+        },
+        {
+          "index": 34,
+          "wavevector": [
+            2,
+            -1,
+            -3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007155590984451955
+        },
+        {
+          "index": 39,
+          "wavevector": [
+            2,
+            1,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.15049318949669435
+        },
+        {
+          "index": 41,
+          "wavevector": [
+            2,
+            2,
+            0
+          ],
+          "shell": 8,
+          "x_fraction": 0.31148906017956546
+        },
+        {
+          "index": 56,
+          "wavevector": [
+            3,
+            1,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.02405093112119341
+        }
+      ]
+    },
+    {
+      "row_index": 10,
+      "shells": [
+        8,
+        9,
+        10,
+        13,
+        14
+      ],
+      "best_value": 0.021936469459112175,
+      "gap_to_target": 2.9157232184218174e-13,
+      "support_size": 9,
+      "orbit_match": true,
+      "support": [
+        {
+          "index": 2,
+          "wavevector": [
+            0,
+            1,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.16899603826268933
+        },
+        {
+          "index": 17,
+          "wavevector": [
+            1,
+            -2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007155406784365258
+        },
+        {
+          "index": 20,
+          "wavevector": [
+            1,
+            0,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.1689959765860436
+        },
+        {
+          "index": 23,
+          "wavevector": [
+            1,
+            2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.1504928716034728
+        },
+        {
+          "index": 25,
+          "wavevector": [
+            1,
+            3,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.02405089613763429
+        },
+        {
+          "index": 37,
+          "wavevector": [
+            2,
+            -1,
+            -3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007155032262195925
+        },
+        {
+          "index": 44,
+          "wavevector": [
+            2,
+            1,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.15049299756941864
+        },
+        {
+          "index": 46,
+          "wavevector": [
+            2,
+            2,
+            0
+          ],
+          "shell": 8,
+          "x_fraction": 0.3114892547697913
+        },
+        {
+          "index": 63,
+          "wavevector": [
+            3,
+            1,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024050921165952973
+        }
+      ]
+    },
+    {
+      "row_index": 11,
+      "shells": [
+        8,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "best_value": 0.021936469458919153,
+      "gap_to_target": 4.845950030141211e-13,
+      "support_size": 9,
+      "orbit_match": true,
+      "support": [
+        {
+          "index": 1,
+          "wavevector": [
+            0,
+            1,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.1689961715716172
+        },
+        {
+          "index": 15,
+          "wavevector": [
+            1,
+            -2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007155286174373695
+        },
+        {
+          "index": 20,
+          "wavevector": [
+            1,
+            0,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.16899583952986535
+        },
+        {
+          "index": 23,
+          "wavevector": [
+            1,
+            2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.15049285360793596
+        },
+        {
+          "index": 25,
+          "wavevector": [
+            1,
+            3,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024050903061102392
+        },
+        {
+          "index": 37,
+          "wavevector": [
+            2,
+            -1,
+            -3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007155570344273168
+        },
+        {
+          "index": 42,
+          "wavevector": [
+            2,
+            1,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.15049303257153682
+        },
+        {
+          "index": 44,
+          "wavevector": [
+            2,
+            2,
+            0
+          ],
+          "shell": 8,
+          "x_fraction": 0.31148929338545983
+        },
+        {
+          "index": 62,
+          "wavevector": [
+            3,
+            1,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024050820620254935
+        }
+      ]
+    },
+    {
+      "row_index": 12,
+      "shells": [
+        8,
+        10,
+        11,
+        12,
+        14
+      ],
+      "best_value": 0.02193646945765898,
+      "gap_to_target": 1.7447675249027128e-12,
+      "support_size": 9,
+      "orbit_match": true,
+      "support": [
+        {
+          "index": 1,
+          "wavevector": [
+            0,
+            1,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.16899656137845948
+        },
+        {
+          "index": 11,
+          "wavevector": [
+            1,
+            -2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007155759502995996
+        },
+        {
+          "index": 16,
+          "wavevector": [
+            1,
+            0,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.16899548500850448
+        },
+        {
+          "index": 19,
+          "wavevector": [
+            1,
+            2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.15049241580885075
+        },
+        {
+          "index": 21,
+          "wavevector": [
+            1,
+            3,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024050899415007813
+        },
+        {
+          "index": 32,
+          "wavevector": [
+            2,
+            -1,
+            -3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007154239158858806
+        },
+        {
+          "index": 35,
+          "wavevector": [
+            2,
+            1,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.15049345433608086
+        },
+        {
+          "index": 37,
+          "wavevector": [
+            2,
+            2,
+            0
+          ],
+          "shell": 8,
+          "x_fraction": 0.3114893261379935
+        },
+        {
+          "index": 51,
+          "wavevector": [
+            3,
+            1,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024050858048631465
+        }
+      ]
+    },
+    {
+      "row_index": 13,
+      "shells": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        14
+      ],
+      "best_value": 0.021936469457548794,
+      "gap_to_target": 1.8549536906498076e-12,
+      "support_size": 9,
+      "orbit_match": true,
+      "support": [
+        {
+          "index": 2,
+          "wavevector": [
+            0,
+            1,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.16899568971321421
+        },
+        {
+          "index": 15,
+          "wavevector": [
+            1,
+            -2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007153265271062466
+        },
+        {
+          "index": 20,
+          "wavevector": [
+            1,
+            0,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.16899644436473604
+        },
+        {
+          "index": 25,
+          "wavevector": [
+            1,
+            2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.15049319295790842
+        },
+        {
+          "index": 27,
+          "wavevector": [
+            1,
+            3,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024050698747729662
+        },
+        {
+          "index": 42,
+          "wavevector": [
+            2,
+            -1,
+            -3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007155309531145866
+        },
+        {
+          "index": 47,
+          "wavevector": [
+            2,
+            1,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.15049267889494228
+        },
+        {
+          "index": 49,
+          "wavevector": [
+            2,
+            2,
+            0
+          ],
+          "shell": 8,
+          "x_fraction": 0.3114894175027932
+        },
+        {
+          "index": 66,
+          "wavevector": [
+            3,
+            1,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024051020338102566
+        }
+      ]
+    },
+    {
+      "row_index": 14,
+      "shells": [
+        8,
+        9,
+        10,
+        11,
+        14
+      ],
+      "best_value": 0.021936469457130535,
+      "gap_to_target": 2.2732128679425756e-12,
+      "support_size": 9,
+      "orbit_match": true,
+      "support": [
+        {
+          "index": 2,
+          "wavevector": [
+            0,
+            1,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.1689959733049468
+        },
+        {
+          "index": 15,
+          "wavevector": [
+            1,
+            -2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007156474507128633
+        },
+        {
+          "index": 20,
+          "wavevector": [
+            1,
+            0,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.16899596323099475
+        },
+        {
+          "index": 25,
+          "wavevector": [
+            1,
+            2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.15049290013077193
+        },
+        {
+          "index": 27,
+          "wavevector": [
+            1,
+            3,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024050896307583964
+        },
+        {
+          "index": 40,
+          "wavevector": [
+            2,
+            -1,
+            -3
+          ],
+          "shell": 14,
+          "x_fraction": 0.000715546457211484
+        },
+        {
+          "index": 45,
+          "wavevector": [
+            2,
+            1,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.15049297783365603
+        },
+        {
+          "index": 47,
+          "wavevector": [
+            2,
+            2,
+            0
+          ],
+          "shell": 8,
+          "x_fraction": 0.3114892109337424
+        },
+        {
+          "index": 62,
+          "wavevector": [
+            3,
+            1,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024050884350050834
+        }
+      ]
+    },
+    {
+      "row_index": 15,
+      "shells": [
+        8,
+        9,
+        10,
+        14
+      ],
+      "best_value": 0.0219364694478797,
+      "gap_to_target": 1.1524049076117038e-11,
+      "support_size": 9,
+      "orbit_match": true,
+      "support": [
+        {
+          "index": 2,
+          "wavevector": [
+            0,
+            1,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.16899646384092884
+        },
+        {
+          "index": 13,
+          "wavevector": [
+            1,
+            -2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007156664302061915
+        },
+        {
+          "index": 16,
+          "wavevector": [
+            1,
+            0,
+            -3
+          ],
+          "shell": 10,
+          "x_fraction": 0.1689954225197203
+        },
+        {
+          "index": 19,
+          "wavevector": [
+            1,
+            2,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.15049258842089305
+        },
+        {
+          "index": 21,
+          "wavevector": [
+            1,
+            3,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024051139908935953
+        },
+        {
+          "index": 32,
+          "wavevector": [
+            2,
+            -1,
+            -3
+          ],
+          "shell": 14,
+          "x_fraction": 0.0007155585656312755
+        },
+        {
+          "index": 37,
+          "wavevector": [
+            2,
+            1,
+            3
+          ],
+          "shell": 14,
+          "x_fraction": 0.15049327071244317
+        },
+        {
+          "index": 39,
+          "wavevector": [
+            2,
+            2,
+            0
+          ],
+          "shell": 8,
+          "x_fraction": 0.31148906834974976
+        },
+        {
+          "index": 52,
+          "wavevector": [
+            3,
+            1,
+            0
+          ],
+          "shell": 10,
+          "x_fraction": 0.024050821251227542
+        }
+      ]
+    }
+  ]
+}

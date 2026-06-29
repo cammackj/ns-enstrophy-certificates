@@ -1,0 +1,9 @@
+shared_distinct_shell_count,distinct_union_shell_count,type_multiset_pair,pair_count
+0,5,B B C|A B C,2983402
+0,5,B C C|A B C,2398321
+0,6,B B C|A B C,235144881
+0,6,B C C|A B C,159929707
+1,4,B C C|A B C,87700
+1,4,B B C|A B C,86300
+1,5,B B C|A B C,13033953
+1,5,B C C|A B C,10521482

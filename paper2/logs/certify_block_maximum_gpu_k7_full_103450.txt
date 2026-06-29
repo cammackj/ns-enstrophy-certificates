@@ -1,0 +1,291 @@
+Run started : 2026-05-25 10:34:50
+Script      : certify_block_maximum_gpu
+Log file    : archived certificate log
+Arguments   : --k 7 --full_block --precompute-triads --n_starts 200 --global-cert-starts 500 --n_workers 20 --batch-size 0 --dps 50 --no-hessian --gc-patience 32
+
+====================================================================
+  CERTIFICATION: C(I_7) [full-block] via interval arithmetic (mpmath, 50 dps)
+====================================================================
+
+  DCxA nucleus: n_D=128, n_C=130, n_A=146
+  Full block I_7 = [128, 255] (precompute_triads — all triads)
+  5520 modes, 20525640 triads
+  [restrict] N_active=5520 > 5000: skipping precompute_triads (fast index-remap only).  Same-shell triads on non-anchor shells are absent.
+  C(I_7) modes N=5520, triads T=20525640
+
+  [Warm-start] Solving nucleus subproblem ([128, 130, 146], 50 starts) ...
+  L-BFGS-B: 20/50 starts  best=0.00138063  (45.2s)
+  L-BFGS-B: 40/50 starts  best=0.00138063  (45.4s)
+  L-BFGS-B: 50/50 starts  best=0.00138063  (45.8s)
+
+  [Step 1] GPU+CPU optimiser (1 warm-start + 200 random starts, per-start seeds) ...
+  [GPU] device=cuda  batch_size=2  adam_steps=400  lr=0.03  dtype=fp32
+  [GPU Adam] 2/201 starts  best=0.01774411  (113.5s)
+  [GPU Adam] 4/201 starts  best=0.01834777  (225.6s)
+  [GPU Adam] 6/201 starts  best=0.01834777  (340.4s)
+  [GPU Adam] 8/201 starts  best=0.01875781  (452.6s)
+  [GPU Adam] 10/201 starts  best=0.01875781  (569.0s)
+  [GPU Adam] 12/201 starts  best=0.01875781  (685.6s)
+  [GPU Adam] 14/201 starts  best=0.01875781  (801.5s)
+  [GPU Adam] 16/201 starts  best=0.01875781  (913.8s)
+  [GPU Adam] 18/201 starts  best=0.01875781  (1027.4s)
+  [GPU Adam] 20/201 starts  best=0.01875781  (1164.0s)
+  [GPU Adam] 22/201 starts  best=0.01875781  (1310.7s)
+  [GPU Adam] 24/201 starts  best=0.01875781  (1456.9s)
+  [GPU Adam] 26/201 starts  best=0.01875781  (1599.9s)
+  [GPU Adam] 28/201 starts  best=0.01875781  (1742.6s)
+  [GPU Adam] 30/201 starts  best=0.01875781  (1884.3s)
+  [GPU Adam] 32/201 starts  best=0.01876131  (2028.8s)
+  [GPU Adam] 34/201 starts  best=0.01876131  (2159.6s)
+  [GPU Adam] 36/201 starts  best=0.01876131  (2311.4s)
+  [GPU Adam] 38/201 starts  best=0.01876131  (2453.0s)
+  [GPU Adam] 40/201 starts  best=0.01876131  (2586.5s)
+  [GPU Adam] 42/201 starts  best=0.01876131  (2719.9s)
+  [GPU Adam] 44/201 starts  best=0.01889400  (2858.1s)
+  [GPU Adam] 46/201 starts  best=0.01889400  (3000.4s)
+  [GPU Adam] 48/201 starts  best=0.01889400  (3137.5s)
+  [GPU Adam] 50/201 starts  best=0.01889400  (3295.6s)
+  [GPU Adam] 52/201 starts  best=0.01889400  (3440.0s)
+  [GPU Adam] 54/201 starts  best=0.01889400  (3573.8s)
+  [GPU Adam] 56/201 starts  best=0.01889400  (3716.8s)
+  [GPU Adam] 58/201 starts  best=0.01889400  (3865.6s)
+  [GPU Adam] 60/201 starts  best=0.01889400  (4007.5s)
+  [GPU Adam] 62/201 starts  best=0.01889400  (4148.7s)
+  [GPU Adam] 64/201 starts  best=0.01892608  (4289.4s)
+  [GPU Adam] 66/201 starts  best=0.01892608  (4415.3s)
+  [GPU Adam] 68/201 starts  best=0.01892608  (4536.5s)
+  [GPU Adam] 70/201 starts  best=0.01892608  (4657.8s)
+  [GPU Adam] 72/201 starts  best=0.01892608  (4779.1s)
+  [GPU Adam] 74/201 starts  best=0.02003370  (4900.3s)
+  [GPU Adam] 76/201 starts  best=0.02003370  (5021.6s)
+  [GPU Adam] 78/201 starts  best=0.02003370  (5142.7s)
+  [GPU Adam] 80/201 starts  best=0.02003370  (5264.0s)
+  [GPU Adam] 82/201 starts  best=0.02003370  (5385.1s)
+  [GPU Adam] 84/201 starts  best=0.02003370  (5506.4s)
+  [GPU Adam] 86/201 starts  best=0.02003370  (5627.7s)
+  [GPU Adam] 88/201 starts  best=0.02003370  (5748.8s)
+  [GPU Adam] 90/201 starts  best=0.02003370  (5870.1s)
+  [GPU Adam] 92/201 starts  best=0.02003370  (5995.4s)
+  [GPU Adam] 94/201 starts  best=0.02003370  (6126.9s)
+  [GPU Adam] 96/201 starts  best=0.02003370  (6294.1s)
+  [GPU Adam] 98/201 starts  best=0.02003370  (6424.7s)
+  [GPU Adam] 100/201 starts  best=0.02003370  (6563.6s)
+  [GPU Adam] 102/201 starts  best=0.02003370  (6694.5s)
+  [GPU Adam] 104/201 starts  best=0.02003370  (6823.5s)
+  [GPU Adam] 106/201 starts  best=0.02003370  (6976.6s)
+  [GPU Adam] 108/201 starts  best=0.02003370  (7190.3s)
+  [GPU Adam] 110/201 starts  best=0.02003370  (7361.1s)
+  [GPU Adam] 112/201 starts  best=0.02003370  (7557.5s)
+  [GPU Adam] 114/201 starts  best=0.02003370  (7752.0s)
+  [GPU Adam] 116/201 starts  best=0.02003370  (7920.6s)
+  [GPU Adam] 118/201 starts  best=0.02003370  (8091.2s)
+  [GPU Adam] 120/201 starts  best=0.02003370  (8249.4s)
+  [GPU Adam] 122/201 starts  best=0.02003370  (8426.1s)
+  [GPU Adam] 124/201 starts  best=0.02003370  (8597.1s)
+  [GPU Adam] 126/201 starts  best=0.02003370  (8778.9s)
+  [GPU Adam] 128/201 starts  best=0.02003370  (8885.4s)
+  [GPU Adam] 130/201 starts  best=0.02003370  (8991.7s)
+  [GPU Adam] 132/201 starts  best=0.02003370  (9165.4s)
+  [GPU Adam] 134/201 starts  best=0.02003370  (9311.6s)
+  [GPU Adam] 136/201 starts  best=0.02003370  (9418.1s)
+  [GPU Adam] 138/201 starts  best=0.02003370  (9524.6s)
+  [GPU Adam] early stop: no improvement for 32 batches  (138/201 starts completed, best=0.02003370)
+
+  [GPU L-BFGS explore] 20 candidates  (float64, strong Wolfe, 100 iter/start) ...
+  [GPU L-BFGS] 1/20  val=0.02003370  (1.0s)
+  [GPU L-BFGS] 2/20  val=0.01915399  (74.6s)
+  [GPU L-BFGS] 3/20  val=0.01892608  (75.4s)
+  [GPU L-BFGS] 4/20  val=0.01889400  (76.3s)
+  [GPU L-BFGS] 5/20  val=0.01895971  (147.5s)
+  [GPU L-BFGS] 6/20  val=0.01975564  (226.1s)
+  [GPU L-BFGS] 7/20  val=0.01900508  (301.8s)
+  [GPU L-BFGS] 8/20  val=0.01878877  (376.0s)
+  [GPU L-BFGS] 9/20  val=0.01898408  (451.6s)
+  [GPU L-BFGS] 10/20  val=0.01861682  (452.5s)
+  [GPU L-BFGS] 11/20  val=0.01873564  (525.9s)
+  [GPU L-BFGS] 12/20  val=0.01858896  (597.0s)
+  [GPU L-BFGS] 13/20  val=0.01845241  (597.8s)
+  [GPU L-BFGS] 14/20  val=0.01841896  (598.7s)
+  [GPU L-BFGS] 15/20  val=0.01858662  (673.4s)
+  [GPU L-BFGS] 16/20  val=0.01857129  (748.2s)
+  [GPU L-BFGS] 17/20  val=0.01847189  (825.3s)
+  [GPU L-BFGS] 18/20  val=0.01845534  (896.4s)
+  [GPU L-BFGS] 19/20  val=0.01848844  (973.1s)
+  [GPU L-BFGS] 20/20  val=0.01833398  (974.0s)
+  GPU L-BFGS explore best: 0.02003370  (974.8s)
+
+  [GPU certify] tight polish of best candidate  (float64, 10000 iter) ...
+  tight polish: val=0.0200336973  (1.0s)
+
+  Float64 result: C* = 0.0200336973  (10501.0s)
+  Active modes: 5520/5520 (0 at loga=-8, excluded from grad/Hess checks)
+  Projected gradient norm: 5.093e-05
+  Full problem: 5520 modes, 20525640 triads  (global cert scans full space)
+
+  [Step 1c iter 1/10] Global cert scan: 500 starts on full 5520-mode problem (seed=1234) ...
+  [GPU] device=cuda  batch_size=2  adam_steps=400  lr=0.03  dtype=fp32
+  [GPU Adam] 2/500 starts  best=0.01813724  (79.2s)
+  [GPU Adam] 4/500 starts  best=0.01813724  (158.0s)
+  [GPU Adam] 6/500 starts  best=0.01858341  (236.9s)
+  [GPU Adam] 8/500 starts  best=0.01991471  (315.8s)
+  [GPU Adam] 10/500 starts  best=0.01991471  (394.6s)
+  [GPU Adam] 12/500 starts  best=0.01991471  (473.5s)
+  [GPU Adam] 14/500 starts  best=0.01991471  (552.4s)
+  [GPU Adam] 16/500 starts  best=0.01991471  (631.3s)
+  [GPU Adam] 18/500 starts  best=0.01991471  (710.2s)
+  [GPU Adam] 20/500 starts  best=0.01991471  (789.0s)
+  [GPU Adam] 22/500 starts  best=0.01991471  (867.9s)
+  [GPU Adam] 24/500 starts  best=0.01991471  (946.8s)
+  [GPU Adam] 26/500 starts  best=0.01991471  (1025.6s)
+  [GPU Adam] 28/500 starts  best=0.01991471  (1104.5s)
+  [GPU Adam] 30/500 starts  best=0.01991471  (1183.4s)
+  [GPU Adam] 32/500 starts  best=0.01991471  (1262.3s)
+  [GPU Adam] 34/500 starts  best=0.01991471  (1341.1s)
+  [GPU Adam] 36/500 starts  best=0.01991471  (1420.0s)
+  [GPU Adam] 38/500 starts  best=0.01991471  (1498.9s)
+  [GPU Adam] 40/500 starts  best=0.01991471  (1577.8s)
+  [GPU Adam] 42/500 starts  best=0.01991471  (1656.6s)
+  [GPU Adam] 44/500 starts  best=0.01991471  (1735.5s)
+  [GPU Adam] 46/500 starts  best=0.01991471  (1814.4s)
+  [GPU Adam] 48/500 starts  best=0.01991471  (1893.3s)
+  [GPU Adam] 50/500 starts  best=0.01991471  (1972.1s)
+  [GPU Adam] 52/500 starts  best=0.01991471  (2051.0s)
+  [GPU Adam] 54/500 starts  best=0.01991471  (2129.9s)
+  [GPU Adam] 56/500 starts  best=0.01991471  (2208.8s)
+  [GPU Adam] 58/500 starts  best=0.01991471  (2287.6s)
+  [GPU Adam] 60/500 starts  best=0.01991471  (2366.5s)
+  [GPU Adam] 62/500 starts  best=0.01991471  (2445.4s)
+  [GPU Adam] 64/500 starts  best=0.01991471  (2524.2s)
+  [GPU Adam] 66/500 starts  best=0.01991471  (2603.1s)
+  [GPU Adam] 68/500 starts  best=0.01991471  (2682.0s)
+  [GPU Adam] 70/500 starts  best=0.01991471  (2760.8s)
+  [GPU Adam] 72/500 starts  best=0.01991471  (2839.7s)
+  [GPU Adam] early stop: no improvement for 32 batches  (72/500 starts completed, best=0.01991471)
+
+  [GPU L-BFGS explore] 20 candidates  (float64, strong Wolfe, 100 iter/start) ...
+  [GPU L-BFGS] 1/20  val=0.02028060  (38.3s)
+  [GPU L-BFGS] 2/20  val=0.01908620  (76.3s)
+  [GPU L-BFGS] 3/20  val=0.01858341  (76.7s)
+  [GPU L-BFGS] 4/20  val=0.01878500  (112.7s)
+  [GPU L-BFGS] 5/20  val=0.01869186  (152.8s)
+  [GPU L-BFGS] 6/20  val=0.01839183  (153.1s)
+  [GPU L-BFGS] 7/20  val=0.01830495  (153.5s)
+  [GPU L-BFGS] 8/20  val=0.01866040  (193.8s)
+  [GPU L-BFGS] 9/20  val=0.01847225  (230.3s)
+  [GPU L-BFGS] 10/20  val=0.01825752  (230.6s)
+  [GPU L-BFGS] 11/20  val=0.01823303  (231.0s)
+  [GPU L-BFGS] 12/20  val=0.01843284  (270.1s)
+  [GPU L-BFGS] 13/20  val=0.01813724  (270.5s)
+  [GPU L-BFGS] 14/20  val=0.01811686  (270.9s)
+  [GPU L-BFGS] 15/20  val=0.01808234  (271.2s)
+  [GPU L-BFGS] 16/20  val=0.01806915  (271.6s)
+  [GPU L-BFGS] 17/20  val=0.01806820  (272.0s)
+  [GPU L-BFGS] 18/20  val=0.01806724  (272.4s)
+  [GPU L-BFGS] 19/20  val=0.01803458  (272.7s)
+  [GPU L-BFGS] 20/20  val=0.01825078  (309.9s)
+  GPU L-BFGS explore best: 0.02028060  (310.3s)
+
+  [GPU certify] tight polish of best candidate  (float64, 10000 iter) ...
+  tight polish: val=0.0202806009  (0.9s)
+  Global scan best: 0.0202806009  vs C*: 0.0200336973  (3152s)
+  Higher basin (iter 1): C_new=0.0202806009 > C_old=0.0200336973
+  Promoting GPU-polished x* ...
+  [checkpoint] promoted x* saved -> archived-output/k7_full_xstar_gc_iter1.npz
+  Promoted x*: C=0.0202806009  proj_grad=9.32e-05  5520/5520 active
+
+  [Step 1c iter 2/10] Global cert scan: 500 starts on full 5520-mode problem (seed=11234) ...
+  [GPU] device=cuda  batch_size=2  adam_steps=400  lr=0.03  dtype=fp32
+  [GPU Adam] 2/500 starts  best=0.01800031  (80.1s)
+  [GPU Adam] 4/500 starts  best=0.01841517  (160.1s)
+  [GPU Adam] 6/500 starts  best=0.01849446  (239.9s)
+  [GPU Adam] 8/500 starts  best=0.01879737  (319.7s)
+  [GPU Adam] 10/500 starts  best=0.01879737  (399.6s)
+  [GPU Adam] 12/500 starts  best=0.01879737  (479.4s)
+  [GPU Adam] 14/500 starts  best=0.01879737  (559.3s)
+  [GPU Adam] 16/500 starts  best=0.01879737  (639.1s)
+  [GPU Adam] 18/500 starts  best=0.01879737  (719.0s)
+  [GPU Adam] 20/500 starts  best=0.01879737  (798.8s)
+  [GPU Adam] 22/500 starts  best=0.01879737  (878.7s)
+  [GPU Adam] 24/500 starts  best=0.01879737  (958.6s)
+  [GPU Adam] 26/500 starts  best=0.01879737  (1038.4s)
+  [GPU Adam] 28/500 starts  best=0.01879737  (1118.3s)
+  [GPU Adam] 30/500 starts  best=0.01879737  (1198.1s)
+  [GPU Adam] 32/500 starts  best=0.01879737  (1278.0s)
+  [GPU Adam] 34/500 starts  best=0.01879737  (1357.8s)
+  [GPU Adam] 36/500 starts  best=0.01879737  (1437.7s)
+  [GPU Adam] 38/500 starts  best=0.01879737  (1517.6s)
+  [GPU Adam] 40/500 starts  best=0.01879737  (1597.4s)
+  [GPU Adam] 42/500 starts  best=0.01879737  (1677.3s)
+  [GPU Adam] 44/500 starts  best=0.01879737  (1757.2s)
+  [GPU Adam] 46/500 starts  best=0.01879737  (1837.0s)
+  [GPU Adam] 48/500 starts  best=0.01879737  (1916.9s)
+  [GPU Adam] 50/500 starts  best=0.01879737  (1996.7s)
+  [GPU Adam] 52/500 starts  best=0.01879737  (2076.6s)
+  [GPU Adam] 54/500 starts  best=0.01879737  (2156.4s)
+  [GPU Adam] 56/500 starts  best=0.01879737  (2236.3s)
+  [GPU Adam] 58/500 starts  best=0.01879737  (2316.1s)
+  [GPU Adam] 60/500 starts  best=0.01879737  (2396.0s)
+  [GPU Adam] 62/500 starts  best=0.01879737  (2475.8s)
+  [GPU Adam] 64/500 starts  best=0.01879737  (2555.7s)
+  [GPU Adam] 66/500 starts  best=0.01879737  (2635.5s)
+  [GPU Adam] 68/500 starts  best=0.01879737  (2715.4s)
+  [GPU Adam] 70/500 starts  best=0.01879737  (2795.2s)
+  [GPU Adam] 72/500 starts  best=0.01879737  (2875.1s)
+  [GPU Adam] early stop: no improvement for 32 batches  (72/500 starts completed, best=0.01879737)
+
+  [GPU L-BFGS explore] 20 candidates  (float64, strong Wolfe, 100 iter/start) ...
+  [GPU L-BFGS] 1/20  val=0.01879737  (0.6s)
+  [GPU L-BFGS] 2/20  val=0.01869391  (37.9s)
+  [GPU L-BFGS] 3/20  val=0.01849446  (38.2s)
+  [GPU L-BFGS] 4/20  val=0.01848717  (38.6s)
+  [GPU L-BFGS] 5/20  val=0.01845551  (39.0s)
+  [GPU L-BFGS] 6/20  val=0.01866867  (77.7s)
+  [GPU L-BFGS] 7/20  val=0.01841517  (78.1s)
+  [GPU L-BFGS] 8/20  val=0.01839729  (78.4s)
+  [GPU L-BFGS] 9/20  val=0.01835552  (78.8s)
+  [GPU L-BFGS] 10/20  val=0.01831934  (79.2s)
+  [GPU L-BFGS] 11/20  val=0.01853580  (117.6s)
+  [GPU L-BFGS] 12/20  val=0.01821320  (118.0s)
+  [GPU L-BFGS] 13/20  val=0.01838234  (158.1s)
+  [GPU L-BFGS] 14/20  val=0.01820214  (158.5s)
+  [GPU L-BFGS] 15/20  val=0.01817116  (158.9s)
+  [GPU L-BFGS] 16/20  val=0.01816804  (159.3s)
+  [GPU L-BFGS] 17/20  val=0.01814082  (159.6s)
+  [GPU L-BFGS] 18/20  val=0.01813798  (160.0s)
+  [GPU L-BFGS] 19/20  val=0.01810880  (160.4s)
+  [GPU L-BFGS] 20/20  val=0.01832892  (196.5s)
+  GPU L-BFGS explore best: 0.01879737  (196.9s)
+
+  [GPU certify] tight polish of best candidate  (float64, 10000 iter) ...
+  tight polish: val=0.0187973710  (1.0s)
+  Global scan best: 0.0187973710  vs C*: 0.0202806009  (3074s)
+  All 500 starts <= C* + 1e-07 (iter 2) — scan passed
+  NUMERICALLY GLOBALLY CERTIFIED (full 5520-mode problem, 500 starts × 2 iter(s))
+  [auto-save] x* saved → archived-output/k7_full_xstar.npz  (val=0.0202806009)
+
+  [Step 2] mpmath evaluation at x* (50 dps) ...
+  (3 evals × 20,525,640 triads at dps=60; each ~932s)
+  eval 1/3: R(x*) ...
+  mpmath R(x*) = 0.020280600900469462005010344326392587212877221954919  (1066.1s)
+  eval 2/3: R(x*-δ) ...
+  eval 3/3: R(x*+δ) ...
+
+  CERTIFIED INTERVAL: C(I_7) in [0.0202806009, 0.0202806009]
+  Interval width: 3.816e-19
+
+  [Step 3] Hessian skipped (--no-hessian)
+
+  [Step 4] ISC check skipped (full-block: all block shells included)
+
+====================================================================
+  CERTIFICATION SUMMARY for C(I_7)
+====================================================================
+  Float64 optimal value :  0.0202806009
+  C(I_7) modes          :  5520/5520
+  Projected grad norm   :  9.322e-05
+  mpmath value (50 dps):  0.020280600900469462005010344326392587212877221954919
+  Certified interval    :  [0.0202806009, 0.0202806009]
+  Hessian (active only) :  0 neg / 0 flat / 0 pos  (noise thresh 0.0e+00)
+
+  STATUS: PARTIAL (proj_grad=9.32e-05)
+  GLOBAL CERT: PASS (P8 scan; 500 starts)

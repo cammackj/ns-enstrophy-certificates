@@ -1,0 +1,174 @@
+{
+  "branch_json": "paper3\\results\\20260613_234941_audit_k45_two_mode_local_charts_k45_two_mode_branch_target_ledger_all15_rho5e5_p016_v1\\20260613_234941_k45_two_mode_local_chart_audit.json",
+  "branch_summary": {
+    "all15_margin": 0.0017683684582350586,
+    "all15_max_signed_cross": 0.014231631541764942,
+    "all15_tube_candidate_count": 92,
+    "all15_violation_count": 0,
+    "all15_worst_row": {
+      "Psi45": -1.8061660927838272e-05,
+      "R": 0.00016767638087544299,
+      "S4_selector": 0.01424969320269278,
+      "S5_core": 0.014231631541764942,
+      "abs_Psi45": 1.8061660927838272e-05,
+      "chart": "17 38 61 -> 17 38 49",
+      "full_DPsi45_F": 0.15353502134639013,
+      "objective_value": 0.014230000423787581,
+      "params_key": "17_38_61_17_38_49_ascent_max_danger_branch_psi_penalty_5000",
+      "rank": "ascent:max_danger_branch_psi_penalty_5000",
+      "signed_cross": 0.014231631541764942,
+      "target_margin_p_minus_signed_cross": 0.0017683684582350586,
+      "violates_target": false
+    },
+    "displayed_bound": 0.015375505962416292,
+    "displayed_bound_source": "focused_worst_chart_replay",
+    "displayed_margin": 0.0006244940375837085,
+    "focused_best_row": {
+      "R": 0.00017819606915008872,
+      "S4_selector": 0.015375505962416292,
+      "S5_core": 0.015400043708081117,
+      "abs_Psi45": 2.4537745664824848e-05,
+      "chart": "17 38 61 -> 17 38 49",
+      "full_DPsi45_F": 0.1802337876131613,
+      "params_key": "17_38_61_17_38_49_ascent_max_danger_branch_psi_penalty_5000",
+      "rank": "ascent:max_danger_branch_psi_penalty_5000",
+      "signed_cross": 0.015375505962416292
+    },
+    "focused_margin": 0.0006244940375837085,
+    "focused_max_signed_cross": 0.015375505962416292,
+    "p_target": 0.016,
+    "passes_displayed_target": true,
+    "r_floor": 0.0,
+    "rho": 5e-05
+  },
+  "catalogue_json": "paper3\\results\\20260613_214457_calibrate_type_signature_envelopes_k45_transition_catalogue_v18_two_mode_witnesses_fixed\\20260613_214457_k45_transition_catalogue.json",
+  "certificate_form_status": "ready_for_manuscript_review",
+  "focused_json": "paper3\\results\\20260613_233334_audit_k45_two_mode_local_charts_k45_two_mode_danger_branch_direct_max_17_38_61_to_17_38_49_v2\\20260613_233334_k45_two_mode_local_chart_audit.json",
+  "local_handoff_summary": {
+    "max_balanced_ratio_one_mode_only": 30.661167825008565,
+    "max_balanced_ratio_true_two_mode": 3.5545631755148164,
+    "max_balanced_ratio_zero_mode": 6.857427617619532,
+    "one_mode_only_count": 1672,
+    "one_mode_product_penalty": 0.5,
+    "total_shell_local_handoffs": 1718,
+    "true_two_mode_chart_count": 15,
+    "true_two_mode_charts": [
+      "16 26 50 -> 16 26 34",
+      "17 26 37 -> 17 26 49",
+      "17 26 53 -> 17 26 33",
+      "17 38 61 -> 17 38 49",
+      "17 42 61 -> 17 42 57",
+      "20 24 52 -> 20 24 36",
+      "22 24 50 -> 22 24 42",
+      "22 26 50 -> 22 26 46",
+      "24 25 41 -> 24 25 57",
+      "24 30 50 -> 24 30 58",
+      "25 26 45 -> 25 26 57",
+      "26 29 53 -> 26 29 57",
+      "26 29 61 -> 26 29 49",
+      "26 30 50 -> 26 30 62",
+      "26 34 58 -> 26 34 62"
+    ],
+    "true_two_mode_product_penalty": 0.7071067811865475,
+    "true_two_mode_row_count": 15,
+    "zero_mode_count": 31,
+    "zero_mode_product_penalty": 0.35355339059327373
+  },
+  "nonlocal_summary": {
+    "max_side_split_product_penalty": 0.7071067811865476,
+    "passes_sqrt2_split_bound": true,
+    "shared_one_pair_count": 29887,
+    "shared_zero_pair_count": 114595,
+    "split_penalty_rows": [
+      {
+        "distinct_union_shell_count": 4,
+        "max_k4_split_product_penalty": 0.3535533905932738,
+        "max_k5_split_product_penalty": 0.3535533905932738,
+        "max_side_split_product_penalty": 0.3535533905932738,
+        "min_side_split_product_penalty": 0.3535533905932738,
+        "pair_count": 562,
+        "shared_distinct_shell_count": 0
+      },
+      {
+        "distinct_union_shell_count": 5,
+        "max_k4_split_product_penalty": 0.3535533905932738,
+        "max_k5_split_product_penalty": 0.3535533905932738,
+        "max_side_split_product_penalty": 0.3535533905932738,
+        "min_side_split_product_penalty": 0.3535533905932738,
+        "pair_count": 15150,
+        "shared_distinct_shell_count": 0
+      },
+      {
+        "distinct_union_shell_count": 6,
+        "max_k4_split_product_penalty": 0.3535533905932738,
+        "max_k5_split_product_penalty": 0.3535533905932738,
+        "max_side_split_product_penalty": 0.3535533905932738,
+        "min_side_split_product_penalty": 0.3535533905932738,
+        "pair_count": 98883,
+        "shared_distinct_shell_count": 0
+      },
+      {
+        "distinct_union_shell_count": 3,
+        "max_k4_split_product_penalty": 0.7071067811865476,
+        "max_k5_split_product_penalty": 0.7071067811865476,
+        "max_side_split_product_penalty": 0.7071067811865476,
+        "min_side_split_product_penalty": 0.5,
+        "pair_count": 54,
+        "shared_distinct_shell_count": 1
+      },
+      {
+        "distinct_union_shell_count": 4,
+        "max_k4_split_product_penalty": 0.7071067811865476,
+        "max_k5_split_product_penalty": 0.7071067811865476,
+        "max_side_split_product_penalty": 0.7071067811865476,
+        "min_side_split_product_penalty": 0.5,
+        "pair_count": 2491,
+        "shared_distinct_shell_count": 1
+      },
+      {
+        "distinct_union_shell_count": 5,
+        "max_k4_split_product_penalty": 0.5000000000000001,
+        "max_k5_split_product_penalty": 0.5000000000000001,
+        "max_side_split_product_penalty": 0.5000000000000001,
+        "min_side_split_product_penalty": 0.5000000000000001,
+        "pair_count": 27342,
+        "shared_distinct_shell_count": 1
+      }
+    ],
+    "split_shape_count": 6,
+    "total_nonlocal_pair_count": 144482
+  },
+  "proof_obligations": [
+    {
+      "evidence": "Finite W45 catalogue separates endpoint, k4-only, k5-only, overlap, and remainder roles; support role counts={'bridge_k4_selector_side_only': 172, 'bridge_k5_core_side_only': 850, 'bridge_overlap_family_only': 195, 'bridge_remainder_no_transfer_family': 428, 'endpoint_chart': 822}.",
+      "gate": "support-atlas separation",
+      "status": "closed_certificate_form"
+    },
+    {
+      "evidence": "31 local shell handoffs have no shared concrete mode; product penalty <= 0.35355339059327373.",
+      "gate": "local zero-mode split charts",
+      "status": "closed_analytic_product_loss"
+    },
+    {
+      "evidence": "1672 local shell handoffs have one-mode but no two-mode witness; product penalty <= 0.5.",
+      "gate": "local one-mode-only split charts",
+      "status": "closed_analytic_product_loss"
+    },
+    {
+      "evidence": "15 true two-mode charts; branch target rho=5e-05, p=0.016; displayed bound=0.015375505962416292 from focused_worst_chart_replay; margin=0.0006244940375837085; all-15 violations=0.",
+      "gate": "local true two-mode branch charts",
+      "status": "closed_certificate_form"
+    },
+    {
+      "evidence": "144482 nonlocal handoff pairs split by shared-shell count; max side split product penalty=0.7071067811865476.",
+      "gate": "nonlocal mass-splitting charts",
+      "status": "closed_certificate_form"
+    },
+    {
+      "evidence": "623 bridge supports are overlap-only or outside-transfer-family remainder; overlap families cancel from Psi45 and remainders carry no endpoint transfer family.",
+      "gate": "overlap and remainder charts",
+      "status": "closed_by_transfer_coordinate"
+    }
+  ],
+  "status": "K45 transition finite certificate package"
+}

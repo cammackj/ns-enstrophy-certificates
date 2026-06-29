@@ -1,0 +1,169 @@
+{
+  "created_at": "2026-05-31T21:30:26",
+  "source": "results/k3_shell_cluster_kkt_suite_all_status_params_20260531.json",
+  "dps": 60,
+  "hessian_step": 1e-05,
+  "rows_expected": 13,
+  "rows_certified": 13,
+  "passes": true,
+  "worst_directional_second_upper": -6.273856634568238e-07,
+  "rows": [
+    {
+      "cluster_index": 2,
+      "support_size": 14,
+      "support_value": 0.017868092768157404,
+      "gradient_max_abs": 7.689728063181801e-05,
+      "float_min_eigenvalue": -5.2866158887136465e-05,
+      "directional_second_minus_R_interval": [
+        -5.286615888769526e-05,
+        -5.286615888769526e-05
+      ],
+      "passes": true
+    },
+    {
+      "cluster_index": 3,
+      "support_size": 12,
+      "support_value": 0.017757759199138162,
+      "gradient_max_abs": 0.000295946718150856,
+      "float_min_eigenvalue": -0.00011736360397651924,
+      "directional_second_minus_R_interval": [
+        -0.0001173636039885024,
+        -0.0001173636039885024
+      ],
+      "passes": true
+    },
+    {
+      "cluster_index": 4,
+      "support_size": 7,
+      "support_value": 0.016823544465194473,
+      "gradient_max_abs": 0.0005467731093479842,
+      "float_min_eigenvalue": -0.00014763025255910532,
+      "directional_second_minus_R_interval": [
+        -0.00014763025255596848,
+        -0.00014763025255596848
+      ],
+      "passes": true
+    },
+    {
+      "cluster_index": 5,
+      "support_size": 6,
+      "support_value": 0.016712349351867866,
+      "gradient_max_abs": 1.5443351785527948e-05,
+      "float_min_eigenvalue": -0.00032580168428137014,
+      "directional_second_minus_R_interval": [
+        -0.0003258016842825367,
+        -0.0003258016842825367
+      ],
+      "passes": true
+    },
+    {
+      "cluster_index": 6,
+      "support_size": 9,
+      "support_value": 0.01638083776413443,
+      "gradient_max_abs": 1.6551357062063874e-05,
+      "float_min_eigenvalue": -1.0135367479939536e-05,
+      "directional_second_minus_R_interval": [
+        -1.0135367480399672e-05,
+        -1.0135367480399672e-05
+      ],
+      "passes": true
+    },
+    {
+      "cluster_index": 11,
+      "support_size": 6,
+      "support_value": 0.015009911925001786,
+      "gradient_max_abs": 0.00034972235480167996,
+      "float_min_eigenvalue": -0.00017098822734455769,
+      "directional_second_minus_R_interval": [
+        -0.00017098822734762812,
+        -0.00017098822734762812
+      ],
+      "passes": true
+    },
+    {
+      "cluster_index": 12,
+      "support_size": 6,
+      "support_value": 0.014983606928410479,
+      "gradient_max_abs": 0.0009764867032854202,
+      "float_min_eigenvalue": -3.1178573811805854e-06,
+      "directional_second_minus_R_interval": [
+        -3.1178573936026603e-06,
+        -3.1178573936026603e-06
+      ],
+      "passes": true
+    },
+    {
+      "cluster_index": 13,
+      "support_size": 6,
+      "support_value": 0.014922567970581935,
+      "gradient_max_abs": 0.0009438526866698549,
+      "float_min_eigenvalue": -0.00026898063102955526,
+      "directional_second_minus_R_interval": [
+        -0.00026898063104654097,
+        -0.00026898063104654097
+      ],
+      "passes": true
+    },
+    {
+      "cluster_index": 14,
+      "support_size": 6,
+      "support_value": 0.014750141048190465,
+      "gradient_max_abs": 0.0016145339477323796,
+      "float_min_eigenvalue": -1.2986180580349204e-05,
+      "directional_second_minus_R_interval": [
+        -1.2986180573856109e-05,
+        -1.2986180573856109e-05
+      ],
+      "passes": true
+    },
+    {
+      "cluster_index": 15,
+      "support_size": 7,
+      "support_value": 0.014200910520468018,
+      "gradient_max_abs": 0.0004212056175444156,
+      "float_min_eigenvalue": -0.00023592061224759,
+      "directional_second_minus_R_interval": [
+        -0.0002359206122675538,
+        -0.0002359206122675538
+      ],
+      "passes": true
+    },
+    {
+      "cluster_index": 16,
+      "support_size": 7,
+      "support_value": 0.014200887334510448,
+      "gradient_max_abs": 0.0011284715879226392,
+      "float_min_eigenvalue": -6.273856591068442e-07,
+      "directional_second_minus_R_interval": [
+        -6.273856634568238e-07,
+        -6.273856634568238e-07
+      ],
+      "passes": true
+    },
+    {
+      "cluster_index": 21,
+      "support_size": 6,
+      "support_value": 0.012272371543736987,
+      "gradient_max_abs": 0.00016078135236132765,
+      "float_min_eigenvalue": -1.105861277456542e-05,
+      "directional_second_minus_R_interval": [
+        -1.1058612784360242e-05,
+        -1.1058612784360242e-05
+      ],
+      "passes": true
+    },
+    {
+      "cluster_index": 22,
+      "support_size": 6,
+      "support_value": 0.012268957179974881,
+      "gradient_max_abs": 0.00015708453874089214,
+      "float_min_eigenvalue": -1.0190415669707856e-05,
+      "directional_second_minus_R_interval": [
+        -1.0190415665496866e-05,
+        -1.0190415665496866e-05
+      ],
+      "passes": true
+    }
+  ],
+  "method": "float eigenvector from H(-R), one-dimensional interval AD second derivative v^T H(-R) v at the stored support point"
+}

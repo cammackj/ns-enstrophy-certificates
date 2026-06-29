@@ -1,0 +1,5 @@
+replacement_type,shared_shell_types,pair_count
+B->A,C B,84186
+B->A,B C,73008
+C->A,C B,47706
+C->A,B C,40940

@@ -1,0 +1,1157 @@
+{
+  "blocks": {
+    "k2": {
+      "active_shell_types": {
+        "4": "B",
+        "6": "A"
+      },
+      "active_shells": [
+        4,
+        6
+      ],
+      "block_shell_types": {
+        "4": "B",
+        "5": "C",
+        "6": "A",
+        "7": "B"
+      },
+      "constant_decimal": "0.022741865409341",
+      "constant_exact": "(3*sqrt(38)-5*sqrt(6))/(72*sqrt(7+sqrt(57)))",
+      "ordered_type_counts": {
+        "A->A->B": 16,
+        "A->B->A": 16,
+        "B->A->A": 16
+      },
+      "positive_modes": 6,
+      "shell_multiset_counts": {
+        "4/6/6": 8
+      },
+      "signed_modes": 12,
+      "structural_status": "exact closed-form six-mode atom",
+      "type_multiset_counts": {
+        "A/A/B": 8
+      },
+      "unordered_triad_count": 8
+    },
+    "k3": {
+      "active_shell_types": {
+        "10": "C",
+        "14": "A",
+        "8": "D"
+      },
+      "active_shells": [
+        8,
+        10,
+        14
+      ],
+      "block_shell_types": {
+        "10": "C",
+        "11": "B",
+        "12": "B",
+        "13": "C",
+        "14": "A",
+        "15": "B",
+        "8": "D",
+        "9": "B"
+      },
+      "constant_decimal": "0.021936469459403747249299192478957700397867315103825",
+      "constant_exact": "degree-40 algebraic certificate for C(I_3)^2",
+      "ordered_type_counts": {
+        "A->A->C": 8,
+        "A->C->A": 8,
+        "A->C->C": 8,
+        "A->C->D": 4,
+        "A->D->C": 4,
+        "C->A->A": 8,
+        "C->A->C": 8,
+        "C->A->D": 4,
+        "C->C->A": 8,
+        "C->D->A": 4,
+        "D->A->C": 4,
+        "D->C->A": 4
+      },
+      "positive_modes": 9,
+      "shell_multiset_counts": {
+        "10/10/14": 4,
+        "10/14/14": 4,
+        "8/10/14": 4
+      },
+      "signed_modes": 18,
+      "structural_status": "exact full-block D/C/A KKT certificate",
+      "type_multiset_counts": {
+        "A/A/C": 4,
+        "A/C/C": 4,
+        "A/C/D": 4
+      },
+      "unordered_triad_count": 12
+    },
+    "k4": {
+      "active_shell_types_from_manuscript": {
+        "16": "B",
+        "17": "C",
+        "18": "D",
+        "20": "C",
+        "26": "A",
+        "27": "B",
+        "29": "C"
+      },
+      "active_shells_from_manuscript": [
+        16,
+        17,
+        18,
+        20,
+        26,
+        27,
+        29
+      ],
+      "artifact_active_shells_h1_ge_1e_3": [
+        16,
+        17,
+        18,
+        20,
+        21,
+        25,
+        26,
+        29
+      ],
+      "artifact_active_shells_h1_ge_1e_4": [
+        16,
+        17,
+        18,
+        20,
+        21,
+        25,
+        26,
+        29
+      ],
+      "block_shell_types": {
+        "16": "B",
+        "17": "C",
+        "18": "D",
+        "19": "B",
+        "20": "C",
+        "21": "B",
+        "22": "B",
+        "23": "B",
+        "24": "A",
+        "25": "C",
+        "26": "A",
+        "27": "B",
+        "28": "B",
+        "29": "C",
+        "30": "B",
+        "31": "B"
+      },
+      "constant_decimal": "0.021064396605546774720128790597820113732706381121148",
+      "signature_stream": {
+        "abs_ratio": 0.11019707327783275,
+        "negative_ratio": -0.04456633833614298,
+        "negative_signed_family_count": 23,
+        "negative_signed_family_rows": [
+          {
+            "absolute": 0.006429186441147162,
+            "key": 41,
+            "negative": -0.0063519447595224475,
+            "positive": 7.724168162471373e-05,
+            "signature": "C->C->A",
+            "signed": -0.006274703077897734
+          },
+          {
+            "absolute": 0.006002668464764066,
+            "key": 49,
+            "negative": -0.006000771342268194,
+            "positive": 1.8971224958723067e-06,
+            "signature": "B->D->A",
+            "signed": -0.005998874219772321
+          },
+          {
+            "absolute": 0.00483684100792349,
+            "key": 58,
+            "negative": -0.004781186476762915,
+            "positive": 5.565453116057353e-05,
+            "signature": "B->C->C",
+            "signed": -0.004725531945602343
+          },
+          {
+            "absolute": 0.0026636808690203694,
+            "key": 62,
+            "negative": -0.0026026625971540597,
+            "positive": 6.101827186630918e-05,
+            "signature": "B->B->C",
+            "signed": -0.0025416443252877507
+          },
+          {
+            "absolute": 0.0023565294447539893,
+            "key": 45,
+            "negative": -0.002355923585196426,
+            "positive": 6.058595575646845e-07,
+            "signature": "C->B->A",
+            "signed": -0.0023553177256388606
+          },
+          {
+            "absolute": 0.0022439255939410976,
+            "key": 10,
+            "negative": -0.0022202215017194313,
+            "positive": 2.3704092221665795e-05,
+            "signature": "D->C->C",
+            "signed": -0.002196517409497766
+          },
+          {
+            "absolute": 0.0018985197865045453,
+            "key": 33,
+            "negative": -0.0018985195016387418,
+            "positive": 2.8486580337460224e-10,
+            "signature": "C->D->A",
+            "signed": -0.0018985192167729386
+          },
+          {
+            "absolute": 0.0007173801828538677,
+            "key": 54,
+            "negative": -0.0007173393431126961,
+            "positive": 4.083974117139919e-08,
+            "signature": "B->A->C",
+            "signed": -0.0007172985033715249
+          },
+          {
+            "absolute": 0.0006982083561581731,
+            "key": 9,
+            "negative": -0.0006982081658055762,
+            "positive": 1.903525969489188e-10,
+            "signature": "D->C->A",
+            "signed": -0.0006982079754529793
+          },
+          {
+            "absolute": 0.0006701127605520307,
+            "key": 6,
+            "negative": -0.0006701126290850299,
+            "positive": 1.3146700060451487e-10,
+            "signature": "D->A->C",
+            "signed": -0.0006701124976180292
+          },
+          {
+            "absolute": 0.0006576420880537026,
+            "key": 57,
+            "negative": -0.0006568498144682414,
+            "positive": 7.922735854612007e-07,
+            "signature": "B->C->A",
+            "signed": -0.0006560575408827802
+          },
+          {
+            "absolute": 0.0005035225222431324,
+            "key": 13,
+            "negative": -0.0004888709901946226,
+            "positive": 1.4651532048509797e-05,
+            "signature": "D->B->A",
+            "signed": -0.00047421945814611263
+          },
+          {
+            "absolute": 0.00027905534740067805,
+            "key": 37,
+            "negative": -0.00021137632622197483,
+            "positive": 6.76790211787033e-05,
+            "signature": "C->A->A",
+            "signed": -0.00014369730504327154
+          },
+          {
+            "absolute": 0.0001320493435877812,
+            "key": 7,
+            "negative": -0.0001257980996952474,
+            "positive": 6.251243892533786e-06,
+            "signature": "D->A->B",
+            "signed": -0.00011954685580271356
+          },
+          {
+            "absolute": 0.0002764117628344876,
+            "key": 59,
+            "negative": -0.00015687978800496972,
+            "positive": 0.00011953197482951792,
+            "signature": "B->C->B",
+            "signed": -3.734781317545178e-05
+          },
+          {
+            "absolute": 9.050782871653093e-09,
+            "key": 11,
+            "negative": -6.660830389002856e-09,
+            "positive": 2.389952482650236e-09,
+            "signature": "D->C->B",
+            "signed": -4.270877906352622e-09
+          },
+          {
+            "absolute": 6.923627085207409e-09,
+            "key": 14,
+            "negative": -5.108874854569856e-09,
+            "positive": 1.814752230637553e-09,
+            "signature": "D->B->C",
+            "signed": -3.294122623932303e-09
+          },
+          {
+            "absolute": 7.62251242654183e-09,
+            "key": 61,
+            "negative": -5.2567780753718445e-09,
+            "positive": 2.3657343511699854e-09,
+            "signature": "B->B->A",
+            "signed": -2.8910437242018596e-09
+          },
+          {
+            "absolute": 3.06893603957631e-09,
+            "key": 5,
+            "negative": -2.7583737963115258e-09,
+            "positive": 3.105622432647839e-10,
+            "signature": "D->A->A",
+            "signed": -2.447811553046742e-09
+          },
+          {
+            "absolute": 4.764067591209264e-09,
+            "key": 15,
+            "negative": -3.4843611549432844e-09,
+            "positive": 1.2797064362659801e-09,
+            "signature": "D->B->B",
+            "signed": -2.2046547186773032e-09
+          },
+          {
+            "absolute": 1.514705536979454e-09,
+            "key": 1,
+            "negative": -1.253095945671696e-09,
+            "positive": 2.6160959130775804e-10,
+            "signature": "D->D->A",
+            "signed": -9.91486354363938e-10
+          },
+          {
+            "absolute": 1.2793744718348284e-09,
+            "key": 3,
+            "negative": -1.1322558520008392e-09,
+            "positive": 1.471186198339894e-10,
+            "signature": "D->D->B",
+            "signed": -9.851372321668497e-10
+          },
+          {
+            "absolute": 7.479807051556983e-09,
+            "key": 23,
+            "negative": -4.158961018777515e-09,
+            "positive": 3.320846032779467e-09,
+            "signature": "A->A->B",
+            "signed": -8.381149859980486e-10
+          }
+        ],
+        "negative_signed_family_sum": -0.029507613793211682,
+        "nonzero_family_count": 60,
+        "param_transform": "direct",
+        "positive_ratio": 0.06563073494168975,
+        "positive_signed_family_count": 31,
+        "positive_signed_family_rows": [
+          {
+            "absolute": 0.009754331580172583,
+            "key": 19,
+            "negative": -3.079231558805764e-06,
+            "positive": 0.009751252348613775,
+            "signature": "A->D->B",
+            "signed": 0.00974817311705497
+          },
+          {
+            "absolute": 0.009583407361766983,
+            "key": 26,
+            "negative": -8.877034111134298e-05,
+            "positive": 0.009494637020655639,
+            "signature": "A->C->C",
+            "signed": 0.009405866679544295
+          },
+          {
+            "absolute": 0.007109798394338901,
+            "key": 43,
+            "negative": -8.571186705445726e-05,
+            "positive": 0.007024086527284442,
+            "signature": "C->C->B",
+            "signed": 0.006938374660229986
+          },
+          {
+            "absolute": 0.023338985286971536,
+            "key": 34,
+            "negative": -0.00912749969127628,
+            "positive": 0.014211485595695253,
+            "signature": "C->D->C",
+            "signed": 0.005083985904418972
+          },
+          {
+            "absolute": 0.004702414174506639,
+            "key": 47,
+            "negative": -8.425557401344978e-05,
+            "positive": 0.004618158600493187,
+            "signature": "C->B->B",
+            "signed": 0.004533903026479739
+          },
+          {
+            "absolute": 0.0034478568228143163,
+            "key": 30,
+            "negative": -6.293613605489667e-07,
+            "positive": 0.0034472274614537673,
+            "signature": "A->B->C",
+            "signed": 0.003446598100093219
+          },
+          {
+            "absolute": 0.0028729603279013805,
+            "key": 40,
+            "negative": -2.238821993152767e-05,
+            "positive": 0.0028505721079698527,
+            "signature": "C->C->D",
+            "signed": 0.0028281838880383253
+          },
+          {
+            "absolute": 0.0024680757224559086,
+            "key": 18,
+            "negative": -3.70325544386983e-10,
+            "positive": 0.0024680753521303636,
+            "signature": "A->D->C",
+            "signed": 0.0024680749818048195
+          },
+          {
+            "absolute": 0.007371455086544097,
+            "key": 42,
+            "negative": -0.003004974346830663,
+            "positive": 0.004366480739713434,
+            "signature": "C->C->C",
+            "signed": 0.0013615063928827708
+          },
+          {
+            "absolute": 0.0010085231811173612,
+            "key": 24,
+            "negative": -2.749537511484383e-10,
+            "positive": 0.00100852290616361,
+            "signature": "A->C->D",
+            "signed": 0.0010085226312098589
+          },
+          {
+            "absolute": 0.0008142205330904868,
+            "key": 27,
+            "negative": -9.790178669886919e-07,
+            "positive": 0.0008132415152234981,
+            "signature": "A->C->B",
+            "signed": 0.0008122624973565093
+          },
+          {
+            "absolute": 0.0007445697339467006,
+            "key": 36,
+            "negative": -1.460744451161277e-10,
+            "positive": 0.0007445695878722555,
+            "signature": "C->A->D",
+            "signed": 0.0007445694417978103
+          },
+          {
+            "absolute": 0.0007273101377971577,
+            "key": 28,
+            "negative": -2.1163316148440913e-05,
+            "positive": 0.0007061468216487168,
+            "signature": "A->B->D",
+            "signed": 0.0006849835055002759
+          },
+          {
+            "absolute": 0.0006620538938188251,
+            "key": 39,
+            "negative": -4.5728549178417105e-08,
+            "positive": 0.0006620081652696467,
+            "signature": "C->A->B",
+            "signed": 0.0006619624367204685
+          },
+          {
+            "absolute": 0.0025721536174622044,
+            "key": 46,
+            "negative": -0.0011456988502365891,
+            "positive": 0.0014264547672256163,
+            "signature": "C->B->C",
+            "signed": 0.00028075591698902697
+          },
+          {
+            "absolute": 0.0018003697723268904,
+            "key": 38,
+            "negative": -0.0007664631523066109,
+            "positive": 0.0010339066200202797,
+            "signature": "C->A->C",
+            "signed": 0.0002674434677136688
+          },
+          {
+            "absolute": 0.00036277195162088166,
+            "key": 22,
+            "negative": -8.798272753231427e-05,
+            "positive": 0.0002747892240885673,
+            "signature": "A->A->C",
+            "signed": 0.00018680649655625304
+          },
+          {
+            "absolute": 0.0001173786582300707,
+            "key": 52,
+            "negative": -5.556806053412645e-06,
+            "positive": 0.00011182185217665808,
+            "signature": "B->A->D",
+            "signed": 0.00010626504612324544
+          },
+          {
+            "absolute": 0.00010173514294882005,
+            "key": 63,
+            "negative": -4.8996236359928154e-05,
+            "positive": 5.273890658889185e-05,
+            "signature": "B->B->B",
+            "signed": 3.7426702289637026e-06
+          },
+          {
+            "absolute": 1.1750710647240178e-08,
+            "key": 56,
+            "negative": -2.896083850485253e-09,
+            "positive": 8.854626796754923e-09,
+            "signature": "B->C->D",
+            "signed": 5.9585429462696715e-09
+          },
+          {
+            "absolute": 9.296072494832685e-09,
+            "key": 44,
+            "negative": -2.0519020329642274e-09,
+            "positive": 7.244170461868457e-09,
+            "signature": "C->B->D",
+            "signed": 5.19226842890423e-09
+          },
+          {
+            "absolute": 8.464302644228238e-09,
+            "key": 31,
+            "negative": -2.2105725708737714e-09,
+            "positive": 6.253730073354469e-09,
+            "signature": "A->B->B",
+            "signed": 4.043157502480696e-09
+          },
+          {
+            "absolute": 4.432907612721336e-09,
+            "key": 20,
+            "negative": -4.4858990693802125e-10,
+            "positive": 3.984317705783314e-09,
+            "signature": "A->A->D",
+            "signed": 3.535727798845293e-09
+          },
+          {
+            "absolute": 5.5750801666835474e-09,
+            "key": 60,
+            "negative": -1.4153068188207507e-09,
+            "positive": 4.159773347862798e-09,
+            "signature": "B->B->D",
+            "signed": 2.7444665290420477e-09
+          },
+          {
+            "absolute": 1.3234812058374973e-08,
+            "key": 50,
+            "negative": -5.512275445194661e-09,
+            "positive": 7.722536613180313e-09,
+            "signature": "B->D->C",
+            "signed": 2.2102611679856525e-09
+          },
+          {
+            "absolute": 7.284866756516541e-09,
+            "key": 53,
+            "negative": -2.565280731395097e-09,
+            "positive": 4.7195860251214485e-09,
+            "signature": "B->A->A",
+            "signed": 2.15430529372635e-09
+          },
+          {
+            "absolute": 2.019607382639272e-09,
+            "key": 16,
+            "negative": -3.4881278841034387e-10,
+            "positive": 1.6707945942289284e-09,
+            "signature": "A->D->D",
+            "signed": 1.3219818058185844e-09
+          },
+          {
+            "absolute": 1.5636799100203459e-09,
+            "key": 48,
+            "negative": -1.798116464637648e-10,
+            "positive": 1.3838682635565811e-09,
+            "signature": "B->D->D",
+            "signed": 1.2040566170928162e-09
+          },
+          {
+            "absolute": 8.603273492584928e-09,
+            "key": 51,
+            "negative": -3.990345667721317e-09,
+            "positive": 4.612927824863611e-09,
+            "signature": "B->D->B",
+            "signed": 6.225821571422937e-10
+          },
+          {
+            "absolute": 1.407294146141903e-08,
+            "key": 35,
+            "negative": -6.862439673465076e-09,
+            "positive": 7.210501787953958e-09,
+            "signature": "C->D->B",
+            "signed": 3.480621144888844e-10
+          },
+          {
+            "absolute": 4.948127911661032e-09,
+            "key": 55,
+            "negative": -2.4085512949391166e-09,
+            "positive": 2.539576616721915e-09,
+            "signature": "B->A->B",
+            "signed": 1.310253217827967e-10
+          }
+        ],
+        "positive_signed_family_sum": 0.050572010327180866,
+        "selector_prefix_rows": [
+          {
+            "added_signature": "A->D->B",
+            "complement_signed": 0.011316223488491805,
+            "prefix_size": 1,
+            "selector_signed": 0.00974817311705497
+          },
+          {
+            "added_signature": "A->C->C",
+            "complement_signed": 0.0019103568089475116,
+            "prefix_size": 2,
+            "selector_signed": 0.019154039796599263
+          },
+          {
+            "added_signature": "C->C->B",
+            "complement_signed": -0.005028017851282474,
+            "prefix_size": 3,
+            "selector_signed": 0.02609241445682925
+          },
+          {
+            "added_signature": "C->D->C",
+            "complement_signed": -0.010112003755701447,
+            "prefix_size": 4,
+            "selector_signed": 0.031176400361248222
+          },
+          {
+            "added_signature": "C->B->B",
+            "complement_signed": -0.014645906782181185,
+            "prefix_size": 5,
+            "selector_signed": 0.03571030338772796
+          },
+          {
+            "added_signature": "A->B->C",
+            "complement_signed": -0.018092504882274405,
+            "prefix_size": 6,
+            "selector_signed": 0.03915690148782118
+          },
+          {
+            "added_signature": "C->C->D",
+            "complement_signed": -0.020920688770312734,
+            "prefix_size": 7,
+            "selector_signed": 0.04198508537585951
+          },
+          {
+            "added_signature": "A->D->C",
+            "complement_signed": -0.023388763752117552,
+            "prefix_size": 8,
+            "selector_signed": 0.04445316035766433
+          },
+          {
+            "added_signature": "C->C->C",
+            "complement_signed": -0.024750270145000326,
+            "prefix_size": 9,
+            "selector_signed": 0.0458146667505471
+          },
+          {
+            "added_signature": "A->C->D",
+            "complement_signed": -0.025758792776210186,
+            "prefix_size": 10,
+            "selector_signed": 0.04682318938175696
+          },
+          {
+            "added_signature": "A->C->B",
+            "complement_signed": -0.026571055273566697,
+            "prefix_size": 11,
+            "selector_signed": 0.04763545187911347
+          },
+          {
+            "added_signature": "C->A->D",
+            "complement_signed": -0.027315624715364504,
+            "prefix_size": 12,
+            "selector_signed": 0.04838002132091128
+          },
+          {
+            "added_signature": "A->B->D",
+            "complement_signed": -0.028000608220864778,
+            "prefix_size": 13,
+            "selector_signed": 0.04906500482641155
+          },
+          {
+            "added_signature": "C->A->B",
+            "complement_signed": -0.028662570657585245,
+            "prefix_size": 14,
+            "selector_signed": 0.04972696726313202
+          },
+          {
+            "added_signature": "C->B->C",
+            "complement_signed": -0.028943326574574272,
+            "prefix_size": 15,
+            "selector_signed": 0.05000772318012105
+          },
+          {
+            "added_signature": "C->A->C",
+            "complement_signed": -0.029210770042287938,
+            "prefix_size": 16,
+            "selector_signed": 0.05027516664783471
+          },
+          {
+            "added_signature": "A->A->C",
+            "complement_signed": -0.02939757653884419,
+            "prefix_size": 17,
+            "selector_signed": 0.050461973144390965
+          },
+          {
+            "added_signature": "B->A->D",
+            "complement_signed": -0.029503841584967435,
+            "prefix_size": 18,
+            "selector_signed": 0.05056823819051421
+          },
+          {
+            "added_signature": "B->B->B",
+            "complement_signed": -0.0295075842551964,
+            "prefix_size": 19,
+            "selector_signed": 0.050571980860743174
+          },
+          {
+            "added_signature": "B->C->D",
+            "complement_signed": -0.029507590213739342,
+            "prefix_size": 20,
+            "selector_signed": 0.05057198681928612
+          },
+          {
+            "added_signature": "C->B->D",
+            "complement_signed": -0.02950759540600777,
+            "prefix_size": 21,
+            "selector_signed": 0.050571992011554545
+          },
+          {
+            "added_signature": "A->B->B",
+            "complement_signed": -0.029507599449165273,
+            "prefix_size": 22,
+            "selector_signed": 0.05057199605471205
+          },
+          {
+            "added_signature": "A->A->D",
+            "complement_signed": -0.029507602984893074,
+            "prefix_size": 23,
+            "selector_signed": 0.05057199959043985
+          },
+          {
+            "added_signature": "B->B->D",
+            "complement_signed": -0.029507605729359603,
+            "prefix_size": 24,
+            "selector_signed": 0.05057200233490638
+          },
+          {
+            "added_signature": "B->D->C",
+            "complement_signed": -0.029507607939620772,
+            "prefix_size": 25,
+            "selector_signed": 0.05057200454516755
+          },
+          {
+            "added_signature": "B->A->A",
+            "complement_signed": -0.02950761009392607,
+            "prefix_size": 26,
+            "selector_signed": 0.05057200669947284
+          },
+          {
+            "added_signature": "A->D->D",
+            "complement_signed": -0.029507611415907877,
+            "prefix_size": 27,
+            "selector_signed": 0.05057200802145465
+          },
+          {
+            "added_signature": "B->D->D",
+            "complement_signed": -0.029507612619964495,
+            "prefix_size": 28,
+            "selector_signed": 0.05057200922551127
+          },
+          {
+            "added_signature": "B->D->B",
+            "complement_signed": -0.029507613242546655,
+            "prefix_size": 29,
+            "selector_signed": 0.05057200984809343
+          },
+          {
+            "added_signature": "C->D->B",
+            "complement_signed": -0.02950761359060877,
+            "prefix_size": 30,
+            "selector_signed": 0.050572010196155544
+          },
+          {
+            "added_signature": "B->A->B",
+            "complement_signed": -0.02950761372163409,
+            "prefix_size": 31,
+            "selector_signed": 0.050572010327180866
+          }
+        ],
+        "signed_ratio": 0.021064396605546775,
+        "source": "scripts\\gap3\\results\\2026-05-30\\k4_full_signature_stream_direct.npz",
+        "stored_total_R": 0.021064396605546785,
+        "top_family_rows": [
+          {
+            "absolute": 0.0024680757224559086,
+            "key": 18,
+            "negative": -3.70325544386983e-10,
+            "positive": 0.0024680753521303636,
+            "signature": "A->D->C",
+            "signed": 0.0024680749818048195
+          },
+          {
+            "absolute": 0.009754331580172583,
+            "key": 19,
+            "negative": -3.079231558805764e-06,
+            "positive": 0.009751252348613775,
+            "signature": "A->D->B",
+            "signed": 0.00974817311705497
+          },
+          {
+            "absolute": 0.0010085231811173612,
+            "key": 24,
+            "negative": -2.749537511484383e-10,
+            "positive": 0.00100852290616361,
+            "signature": "A->C->D",
+            "signed": 0.0010085226312098589
+          },
+          {
+            "absolute": 0.009583407361766983,
+            "key": 26,
+            "negative": -8.877034111134298e-05,
+            "positive": 0.009494637020655639,
+            "signature": "A->C->C",
+            "signed": 0.009405866679544295
+          },
+          {
+            "absolute": 0.0008142205330904868,
+            "key": 27,
+            "negative": -9.790178669886919e-07,
+            "positive": 0.0008132415152234981,
+            "signature": "A->C->B",
+            "signed": 0.0008122624973565093
+          },
+          {
+            "absolute": 0.0034478568228143163,
+            "key": 30,
+            "negative": -6.293613605489667e-07,
+            "positive": 0.0034472274614537673,
+            "signature": "A->B->C",
+            "signed": 0.003446598100093219
+          },
+          {
+            "absolute": 0.023338985286971536,
+            "key": 34,
+            "negative": -0.00912749969127628,
+            "positive": 0.014211485595695253,
+            "signature": "C->D->C",
+            "signed": 0.005083985904418972
+          },
+          {
+            "absolute": 0.0007445697339467006,
+            "key": 36,
+            "negative": -1.460744451161277e-10,
+            "positive": 0.0007445695878722555,
+            "signature": "C->A->D",
+            "signed": 0.0007445694417978103
+          },
+          {
+            "absolute": 0.0028729603279013805,
+            "key": 40,
+            "negative": -2.238821993152767e-05,
+            "positive": 0.0028505721079698527,
+            "signature": "C->C->D",
+            "signed": 0.0028281838880383253
+          },
+          {
+            "absolute": 0.006429186441147162,
+            "key": 41,
+            "negative": -0.0063519447595224475,
+            "positive": 7.724168162471373e-05,
+            "signature": "C->C->A",
+            "signed": -0.006274703077897734
+          },
+          {
+            "absolute": 0.007371455086544097,
+            "key": 42,
+            "negative": -0.003004974346830663,
+            "positive": 0.004366480739713434,
+            "signature": "C->C->C",
+            "signed": 0.0013615063928827708
+          },
+          {
+            "absolute": 0.007109798394338901,
+            "key": 43,
+            "negative": -8.571186705445726e-05,
+            "positive": 0.007024086527284442,
+            "signature": "C->C->B",
+            "signed": 0.006938374660229986
+          },
+          {
+            "absolute": 0.004702414174506639,
+            "key": 47,
+            "negative": -8.425557401344978e-05,
+            "positive": 0.004618158600493187,
+            "signature": "C->B->B",
+            "signed": 0.004533903026479739
+          },
+          {
+            "absolute": 0.006002668464764066,
+            "key": 49,
+            "negative": -0.006000771342268194,
+            "positive": 1.8971224958723067e-06,
+            "signature": "B->D->A",
+            "signed": -0.005998874219772321
+          },
+          {
+            "absolute": 0.00483684100792349,
+            "key": 58,
+            "negative": -0.004781186476762915,
+            "positive": 5.565453116057353e-05,
+            "signature": "B->C->C",
+            "signed": -0.004725531945602343
+          },
+          {
+            "absolute": 0.0026636808690203694,
+            "key": 62,
+            "negative": -0.0026026625971540597,
+            "positive": 6.101827186630918e-05,
+            "signature": "B->B->C",
+            "signed": -0.0025416443252877507
+          }
+        ],
+        "top_output_rows": [
+          {
+            "dominant_signature": "A->D->B",
+            "dominant_signature_signed": 0.009748174096839354,
+            "output_shell": 26,
+            "output_type": "A",
+            "signed": 0.0277612882710164
+          },
+          {
+            "dominant_signature": "C->D->C",
+            "dominant_signature_signed": 0.007683076698949373,
+            "output_shell": 29,
+            "output_type": "C",
+            "signed": 0.017246518435455636
+          },
+          {
+            "dominant_signature": "C->D->C",
+            "dominant_signature_signed": -0.008551533773060338,
+            "output_shell": 17,
+            "output_type": "C",
+            "signed": -0.01665524765085276
+          },
+          {
+            "dominant_signature": "C->C->B",
+            "dominant_signature_signed": 0.006473798372372029,
+            "output_shell": 25,
+            "output_type": "C",
+            "signed": 0.01513053507430918
+          },
+          {
+            "dominant_signature": "B->D->A",
+            "dominant_signature_signed": -0.0059988772745752875,
+            "output_shell": 16,
+            "output_type": "B",
+            "signed": -0.012001513776424357
+          },
+          {
+            "dominant_signature": "D->C->C",
+            "dominant_signature_signed": -0.002196517409497766,
+            "output_shell": 18,
+            "output_type": "D",
+            "signed": -0.004158618390607986
+          },
+          {
+            "dominant_signature": "C->C->C",
+            "dominant_signature_signed": -0.0019516619938323976,
+            "output_shell": 20,
+            "output_type": "C",
+            "signed": -0.0036933525086635423
+          },
+          {
+            "dominant_signature": "B->C->C",
+            "dominant_signature_signed": -0.0008819648062102098,
+            "output_shell": 21,
+            "output_type": "B",
+            "signed": -0.002565269482747295
+          },
+          {
+            "dominant_signature": "B->B->C",
+            "dominant_signature_signed": 6.278909379594677e-09,
+            "output_shell": 30,
+            "output_type": "B",
+            "signed": 3.5817168993481387e-08
+          },
+          {
+            "dominant_signature": "B->B->B",
+            "dominant_signature_signed": 5.022509100972378e-09,
+            "output_shell": 27,
+            "output_type": "B",
+            "signed": 1.3976660151957313e-08
+          },
+          {
+            "dominant_signature": "A->C->C",
+            "dominant_signature_signed": 2.7877556605118527e-09,
+            "output_shell": 24,
+            "output_type": "A",
+            "signed": 7.872433515765667e-09
+          },
+          {
+            "dominant_signature": "B->C->A",
+            "dominant_signature_signed": -1.7981782410866495e-09,
+            "output_shell": 19,
+            "output_type": "B",
+            "signed": -7.42204723990217e-09
+          }
+        ],
+        "triad_count": 41112
+      },
+      "structural_status": "numerical finite-web stress test, not exact KKT anchor",
+      "warm_state_shell_mass": [
+        {
+          "h1_fraction": 0.1384033866725964,
+          "h2_fraction": 0.10853206240668231,
+          "max_amp_fraction": 1.0,
+          "mode_count": 3,
+          "param_transform": "direct",
+          "shell": 16,
+          "type": "B"
+        },
+        {
+          "h1_fraction": 0.2778142136109162,
+          "h2_fraction": 0.2314700144797406,
+          "max_amp_fraction": 0.7692722332076846,
+          "mode_count": 24,
+          "param_transform": "direct",
+          "shell": 17,
+          "type": "C"
+        },
+        {
+          "h1_fraction": 0.17487211629510863,
+          "h2_fraction": 0.1542710469889324,
+          "max_amp_fraction": 0.5999090418163592,
+          "mode_count": 18,
+          "param_transform": "direct",
+          "shell": 18,
+          "type": "D"
+        },
+        {
+          "h1_fraction": 2.215767055911241e-07,
+          "h2_fraction": 2.063331735079953e-07,
+          "max_amp_fraction": 1.1253517471925912e-07,
+          "mode_count": 12,
+          "param_transform": "direct",
+          "shell": 19,
+          "type": "B"
+        },
+        {
+          "h1_fraction": 0.042140097148148564,
+          "h2_fraction": 0.04130635603886624,
+          "max_amp_fraction": 0.139954090949827,
+          "mode_count": 12,
+          "param_transform": "direct",
+          "shell": 20,
+          "type": "C"
+        },
+        {
+          "h1_fraction": 0.053854961327687585,
+          "h2_fraction": 0.05542891392020681,
+          "max_amp_fraction": 0.18116744831203418,
+          "mode_count": 24,
+          "param_transform": "direct",
+          "shell": 21,
+          "type": "B"
+        },
+        {
+          "h1_fraction": 2.5656250121077524e-07,
+          "h2_fraction": 2.7663505811044244e-07,
+          "max_amp_fraction": 1.1253517471925912e-07,
+          "mode_count": 12,
+          "param_transform": "direct",
+          "shell": 22,
+          "type": "B"
+        },
+        {
+          "h1_fraction": 0.0,
+          "h2_fraction": 0.0,
+          "max_amp_fraction": 0.0,
+          "mode_count": 0,
+          "param_transform": "direct",
+          "shell": 23,
+          "type": "B"
+        },
+        {
+          "h1_fraction": 2.7988636495720927e-07,
+          "h2_fraction": 3.292185815529232e-07,
+          "max_amp_fraction": 1.1253517471925912e-07,
+          "mode_count": 12,
+          "param_transform": "direct",
+          "shell": 24,
+          "type": "A"
+        },
+        {
+          "h1_fraction": 0.07824563815547128,
+          "h2_fraction": 0.09587193691009906,
+          "max_amp_fraction": 0.33012811880700393,
+          "mode_count": 15,
+          "param_transform": "direct",
+          "shell": 25,
+          "type": "C"
+        },
+        {
+          "h1_fraction": 0.13887228929440124,
+          "h2_fraction": 0.17696211441963183,
+          "max_amp_fraction": 0.33483767500325656,
+          "mode_count": 36,
+          "param_transform": "direct",
+          "shell": 26,
+          "type": "A"
+        },
+        {
+          "h1_fraction": 4.1982954743581403e-07,
+          "h2_fraction": 5.555563563705581e-07,
+          "max_amp_fraction": 1.1253517471925912e-07,
+          "mode_count": 16,
+          "param_transform": "direct",
+          "shell": 27,
+          "type": "B"
+        },
+        {
+          "h1_fraction": 0.0,
+          "h2_fraction": 0.0,
+          "max_amp_fraction": 0.0,
+          "mode_count": 0,
+          "param_transform": "direct",
+          "shell": 28,
+          "type": "B"
+        },
+        {
+          "h1_fraction": 0.09579541992463866,
+          "h2_fraction": 0.13615515828460378,
+          "max_amp_fraction": 0.23295328651522268,
+          "mode_count": 36,
+          "param_transform": "direct",
+          "shell": 29,
+          "type": "C"
+        },
+        {
+          "h1_fraction": 6.997159123930232e-07,
+          "h2_fraction": 1.0288080673528853e-06,
+          "max_amp_fraction": 1.1253517471925912e-07,
+          "mode_count": 24,
+          "param_transform": "direct",
+          "shell": 30,
+          "type": "B"
+        },
+        {
+          "h1_fraction": 0.0,
+          "h2_fraction": 0.0,
+          "max_amp_fraction": 0.0,
+          "mode_count": 0,
+          "param_transform": "direct",
+          "shell": 31,
+          "type": "B"
+        }
+      ],
+      "warm_state_source": "results\\warm_state\\k4_warm.npz"
+    }
+  },
+  "interpretation": {
+    "k2": "The exact C(I_2) atom is B/A cross-type, not D/non-D.",
+    "k3": "The exact C(I_3) optimizer is a D/C/A bridge.",
+    "k4": "The numerical k=4 stress test spreads production across many mixed signatures; priority labels are useful but not sufficient by themselves.",
+    "paper3_gate": "Same-label constants alone cannot explain the two resolved anchors; cross-type/type-signature envelopes are required."
+  }
+}

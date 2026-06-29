@@ -1,0 +1,5 @@
+replacement_type,replacement_shape,pair_count,max_k6_balanced_product_penalty,max_k7_balanced_product_penalty,max_side_balanced_product_penalty,min_side_balanced_product_penalty
+B->A,clean_distinct,156406,0.7071067811865476,0.7071067811865476,0.7071067811865476,0.7071067811865476
+C->A,clean_distinct,88319,0.7071067811865476,0.7071067811865476,0.7071067811865476,0.7071067811865476
+B->A,k6_duplicate;dropped_still_shared,788,0.5,1.0,1.0,0.5
+C->A,k6_duplicate;dropped_still_shared,327,0.5,1.0,1.0,0.5

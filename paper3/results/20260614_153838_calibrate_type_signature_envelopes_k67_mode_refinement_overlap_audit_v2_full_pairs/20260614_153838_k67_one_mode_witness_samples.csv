@@ -1,0 +1,201 @@
+k6_support,k7_support,shared_shells,shared_shell_types,shared_distinct_shell_count,distinct_union_shells,distinct_union_shell_count,dropped_k6_shell,added_k7_shell,replacement_type,replacement_shape,mode,mode_shell,mode_type
+101 230 251,113 194 251,251,B,1,101 113 194 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,89 186 251,251,B,1,89 101 186 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,74 181 251,251,B,1,74 101 181 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,122 221 251,251,B,1,101 122 221 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,65 134 251,251,B,1,65 101 134 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,126 245 251,251,B,1,101 126 230 245 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,126 205 251,251,B,1,101 126 205 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,114 185 251,251,B,1,101 114 185 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,74 117 251,251,B,1,74 101 117 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,86 97 251,251,B,1,86 97 101 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,117 146 251,251,B,1,101 117 146 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,86 229 251,251,B,1,86 101 229 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,65 206 251,251,B,1,65 101 206 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,125 134 251,251,B,1,101 125 134 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,126 233 251,251,B,1,101 126 230 233 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,89 150 251,251,B,1,89 101 150 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,114 125 251,251,B,1,101 114 125 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,86 125 251,251,B,1,86 101 125 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,117 251 254,251,B,1,101 117 230 251 254,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,74 149 251,251,B,1,74 101 149 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,65 78 251,251,B,1,65 78 101 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,65 234 251,251,B,1,65 101 230 234 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,114 193 251,251,B,1,101 114 193 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,78 89 251,251,B,1,78 89 101 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,97 218 251,251,B,1,97 101 218 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,113 186 251,251,B,1,101 113 186 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,73 222 251,251,B,1,73 101 222 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,101 158 251,101 251,C B,2,101 158 230 251,4,230,158,B->A,clean_distinct,-15 -5 -1,251,B
+101 230 251,86 153 251,251,B,1,86 101 153 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,86 197 251,251,B,1,86 101 197 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,74 221 251,251,B,1,74 101 221 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,126 197 251,251,B,1,101 126 197 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,78 185 251,251,B,1,78 101 185 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,86 89 251,251,B,1,86 89 101 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,117 206 251,251,B,1,101 117 206 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,86 221 251,251,B,1,86 101 221 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,114 181 251,251,B,1,101 114 181 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,101 186 251,101 251,C B,2,101 186 230 251,4,230,186,B->A,clean_distinct,-15 -5 -1,251,B
+101 230 251,74 245 251,251,B,1,74 101 230 245 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,86 225 251,251,B,1,86 101 225 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,65 158 251,251,B,1,65 101 158 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,86 117 251,251,B,1,86 101 117 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,89 146 251,251,B,1,89 101 146 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,117 234 251,251,B,1,101 117 230 234 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,73 146 251,251,B,1,73 101 146 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,73 122 251,251,B,1,73 101 122 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,101 126 251,101 251,C B,2,101 126 230 251,4,230,126,B->A,clean_distinct,-15 -5 -1,251,B
+101 230 251,74 101 251,101 251,C B,2,74 101 230 251,4,230,74,B->A,clean_distinct,-15 -5 -1,251,B
+101 230 251,109 251 254,251,B,1,101 109 230 251 254,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,65 74 251,251,B,1,65 74 101 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,125 182 251,251,B,1,101 125 182 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,114 145 251,251,B,1,101 114 145 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,125 158 251,251,B,1,101 125 158 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,101 150 251,101 251,C B,2,101 150 230 251,4,230,150,B->A,clean_distinct,-15 -5 -1,251,B
+101 230 251,101 194 251,101 251,C B,2,101 194 230 251,4,230,194,B->A,clean_distinct,-15 -5 -1,251,B
+101 230 251,114 149 251,251,B,1,101 114 149 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,73 218 251,251,B,1,73 101 218 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,109 134 251,251,B,1,101 109 134 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,122 185 251,251,B,1,101 122 185 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,89 134 251,251,B,1,89 101 134 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,86 149 251,251,B,1,86 101 149 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,74 173 251,251,B,1,74 101 173 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,65 126 251,251,B,1,65 101 126 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,78 113 251,251,B,1,78 101 113 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,101 222 251,101 251,C B,2,101 222 230 251,4,230,222,B->A,clean_distinct,-15 -5 -1,251,B
+101 230 251,117 158 251,251,B,1,101 117 158 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,117 134 251,251,B,1,101 117 134 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,74 241 251,251,B,1,74 101 230 241 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,78 245 251,251,B,1,78 101 230 245 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,89 206 251,251,B,1,89 101 206 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,65 194 251,251,B,1,65 101 194 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,78 205 251,251,B,1,78 101 205 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,113 146 251,251,B,1,101 113 146 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,125 126 251,251,B,1,101 125 126 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,74 137 251,251,B,1,74 101 137 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,122 153 251,251,B,1,101 122 153 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,73 78 251,251,B,1,73 78 101 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,65 222 251,251,B,1,65 101 222 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,125 150 251,251,B,1,101 125 150 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,125 194 251,251,B,1,101 125 194 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,97 206 251,251,B,1,97 101 206 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,109 194 251,251,B,1,101 109 194 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,113 251 254,251,B,1,101 113 230 251 254,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,85 186 251,251,B,1,85 101 186 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,86 181 251,251,B,1,86 101 181 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,101 146 251,101 251,C B,2,101 146 230 251,4,230,146,B->A,clean_distinct,-15 -5 -1,251,B
+101 230 251,122 245 251,251,B,1,101 122 230 245 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,86 185 251,251,B,1,86 101 185 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,126 185 251,251,B,1,101 126 185 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,78 173 251,251,B,1,78 101 173 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,78 149 251,251,B,1,78 101 149 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,117 194 251,251,B,1,101 117 194 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,78 109 251,251,B,1,78 101 109 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,101 251 254,101 251,C B,2,101 230 251 254,4,230,254,B->A,clean_distinct,-15 -5 -1,251,B
+101 230 251,126 149 251,251,B,1,101 126 149 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,65 186 251,251,B,1,65 101 186 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,73 86 251,251,B,1,73 86 101 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,97 126 251,251,B,1,97 101 126 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,122 233 251,251,B,1,101 122 230 233 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,65 146 251,251,B,1,65 101 146 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,85 86 251,251,B,1,85 86 101 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,117 222 251,251,B,1,101 117 222 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,101 114 251,101 251,C B,2,101 114 230 251,4,230,114,B->A,clean_distinct,-15 -5 -1,251,B
+101 230 251,114 241 251,251,B,1,101 114 230 241 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,85 114 251,251,B,1,85 101 114 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,122 145 251,251,B,1,101 122 145 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,73 114 251,251,B,1,73 101 114 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,74 89 251,251,B,1,74 89 101 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,125 186 251,251,B,1,101 125 186 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,109 186 251,251,B,1,101 109 186 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,122 149 251,251,B,1,101 122 149 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,65 218 251,251,B,1,65 101 218 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,73 206 251,251,B,1,73 101 206 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,122 197 251,251,B,1,101 122 197 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,122 173 251,251,B,1,101 122 173 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,89 122 251,251,B,1,89 101 122 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,86 137 251,251,B,1,86 101 137 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,65 86 251,251,B,1,65 86 101 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,65 114 251,251,B,1,65 101 114 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,89 126 251,251,B,1,89 101 126 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,101 234 251,101 251,C B,2,101 230 234 251,4,230,234,B->A,clean_distinct,-15 -5 -1,251,B
+101 230 251,78 145 251,251,B,1,78 101 145 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,113 222 251,251,B,1,101 113 222 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,117 122 251,251,B,1,101 117 122 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,89 234 251,251,B,1,89 101 230 234 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,74 229 251,251,B,1,74 101 229 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,78 233 251,251,B,1,78 101 230 233 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,89 194 251,251,B,1,89 101 194 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,65 182 251,251,B,1,65 101 182 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,122 229 251,251,B,1,101 122 229 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,114 233 251,251,B,1,101 114 230 233 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,117 150 251,251,B,1,101 117 150 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,117 218 251,251,B,1,101 117 218 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,86 233 251,251,B,1,86 101 230 233 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,74 125 251,251,B,1,74 101 125 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,85 251 254,251,B,1,85 101 230 251 254,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,89 222 251,251,B,1,89 101 222 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,125 206 251,251,B,1,101 125 206 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,97 150 251,251,B,1,97 101 150 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,122 125 251,251,B,1,101 122 125 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,101 134 251,101 251,C B,2,101 134 230 251,4,230,134,B->A,clean_distinct,-15 -5 -1,251,B
+101 230 251,126 241 251,251,B,1,101 126 230 241 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,74 153 251,251,B,1,74 101 153 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,113 126 251,251,B,1,101 113 126 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,126 173 251,251,B,1,101 126 173 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,74 113 251,251,B,1,74 101 113 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,114 197 251,251,B,1,101 114 197 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,74 157 251,251,B,1,74 101 157 230 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,113 234 251,251,B,1,101 113 230 234 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+101 230 251,65 251 254,251,B,1,65 101 230 251 254,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,113 194 251,251,B,1,65 113 174 194 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,89 186 251,251,B,1,65 89 174 186 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,74 181 251,251,B,1,65 74 174 181 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,122 221 251,251,B,1,65 122 174 221 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,65 134 251,65 251,C B,2,65 134 174 251,4,174,134,B->A,clean_distinct,-15 -5 -1,251,B
+65 174 251,126 245 251,251,B,1,65 126 174 245 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,126 205 251,251,B,1,65 126 174 205 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,114 185 251,251,B,1,65 114 174 185 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,74 117 251,251,B,1,65 74 117 174 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,86 97 251,251,B,1,65 86 97 174 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,117 146 251,251,B,1,65 117 146 174 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,86 229 251,251,B,1,65 86 174 229 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,65 206 251,65 251,C B,2,65 174 206 251,4,174,206,B->A,clean_distinct,-15 -5 -1,251,B
+65 174 251,125 134 251,251,B,1,65 125 134 174 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,126 233 251,251,B,1,65 126 174 233 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,89 150 251,251,B,1,65 89 150 174 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,114 125 251,251,B,1,65 114 125 174 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,86 125 251,251,B,1,65 86 125 174 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,117 251 254,251,B,1,65 117 174 251 254,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,74 149 251,251,B,1,65 74 149 174 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,65 78 251,65 251,C B,2,65 78 174 251,4,174,78,B->A,clean_distinct,-15 -5 -1,251,B
+65 174 251,65 234 251,65 251,C B,2,65 174 234 251,4,174,234,B->A,clean_distinct,-15 -5 -1,251,B
+65 174 251,114 193 251,251,B,1,65 114 174 193 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,78 89 251,251,B,1,65 78 89 174 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,97 218 251,251,B,1,65 97 174 218 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,113 186 251,251,B,1,65 113 174 186 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,73 222 251,251,B,1,65 73 174 222 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,101 158 251,251,B,1,65 101 158 174 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,86 153 251,251,B,1,65 86 153 174 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,86 197 251,251,B,1,65 86 174 197 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,74 221 251,251,B,1,65 74 174 221 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,126 197 251,251,B,1,65 126 174 197 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,78 185 251,251,B,1,65 78 174 185 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,86 89 251,251,B,1,65 86 89 174 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,117 206 251,251,B,1,65 117 174 206 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,86 221 251,251,B,1,65 86 174 221 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,114 181 251,251,B,1,65 114 174 181 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,101 186 251,251,B,1,65 101 174 186 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,74 245 251,251,B,1,65 74 174 245 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,86 225 251,251,B,1,65 86 174 225 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,65 158 251,65 251,C B,2,65 158 174 251,4,174,158,B->A,clean_distinct,-15 -5 -1,251,B
+65 174 251,86 117 251,251,B,1,65 86 117 174 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,89 146 251,251,B,1,65 89 146 174 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,117 234 251,251,B,1,65 117 174 234 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,73 146 251,251,B,1,65 73 146 174 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,73 122 251,251,B,1,65 73 122 174 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,101 126 251,251,B,1,65 101 126 174 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,74 101 251,251,B,1,65 74 101 174 251,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,109 251 254,251,B,1,65 109 174 251 254,5,,,non_single_shell_replacement,clean_distinct,-15 -5 -1,251,B
+65 174 251,65 74 251,65 251,C B,2,65 74 174 251,4,174,74,B->A,clean_distinct,-15 -5 -1,251,B

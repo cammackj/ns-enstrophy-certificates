@@ -1,0 +1,1967 @@
+"""Build the finite K34 transition-cover ledger from existing artifacts.
+
+This is an audit script, not a scan.  It reads the k3--k4 transition catalogue,
+the selector-support screen, and the V13 residual-face certificate, then writes
+a compact proof-obligation ledger for the Paper 3 finite-tube cover.
+"""
+
+from __future__ import annotations
+
+import argparse
+import csv
+import json
+import math
+import re
+import sys
+from collections import Counter, defaultdict
+from decimal import Decimal, getcontext
+from pathlib import Path
+from typing import Any
+
+import numpy as np
+
+from paper3_paths import make_run_paths, snapshot_source, write_json
+
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from scripts.gap3.certify_block_maximum_gpu import _build_exact_shell_problem  # noqa: E402
+
+
+getcontext().prec = 80
+
+DEFAULT_CATALOGUE_DIR = Path(
+    "paper3/results/"
+    "20260612_182508_calibrate_type_signature_envelopes_k34_transition_catalogue_v5_band_leakage"
+)
+DEFAULT_SELECTOR_SCREEN = Path(
+    "paper3/results/20260612_184435_k34_selector_support_g4_screen/"
+    "k34_selector_support_g4_screen_summary.json"
+)
+DEFAULT_V13 = Path(
+    "paper3/results/"
+    "20260612_220936_certify_k34_selector_boundary_relays_"
+    "k34_selector_boundary_relays_interval_kkt_hessian_corrected_v13/"
+    "20260612_220936_boundary_relay_summary.json"
+)
+DEFAULT_RAW_BELOW_LOG_GLOB = "logs/paper3_k34_raw_support_cert_*_gc_20260612.log"
+DEFAULT_RAW_BELOW_BOUNDARY_GLOB = (
+    "paper3/results/*certify_k34_selector_raw_below_boundaries*/"
+    "*raw_below_boundary_summary.json"
+)
+DEFAULT_RAW_BELOW_INTERIOR_GLOB = (
+    "paper3/results/*k34_raw_below_interior_quotient_v8_abs_satellite_tube_cuda*/"
+    "*raw_below_interior_quotient_summary.json"
+)
+DEFAULT_RAW_BELOW_EXTERIOR_GLOB = (
+    "paper3/results/*k34_selector_strip_raw_below_exterior_tube_v1*/"
+    "*selector_strip_summary.json"
+)
+DEFAULT_SKELETON_SCREEN_GLOB = (
+    "paper3/results/*k34_skeleton_selector_survivors_float64_v1*/"
+    "*selector_strip_summary.json"
+)
+DEFAULT_BRIDGE_CERTIFICATE_GLOB = (
+    "paper3/results/*k34_bridge_boundary_tangent_rounded_certificate*/"
+    "*k34_bridge_tangent_audit.json"
+)
+DEFAULT_SINGLE_BAND_SCREEN_GLOB = (
+    "paper3/results/*k34_single_band_selector_strip_screen_v1*/"
+    "*selector_strip_summary.json"
+)
+DEFAULT_RESIDUAL_TUBE_SCREEN_GLOB = (
+    "paper3/results/*k34_residual_tube_above_endpoint_delta003*/"
+    "*selector_strip_summary.json"
+)
+DEFAULT_RESIDUAL_TUBE_CERTIFICATE_GLOB = (
+    "paper3/results/*certify_k34_residual_tube*/"
+    "*residual_tube_certificate_summary.json"
+)
+DEFAULT_RESIDUAL_BOUNDARY_TANGENT_GLOB = (
+    "paper3/results/*k34_residual_boundary*tangent_rounded_certificate*/"
+    "*k34_bridge_tangent_audit.json"
+)
+SELECTOR_SIGNATURES = ("A->D->B", "A->C->C", "C->C->B")
+A3_G4_UPPER = 0.01142659962800208
+K4_ENDPOINT_THRESHOLD = 0.021064396605546775
+W34_I3_RESIDUAL_SHELLS = {9, 11, 12, 13}
+W34_I4_RESIDUAL_SHELLS = {19, 22, 24, 30}
+
+
+def read_json(path: Path) -> dict[str, Any]:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def read_csv(path: Path) -> list[dict[str, str]]:
+    with path.open(newline="", encoding="utf-8") as handle:
+        return list(csv.DictReader(handle))
+
+
+def shell_support(row: dict[str, str]) -> tuple[int, int, int]:
+    return tuple(sorted(int(row[key]) for key in ("output_shell", "first_input_shell", "second_input_shell")))
+
+
+def status_for_group(face_class: str, residual_band: str, in_k34_signature_ledger: bool) -> str:
+    if face_class == "k3_endpoint_face":
+        return "covered_by_U3_endpoint_chart"
+    if face_class == "k4_endpoint_safe_face":
+        return "covered_inside_U4_chart_after_U4_radius_is_fixed"
+    if face_class == "k3_k4_skeleton_bridge_face":
+        return "open_skeleton_bridge_cover"
+    if face_class == "window_residual_face" and not in_k34_signature_ledger:
+        return "outside_k34_signature_rows_support_level_selector_exclusion_still_required"
+    if face_class == "window_residual_face" and residual_band == "mixed_i3_i4_residual":
+        return "open_mixed_residual_leakage_or_involution_classification"
+    if face_class == "window_residual_face":
+        return "open_single_band_residual_leakage_or_support_certificate"
+    return "unclassified"
+
+
+def build_face_ledger(rows: list[dict[str, str]]) -> list[dict[str, Any]]:
+    groups: dict[tuple[str, str, str, bool], dict[str, Any]] = {}
+    support_sets: dict[tuple[str, str, str, bool], set[tuple[int, int, int]]] = defaultdict(set)
+    signature_sets: dict[tuple[str, str, str, bool], Counter[str]] = defaultdict(Counter)
+
+    for row in rows:
+        in_k34_signature_ledger = row["in_signature_ledger"] == "True"
+        key = (
+            row["face_class"],
+            row["residual_band"],
+            row["outside_skeleton_slot_count"],
+            in_k34_signature_ledger,
+        )
+        record = groups.setdefault(
+            key,
+            {
+                "face_class": row["face_class"],
+                "residual_band": row["residual_band"],
+                "outside_skeleton_slot_count": int(row["outside_skeleton_slot_count"]),
+                "in_k34_signature_ledger": in_k34_signature_ledger,
+                "ordered_triad_count": 0,
+                "effective_ordered_triad_count": 0,
+                "ordered_shell_face_rows": 0,
+            },
+        )
+        record["ordered_triad_count"] += int(row["ordered_triad_count"])
+        record["effective_ordered_triad_count"] += int(row["effective_ordered_triad_count"])
+        record["ordered_shell_face_rows"] += 1
+        support_sets[key].add(shell_support(row))
+        signature_sets[key][row["ordered_signature"]] += int(row["effective_ordered_triad_count"])
+
+    ledger = []
+    for key, record in groups.items():
+        face_class, residual_band, _outside, in_k34_signature_ledger = key
+        top_supports = sorted(
+            support_sets[key],
+            key=lambda support: (
+                -sum(
+                    int(row["effective_ordered_triad_count"])
+                    for row in rows
+                    if shell_support(row) == support
+                    and row["face_class"] == face_class
+                    and row["residual_band"] == residual_band
+                    and (row["in_signature_ledger"] == "True") == in_k34_signature_ledger
+                ),
+                support,
+            ),
+        )[:8]
+        record["support_count"] = len(support_sets[key])
+        record["top_supports"] = [list(support) for support in top_supports]
+        record["top_signatures"] = [
+            {"signature": sig, "effective_ordered_triad_count": count}
+            for sig, count in signature_sets[key].most_common(8)
+        ]
+        record["cover_status"] = status_for_group(face_class, residual_band, in_k34_signature_ledger)
+        ledger.append(record)
+
+    return sorted(
+        ledger,
+        key=lambda row: (
+            row["cover_status"].startswith("covered"),
+            row["face_class"],
+            row["residual_band"],
+            row["outside_skeleton_slot_count"],
+            row["in_k34_signature_ledger"],
+        ),
+    )
+
+
+def build_mixed_support_ledger(rows: list[dict[str, str]]) -> list[dict[str, Any]]:
+    selector_set = set(SELECTOR_SIGNATURES)
+    supports: dict[tuple[int, int, int], dict[str, Any]] = {}
+    signature_sets: dict[tuple[int, int, int], Counter[str]] = defaultdict(Counter)
+    selected_signature_sets: dict[tuple[int, int, int], Counter[str]] = defaultdict(Counter)
+
+    for row in rows:
+        if row["face_class"] != "window_residual_face" or row["residual_band"] != "mixed_i3_i4_residual":
+            continue
+        effective_count = int(row["effective_ordered_triad_count"])
+        if effective_count == 0:
+            continue
+        support = shell_support(row)
+        record = supports.setdefault(
+            support,
+            {
+                "support": " ".join(str(value) for value in support),
+                "effective_ordered_triad_count": 0,
+                "ordered_shell_face_rows": 0,
+                "selected_family_effective_triad_count": 0,
+                "has_selected_family_signature": False,
+            },
+        )
+        record["effective_ordered_triad_count"] += effective_count
+        record["ordered_shell_face_rows"] += 1
+        signature_sets[support][row["ordered_signature"]] += effective_count
+        if row["ordered_signature"] in selector_set:
+            record["selected_family_effective_triad_count"] += effective_count
+            record["has_selected_family_signature"] = True
+            selected_signature_sets[support][row["ordered_signature"]] += effective_count
+
+    endpoint_gap_if_in_strip = K4_ENDPOINT_THRESHOLD - A3_G4_UPPER
+    ledger = []
+    for support, record in supports.items():
+        record["all_effective_signatures"] = [
+            f"{signature}:{count}" for signature, count in signature_sets[support].most_common()
+        ]
+        record["selected_family_signatures"] = [
+            f"{signature}:{count}" for signature, count in selected_signature_sets[support].most_common()
+        ]
+        if record["has_selected_family_signature"]:
+            record["cover_status"] = "selector_bearing_support_requires_certificate_or_existing_closure"
+            record["analytic_endpoint_gap_if_in_strip"] = ""
+        else:
+            record["cover_status"] = "closed_no_selector_support_exclusion"
+            record["analytic_endpoint_gap_if_in_strip"] = endpoint_gap_if_in_strip
+        ledger.append(record)
+
+    return sorted(
+        ledger,
+        key=lambda row: (
+            row["has_selected_family_signature"],
+            -row["effective_ordered_triad_count"],
+            row["support"],
+        ),
+    )
+
+
+def build_residual_support_ledger(rows: list[dict[str, str]]) -> list[dict[str, Any]]:
+    selector_set = set(SELECTOR_SIGNATURES)
+    supports: dict[tuple[int, int, int], dict[str, Any]] = {}
+    signature_sets: dict[tuple[int, int, int], Counter[str]] = defaultdict(Counter)
+    band_sets: dict[tuple[int, int, int], Counter[str]] = defaultdict(Counter)
+    selected_signature_sets: dict[tuple[int, int, int], Counter[str]] = defaultdict(Counter)
+
+    for row in rows:
+        if row["face_class"] != "window_residual_face":
+            continue
+        effective_count = int(row["effective_ordered_triad_count"])
+        if effective_count == 0:
+            continue
+        support = shell_support(row)
+        record = supports.setdefault(
+            support,
+            {
+                "support": " ".join(str(value) for value in support),
+                "effective_ordered_triad_count": 0,
+                "ordered_shell_face_rows": 0,
+                "selected_family_effective_triad_count": 0,
+                "has_selected_family_signature": False,
+            },
+        )
+        record["effective_ordered_triad_count"] += effective_count
+        record["ordered_shell_face_rows"] += 1
+        band_sets[support][row["residual_band"]] += effective_count
+        signature_sets[support][row["ordered_signature"]] += effective_count
+        if row["ordered_signature"] in selector_set:
+            record["selected_family_effective_triad_count"] += effective_count
+            record["has_selected_family_signature"] = True
+            selected_signature_sets[support][row["ordered_signature"]] += effective_count
+
+    endpoint_gap_if_in_strip = K4_ENDPOINT_THRESHOLD - A3_G4_UPPER
+    ledger = []
+    for support, record in supports.items():
+        record["residual_bands"] = [
+            f"{band}:{count}" for band, count in band_sets[support].most_common()
+        ]
+        record["all_effective_signatures"] = [
+            f"{signature}:{count}" for signature, count in signature_sets[support].most_common()
+        ]
+        record["selected_family_signatures"] = [
+            f"{signature}:{count}" for signature, count in selected_signature_sets[support].most_common()
+        ]
+        if record["has_selected_family_signature"]:
+            record["cover_status"] = "selector_bearing_residual_support_requires_certificate_or_taxonomy"
+            record["analytic_endpoint_gap_if_in_strip"] = ""
+        else:
+            record["cover_status"] = "closed_no_selector_support_exclusion"
+            record["analytic_endpoint_gap_if_in_strip"] = endpoint_gap_if_in_strip
+        ledger.append(record)
+
+    return sorted(
+        ledger,
+        key=lambda row: (
+            row["has_selected_family_signature"],
+            -row["effective_ordered_triad_count"],
+            row["support"],
+        ),
+    )
+
+
+def build_skeleton_bridge_support_ledger(rows: list[dict[str, str]]) -> list[dict[str, Any]]:
+    selector_set = set(SELECTOR_SIGNATURES)
+    supports: dict[tuple[int, int, int], dict[str, Any]] = {}
+    signature_sets: dict[tuple[int, int, int], Counter[str]] = defaultdict(Counter)
+    selected_signature_sets: dict[tuple[int, int, int], Counter[str]] = defaultdict(Counter)
+
+    for row in rows:
+        if row["face_class"] != "k3_k4_skeleton_bridge_face":
+            continue
+        effective_count = int(row["effective_ordered_triad_count"])
+        if effective_count == 0:
+            continue
+        support = shell_support(row)
+        record = supports.setdefault(
+            support,
+            {
+                "support": " ".join(str(value) for value in support),
+                "effective_ordered_triad_count": 0,
+                "ordered_shell_face_rows": 0,
+                "selected_family_effective_triad_count": 0,
+                "has_selected_family_signature": False,
+            },
+        )
+        record["effective_ordered_triad_count"] += effective_count
+        record["ordered_shell_face_rows"] += 1
+        signature_sets[support][row["ordered_signature"]] += effective_count
+        if row["ordered_signature"] in selector_set:
+            record["selected_family_effective_triad_count"] += effective_count
+            record["has_selected_family_signature"] = True
+            selected_signature_sets[support][row["ordered_signature"]] += effective_count
+
+    endpoint_gap_if_in_strip = K4_ENDPOINT_THRESHOLD - A3_G4_UPPER
+    ledger = []
+    for support, record in supports.items():
+        record["all_effective_signatures"] = [
+            f"{signature}:{count}" for signature, count in signature_sets[support].most_common()
+        ]
+        record["selected_family_signatures"] = [
+            f"{signature}:{count}" for signature, count in selected_signature_sets[support].most_common()
+        ]
+        if record["has_selected_family_signature"]:
+            record["cover_status"] = "selector_bearing_skeleton_support_requires_endpoint_chart_or_certificate"
+            record["analytic_endpoint_gap_if_in_strip"] = ""
+        else:
+            record["cover_status"] = "closed_no_selector_support_exclusion"
+            record["analytic_endpoint_gap_if_in_strip"] = endpoint_gap_if_in_strip
+        ledger.append(record)
+
+    return sorted(
+        ledger,
+        key=lambda row: (
+            row["has_selected_family_signature"],
+            -row["effective_ordered_triad_count"],
+            row["support"],
+        ),
+    )
+
+
+def leakage_residual_shells(support: tuple[int, ...]) -> set[int]:
+    support_set = set(support)
+    residual = (support_set & W34_I3_RESIDUAL_SHELLS) | (support_set & W34_I4_RESIDUAL_SHELLS)
+    return residual
+
+
+def support_tuple_from_label(label: str) -> tuple[int, ...]:
+    return tuple(int(part) for part in label.split())
+
+
+def residual_leakage_budget_row(row: dict[str, Any]) -> dict[str, Any]:
+    support = support_tuple_from_label(row["support"])
+    residual_shells = leakage_residual_shells(support)
+    problem = _build_exact_shell_problem(list(support))
+    if problem is None:
+        raise RuntimeError(f"empty exact shell problem for support {support}")
+    shells = np.asarray(problem["k2s"], dtype=np.int64)
+    min_shell = float(np.min(shells))
+    n_modes = int(problem["N"])
+    buckets = {
+        slots: {
+            "residual_slots": slots,
+            "triad_count": 0,
+            "coarse_cauchy_coefficient_sum": 0.0,
+        }
+        for slots in range(4)
+    }
+    for ell_raw, r_raw, s_raw in zip(
+        problem["ell_idx"],
+        problem["r_idx"],
+        problem["s_idx"],
+        strict=True,
+    ):
+        bases = [int(ell_raw % n_modes), int(r_raw % n_modes), int(s_raw % n_modes)]
+        residual_slots = sum(1 for base in bases if int(shells[base]) in residual_shells)
+        ell_base, r_base, s_base = bases
+        coeff = (
+            float(shells[ell_base])
+            * math.sqrt(float(shells[s_base]))
+            / math.sqrt(
+                8.0
+                * float(shells[ell_base])
+                * float(shells[r_base])
+                * float(shells[s_base])
+                * min_shell
+            )
+        )
+        buckets[residual_slots]["triad_count"] += 1
+        buckets[residual_slots]["coarse_cauchy_coefficient_sum"] += abs(float(coeff))
+    c1 = float(buckets[1]["coarse_cauchy_coefficient_sum"])
+    c2 = float(buckets[2]["coarse_cauchy_coefficient_sum"])
+    c3 = float(buckets[3]["coarse_cauchy_coefficient_sum"])
+    return {
+        "support": row["support"],
+        "residual_shells": " ".join(str(value) for value in sorted(residual_shells)),
+        "mode_count": n_modes,
+        "triad_count": int(len(problem["ell_idx"])),
+        "selected_family_signatures": row["selected_family_signatures"],
+        "effective_ordered_triad_count": row["effective_ordered_triad_count"],
+        "selected_family_effective_triad_count": row["selected_family_effective_triad_count"],
+        "coarse_cauchy_c1_one_residual_slot": c1,
+        "coarse_cauchy_c2_two_residual_slots": c2,
+        "coarse_cauchy_c3_three_residual_slots": c3,
+        "coarse_cauchy_at_delta_0p01": c1 * 0.01**0.5 + c2 * 0.01 + c3 * 0.01**1.5,
+        "coarse_cauchy_at_delta_0p05": c1 * 0.05**0.5 + c2 * 0.05 + c3 * 0.05**1.5,
+        "coarse_cauchy_at_delta_0p10": c1 * 0.10**0.5 + c2 * 0.10 + c3 * 0.10**1.5,
+        "by_residual_slots": [buckets[index] for index in range(4)],
+    }
+
+
+def build_residual_leakage_budget_ledger(
+    residual_support_ledger: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    rows = [
+        residual_leakage_budget_row(row)
+        for row in residual_support_ledger
+        if row["has_selected_family_signature"]
+    ]
+    return sorted(
+        rows,
+        key=lambda row: (
+            -row["coarse_cauchy_c1_one_residual_slot"],
+            row["support"],
+        ),
+    )
+
+
+def parse_raw_below_logs(pattern: str) -> list[dict[str, Any]]:
+    endpoint = Decimal(str(K4_ENDPOINT_THRESHOLD))
+    parsed: list[dict[str, Any]] = []
+    for path in sorted(Path().glob(pattern)):
+        text = path.read_text(errors="replace", encoding="utf-8")
+        interval = re.search(
+            r"CERTIFIED INTERVAL: C\(shells ([^)]+)\) in \[([^,]+), ([^\]]+)\]",
+            text,
+        )
+        if not interval:
+            continue
+        support = tuple(int(part.strip()) for part in interval.group(1).split(","))
+        lower = Decimal(interval.group(2).strip())
+        upper = Decimal(interval.group(3).strip())
+        gap = endpoint - upper
+        mpmath_value = re.search(r"mpmath R\(x\*\) = ([0-9.eE+\-]+)", text)
+        statuses = re.findall(r"STATUS: (.+)", text)
+        global_certs = re.findall(r"GLOBAL CERT: (.+)", text)
+        projected_gradients = re.findall(
+            r"Projected grad(?:ient)? norm\s*:?\s*([0-9.eE+\-]+)",
+            text,
+        )
+        mode_triad = re.search(r"C\(shells [^)]+\) modes N=(\d+), triads T=(\d+)", text)
+        active_modes = re.findall(r"Active modes:\s+(\d+)/(\d+)", text)
+        hessian_skipped = "Hessian skipped (--no-hessian)" in text
+        global_pass = bool(global_certs and global_certs[-1].startswith("PASS"))
+        below_endpoint = gap > 0
+        if below_endpoint and global_pass and hessian_skipped:
+            packaging_status = "raw_below_global_replay_needs_local_hessian_or_interval_packaging"
+        elif below_endpoint and global_pass:
+            packaging_status = "raw_below_global_replay_with_local_packaging_check_log"
+        elif below_endpoint:
+            packaging_status = "raw_below_without_global_replay"
+        else:
+            packaging_status = "not_below_endpoint"
+        parsed.append(
+            {
+                "support": ",".join(str(value) for value in support),
+                "log_path": str(path),
+                "mode_count": "" if not mode_triad else int(mode_triad.group(1)),
+                "triad_count": "" if not mode_triad else int(mode_triad.group(2)),
+                "active_modes": "" if not active_modes else f"{active_modes[-1][0]}/{active_modes[-1][1]}",
+                "projected_grad_norm": "" if not projected_gradients else projected_gradients[-1],
+                "mpmath_R": "" if not mpmath_value else mpmath_value.group(1),
+                "certified_lower": str(lower),
+                "certified_upper": str(upper),
+                "interval_width": str(upper - lower),
+                "endpoint_gap_using_certified_upper": str(gap),
+                "below_endpoint_by_certified_upper": below_endpoint,
+                "hessian_skipped": hessian_skipped,
+                "status": "" if not statuses else statuses[-1].strip(),
+                "global_cert": "" if not global_certs else global_certs[-1].strip(),
+                "packaging_status": packaging_status,
+            }
+        )
+    return sorted(parsed, key=lambda row: Decimal(str(row["endpoint_gap_using_certified_upper"])))
+
+
+def raw_below_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    gaps = [Decimal(str(row["endpoint_gap_using_certified_upper"])) for row in rows]
+    return {
+        "raw_below_log_count": len(rows),
+        "all_below_endpoint": bool(rows) and all(bool(row["below_endpoint_by_certified_upper"]) for row in rows),
+        "all_global_replay_pass": bool(rows) and all(str(row["global_cert"]).startswith("PASS") for row in rows),
+        "all_hessian_skipped": bool(rows) and all(bool(row["hessian_skipped"]) for row in rows),
+        "minimum_endpoint_gap_using_certified_upper": "" if not gaps else str(min(gaps)),
+        "minimum_gap_support": "" if not rows else rows[0]["support"],
+        "packaging_status_counts": dict(Counter(str(row["packaging_status"]) for row in rows)),
+    }
+
+
+def parse_raw_below_boundary_summaries(
+    pattern: str,
+    allowed_supports: set[str] | None = None,
+) -> list[dict[str, Any]]:
+    by_face: dict[tuple[str, str], dict[str, Any]] = {}
+    for path in sorted(Path().glob(pattern)):
+        payload = read_json(path)
+        for row in payload.get("rows", []):
+            support = str(row["support"]).replace(",", " ")
+            if allowed_supports is not None and support not in allowed_supports:
+                continue
+            boundary = str(row["boundary"])
+            key = (support, boundary)
+            record = {
+                "support": support,
+                "boundary": boundary,
+                "R": float(row["R"]),
+                "G4": float(row["G4"]),
+                "target_G4": float(row["target_G4"]),
+                "constraint_abs": float(row["constraint_abs"]),
+                "gap_to_endpoint": float(row["gap_to_endpoint"]),
+                "interval_endpoint_gap_lower_positive": bool(
+                    row.get("interval_value_replay", {}).get("endpoint_gap_lower_positive", False)
+                ),
+                "summary_json": str(path),
+            }
+            previous = by_face.get(key)
+            if previous is None or record["R"] > float(previous["R"]):
+                by_face[key] = record
+    return sorted(by_face.values(), key=lambda row: (row["support"], row["boundary"]))
+
+
+def raw_below_boundary_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    expected_face_count = 10
+    gaps = [float(row["gap_to_endpoint"]) for row in rows]
+    constraints = [float(row["constraint_abs"]) for row in rows]
+    tight = min(rows, key=lambda row: float(row["gap_to_endpoint"])) if rows else None
+    return {
+        "raw_below_boundary_face_count": len(rows),
+        "expected_boundary_face_count": expected_face_count,
+        "complete_boundary_face_ledger": len(rows) == expected_face_count,
+        "all_below_endpoint": bool(rows) and all(float(row["gap_to_endpoint"]) > 0.0 for row in rows),
+        "all_interval_endpoint_gap_lower_positive": bool(rows)
+        and all(bool(row["interval_endpoint_gap_lower_positive"]) for row in rows),
+        "minimum_boundary_gap_to_endpoint": "" if not gaps else min(gaps),
+        "maximum_boundary_R": "" if not rows else max(float(row["R"]) for row in rows),
+        "maximum_constraint_abs": "" if not constraints else max(constraints),
+        "tightest_boundary_face": "" if tight is None else f"{tight['support']} {tight['boundary']}",
+    }
+
+
+def parse_latest_summary(pattern: str) -> dict[str, Any]:
+    matches = sorted(Path().glob(pattern), key=lambda path: path.stat().st_mtime)
+    if not matches:
+        return {}
+    payload = read_json(matches[-1])
+    payload["summary_json"] = str(matches[-1])
+    return payload
+
+
+def parse_all_summaries(pattern: str) -> list[dict[str, Any]]:
+    payloads: list[dict[str, Any]] = []
+    for path in sorted(Path().glob(pattern), key=lambda item: item.stat().st_mtime):
+        payload = read_json(path)
+        payload["summary_json"] = str(path)
+        payloads.append(payload)
+    return payloads
+
+
+def residual_tube_certificate_summary(payload: dict[str, Any]) -> dict[str, Any]:
+    if not payload:
+        return {}
+    rows = payload.get("rows", [])
+    above = [row for row in rows if float(row.get("gap_to_endpoint", 0.0)) < 0.0]
+    below = [row for row in rows if float(row.get("gap_to_endpoint", 0.0)) > 0.0]
+    tight = min(rows, key=lambda row: float(row.get("gap_to_endpoint", 0.0))) if rows else None
+    below_tight = min(below, key=lambda row: float(row.get("gap_to_endpoint", 0.0))) if below else None
+    return {
+        "summary_json": payload.get("summary_json", ""),
+        "status": payload.get("status", ""),
+        "delta_max": payload.get("delta_max", ""),
+        "support_count": len(rows),
+        "above_endpoint_count": len(above),
+        "above_endpoint_supports": [str(row.get("support", "")) for row in above],
+        "below_endpoint_count": len(below),
+        "all_feasible_with_1e_minus_8": bool(payload.get("all_feasible_with_1e_minus_8", False)),
+        "max_constraint_violation": payload.get("max_constraint_violation", ""),
+        "max_R": payload.get("max_R", ""),
+        "minimum_gap_to_endpoint": payload.get("min_gap_to_endpoint", ""),
+        "tightest_support": "" if tight is None else str(tight.get("support", "")),
+        "minimum_positive_gap_to_endpoint": ""
+        if below_tight is None
+        else float(below_tight.get("gap_to_endpoint", 0.0)),
+        "minimum_positive_gap_support": "" if below_tight is None else str(below_tight.get("support", "")),
+        "rows": rows,
+    }
+
+
+def merge_residual_tube_certificate_payloads(payloads: list[dict[str, Any]]) -> dict[str, Any]:
+    if not payloads:
+        return {}
+    by_support: dict[str, dict[str, Any]] = {}
+    for payload in payloads:
+        for row in payload.get("rows", []):
+            support = str(row.get("support", "")).replace(",", " ")
+            if not support:
+                continue
+            record = dict(row)
+            record["source_summary_json"] = payload.get("summary_json", "")
+            violation = float(record.get("violation", 0.0))
+            score = float(record.get("R", 0.0)) - 1.0e3 * max(0.0, violation - 1.0e-8)
+            prior = by_support.get(support)
+            prior_violation = float(prior.get("violation", 0.0)) if prior else 0.0
+            prior_score = (
+                float(prior.get("R", 0.0)) - 1.0e3 * max(0.0, prior_violation - 1.0e-8)
+                if prior
+                else -float("inf")
+            )
+            if prior is None or score > prior_score:
+                by_support[support] = record
+    rows = [by_support[key] for key in sorted(by_support)]
+    return {
+        "status": "merged constrained residual-tube certificate summaries",
+        "summary_json": "; ".join(payload.get("summary_json", "") for payload in payloads),
+        "summary_jsons": [payload.get("summary_json", "") for payload in payloads],
+        "endpoint_threshold": payloads[-1].get("endpoint_threshold", ""),
+        "delta_max": payloads[-1].get("delta_max", ""),
+        "rows": rows,
+        "max_R": max((float(row.get("R", 0.0)) for row in rows), default=""),
+        "min_gap_to_endpoint": min(
+            (float(row.get("gap_to_endpoint", 0.0)) for row in rows),
+            default="",
+        ),
+        "max_constraint_violation": max(
+            (float(row.get("violation", 0.0)) for row in rows),
+            default="",
+        ),
+        "all_feasible_with_1e_minus_8": bool(rows)
+        and all(float(row.get("violation", 0.0)) <= 1.0e-8 for row in rows),
+        "all_feasible_with_1e_minus_7": bool(rows)
+        and all(float(row.get("violation", 0.0)) <= 1.0e-7 for row in rows),
+    }
+
+
+def residual_boundary_tangent_summary(payloads: list[dict[str, Any]]) -> dict[str, Any]:
+    if not payloads:
+        return {}
+    by_support: dict[str, dict[str, Any]] = {}
+    for payload in payloads:
+        for row in payload.get("rows", []):
+            if row.get("cert_sign_preserving_l2_radius") in ("", None):
+                continue
+            support = str(row.get("support", "")).replace(",", " ")
+            prior = by_support.get(support)
+            record = dict(row)
+            record["summary_json"] = payload.get("summary_json", "")
+            if prior is None or float(record.get("R", 0.0)) > float(prior.get("R", 0.0)):
+                by_support[support] = record
+    rows = [by_support[key] for key in sorted(by_support)]
+    radii = [float(row["cert_sign_preserving_l2_radius"]) for row in rows]
+    weakest = min(rows, key=lambda row: float(row["cert_sign_preserving_l2_radius"])) if rows else None
+    return {
+        "summary_jsons": [payload.get("summary_json", "") for payload in payloads],
+        "certified_row_count": len(rows),
+        "certified_supports": [str(row.get("support", "")) for row in rows],
+        "all_certified_escape_signs": bool(rows)
+        and all(
+            float(row.get("cert_sign_preserving_l2_radius", 0.0)) > 0.0
+            and abs(float(row.get("full_DG4_F", 0.0))) > 0.0
+            for row in rows
+        ),
+        "minimum_certified_radius": "" if not radii else min(radii),
+        "weakest_chart": "" if weakest is None else str(weakest.get("chart", weakest.get("support", ""))),
+        "rows": rows,
+    }
+
+
+def candidate_residual_x_fraction(support: tuple[int, ...], npz_path_text: str) -> float | None:
+    if not npz_path_text:
+        return None
+    npz_path = Path(npz_path_text)
+    if not npz_path.is_absolute():
+        npz_path = REPO_ROOT / npz_path
+    if not npz_path.exists():
+        return None
+    residual_shells = leakage_residual_shells(support)
+    if not residual_shells:
+        return 0.0
+    problem = _build_exact_shell_problem(list(support))
+    if problem is None:
+        return None
+    shells = np.asarray(problem["k2s"], dtype=np.float64)
+    try:
+        with np.load(npz_path, allow_pickle=True) as data:
+            params = np.asarray(data["best_x"], dtype=np.float64)
+    except Exception:
+        return None
+    if params.size != 4 * shells.size:
+        return None
+    amplitudes = np.exp(params[3::4])
+    x_mass = shells * amplitudes
+    total = float(np.sum(x_mass))
+    if total <= 0.0:
+        return None
+    mask = np.isin(shells.astype(np.int64), np.asarray(sorted(residual_shells), dtype=np.int64))
+    return float(np.sum(x_mass[mask]) / total)
+
+
+def enrich_single_band_residual_summary(payload: dict[str, Any]) -> dict[str, Any]:
+    if not payload:
+        return payload
+    above_rows: list[dict[str, Any]] = []
+    for row in payload.get("support_summaries", []):
+        support = tuple(int(value) for value in row.get("support", []))
+        row["residual_shells"] = sorted(leakage_residual_shells(support))
+        for candidate_key in ("best_feasible", "best_any"):
+            candidate = row.get(candidate_key) or {}
+            fraction = candidate_residual_x_fraction(support, str(candidate.get("npz", "")))
+            if fraction is not None:
+                candidate["residual_x_fraction"] = fraction
+        gap = row.get("best_feasible_gap_to_endpoint_threshold")
+        fraction = (row.get("best_feasible") or {}).get("residual_x_fraction")
+        if gap is not None and fraction is not None and float(gap) < 0.0:
+            above_rows.append(row)
+    if above_rows:
+        tight = min(
+            above_rows,
+            key=lambda row: float((row.get("best_feasible") or {})["residual_x_fraction"]),
+        )
+        payload["above_endpoint_min_residual_x_fraction"] = float(
+            (tight.get("best_feasible") or {})["residual_x_fraction"]
+        )
+        payload["above_endpoint_min_residual_x_fraction_support"] = " ".join(
+            str(value) for value in tight.get("support", [])
+        )
+    else:
+        payload["above_endpoint_min_residual_x_fraction"] = ""
+        payload["above_endpoint_min_residual_x_fraction_support"] = ""
+    return payload
+
+
+def bridge_certificate_summary(payload: dict[str, Any]) -> dict[str, Any]:
+    rows = payload.get("rows", [])
+    certified_rows = [
+        row
+        for row in rows
+        if row.get("cert_sign_preserving_l2_radius") not in ("", None)
+    ]
+    radii = [float(row["cert_sign_preserving_l2_radius"]) for row in certified_rows]
+    weakest = None
+    if certified_rows:
+        weakest = min(certified_rows, key=lambda row: float(row["cert_sign_preserving_l2_radius"]))
+    return {
+        "summary_json": payload.get("summary_json", ""),
+        "row_count": len(rows),
+        "certified_row_count": len(certified_rows),
+        "all_certified_escape_signs": bool(certified_rows)
+        and all(
+            float(row.get("cert_sign_preserving_l2_radius", 0.0)) > 0.0
+            and abs(float(row.get("full_DG4_F", 0.0))) > 0.0
+            for row in certified_rows
+        ),
+        "minimum_certified_radius": "" if not radii else min(radii),
+        "weakest_chart": "" if weakest is None else str(weakest.get("chart", weakest.get("support", ""))),
+        "value_rel_slack": payload.get("rounded_certificate", {}).get("value_rel_slack", ""),
+        "grad_rel_pad": payload.get("rounded_certificate", {}).get("grad_rel_pad", ""),
+        "hessian_rel_pad": payload.get("rounded_certificate", {}).get("hessian_rel_pad", ""),
+        "radius_safety_factor": payload.get("rounded_certificate", {}).get("radius_safety_factor", ""),
+        "rows": certified_rows,
+    }
+
+
+def targeted_screen_summary(payload: dict[str, Any]) -> dict[str, Any]:
+    if not payload:
+        return payload
+    rows = payload.get("support_summaries", [])
+    gaps = [
+        float(row["best_feasible_gap_to_endpoint_threshold"])
+        for row in rows
+        if row.get("best_feasible_gap_to_endpoint_threshold") is not None
+    ]
+    tight = None
+    if rows:
+        tight_rows = [
+            row for row in rows if row.get("best_feasible_gap_to_endpoint_threshold") is not None
+        ]
+        if tight_rows:
+            tight = min(tight_rows, key=lambda row: float(row["best_feasible_gap_to_endpoint_threshold"]))
+    payload["support_count"] = len(rows)
+    payload["all_excluded_against_endpoint"] = bool(rows) and all(gap > 0.0 for gap in gaps)
+    payload["minimum_endpoint_gap"] = "" if not gaps else min(gaps)
+    payload["tightest_support"] = "" if tight is None else " ".join(str(value) for value in tight.get("support", []))
+    return payload
+
+
+def build_obligations(
+    selector_screen: dict[str, Any],
+    v13: dict[str, Any],
+    skeleton_support_summary: dict[str, Any],
+    skeleton_screen_summary: dict[str, Any],
+    bridge_summary: dict[str, Any],
+    single_band_screen_summary: dict[str, Any],
+    residual_tube_screen_summary: dict[str, Any],
+    residual_tube_certificate: dict[str, Any],
+    residual_boundary_tangent: dict[str, Any],
+    residual_support_summary: dict[str, Any],
+    raw_summary: dict[str, Any],
+    boundary_summary: dict[str, Any],
+    interior_summary: dict[str, Any],
+    exterior_summary: dict[str, Any],
+) -> list[dict[str, Any]]:
+    selector_supports = [tuple(row["shells"]) for row in selector_screen.get("rows", [])]
+    v13_gap = v13["quotient_gate_checks"]["observed"]["min_endpoint_gap_after_residual_correction"]
+    raw_status = "needs_packaging_or_replacement"
+    raw_evidence = "No raw-below logs were parsed. Existing support certificate status cannot be audited."
+    raw_next_action = (
+        "Parse raw-below support logs, boundary ledgers, and interior diagnostics before making "
+        "a proof-facing status claim."
+    )
+    if raw_summary["raw_below_log_count"]:
+        raw_evidence = (
+            f"{raw_summary['raw_below_log_count']} logs parsed; all below endpoint="
+            f"{raw_summary['all_below_endpoint']}; all global replay pass="
+            f"{raw_summary['all_global_replay_pass']}; minimum certified-upper gap="
+            f"{raw_summary['minimum_endpoint_gap_using_certified_upper']} on support "
+            f"{raw_summary['minimum_gap_support']}."
+        )
+        if raw_summary["all_below_endpoint"] and raw_summary["all_global_replay_pass"]:
+            raw_status = "numerically_below_endpoint_local_packaging_pending"
+            raw_next_action = (
+                "Close the raw-below strip boundaries and replace the skipped Hessian logs by "
+                "a quotient/local certificate or a structural strip argument."
+            )
+    boundary_evidence = "No exact-boundary ledger was parsed."
+    if boundary_summary["raw_below_boundary_face_count"]:
+        boundary_evidence = (
+            f"{boundary_summary['raw_below_boundary_face_count']}/"
+            f"{boundary_summary['expected_boundary_face_count']} boundary faces parsed; "
+            f"complete={boundary_summary['complete_boundary_face_ledger']}; "
+            f"all below endpoint={boundary_summary['all_below_endpoint']}; "
+            f"minimum boundary gap={boundary_summary['minimum_boundary_gap_to_endpoint']} "
+            f"on {boundary_summary['tightest_boundary_face']}."
+        )
+        if (
+            raw_summary["all_below_endpoint"]
+            and raw_summary["all_global_replay_pass"]
+            and boundary_summary["complete_boundary_face_ledger"]
+            and boundary_summary["all_below_endpoint"]
+            and boundary_summary["all_interval_endpoint_gap_lower_positive"]
+        ):
+            raw_status = "boundary_closed_interior_local_packaging_pending"
+            raw_next_action = (
+                "Package the five interior cases; boundaries are closed, so only an interior "
+                "critical-point exclusion remains."
+            )
+    interior_evidence = "No interior quotient diagnostic was parsed."
+    if interior_summary:
+        interior_evidence = (
+            f"Interior diagnostic {interior_summary.get('summary_json')}; "
+            f"inactive loga signs nonpositive="
+            f"{interior_summary.get('all_inactive_loga_grad_nonpositive')}; "
+            f"active quotient strictly negative="
+            f"{interior_summary.get('all_active_quotient_hessians_negative')}; "
+            f"max quotient Hessian eig="
+            f"{interior_summary.get('maximum_quotient_hessian_eig')}; "
+            f"max satellite X fraction="
+            f"{interior_summary.get('maximum_satellite_x_fraction')}; "
+            f"max positive satellite correction="
+            f"{interior_summary.get('maximum_observed_positive_satellite_correction')}; "
+            f"one-satellite channels vanish="
+            f"{interior_summary.get('all_one_satellite_channels_vanish')}; "
+            f"satellite release Hessians positive="
+            f"{interior_summary.get('all_satellite_release_hessians_positive')}; "
+            f"min cubic half-gap tube delta="
+            f"{interior_summary.get('minimum_cubic_halfgap_tube_delta')}; "
+            f"min absolute two-plus half-gap tube delta="
+            f"{interior_summary.get('minimum_two_plus_abs_halfgap_tube_delta')}; "
+            f"max observed fraction of absolute two-plus tube="
+            f"{interior_summary.get('maximum_observed_fraction_over_two_plus_abs_halfgap_tube')}; "
+            f"min endpoint gap="
+            f"{interior_summary.get('minimum_endpoint_gap_using_certified_upper')}."
+        )
+        if (
+            raw_status == "boundary_closed_interior_local_packaging_pending"
+            and interior_summary.get("all_inactive_loga_grad_nonpositive")
+            and not interior_summary.get("all_active_quotient_hessians_negative")
+        ):
+            raw_status = "boundary_closed_inactive_signs_closed_active_center_flat_pending"
+            raw_next_action = (
+                "Resolve the active center-flat directions; the inactive KKT signs and strip "
+                "boundaries are already closed."
+            )
+        if (
+            raw_status in {
+                "boundary_closed_interior_local_packaging_pending",
+                "boundary_closed_inactive_signs_closed_active_center_flat_pending",
+            }
+            and interior_summary.get("all_inactive_loga_grad_nonpositive")
+            and interior_summary.get("all_one_satellite_channels_vanish")
+            and interior_summary.get("all_satellite_release_hessians_positive")
+            and float(
+                interior_summary.get(
+                    "maximum_observed_fraction_over_two_plus_abs_halfgap_tube",
+                    interior_summary.get("maximum_observed_fraction_over_cubic_halfgap_tube", 1.0),
+                )
+            )
+            < 1.0
+        ):
+            raw_status = "boundary_closed_satellite_tube_lemma_pending"
+            raw_next_action = (
+                "State and prove the satellite tube lemma: split each support into its "
+                "three-mode core and satellite complement, use the vanishing one-satellite "
+                "channel plus the positive satellite Hessian of -R, and bound cubic satellite "
+                "terms inside the recorded half-gap tube."
+            )
+    exterior_evidence = "No exterior-of-tube screen was parsed."
+    if exterior_summary:
+        gaps = [
+            float(row["best_feasible_gap_to_endpoint_threshold"])
+            for row in exterior_summary.get("support_summaries", [])
+            if row.get("best_feasible_gap_to_endpoint_threshold") is not None
+        ]
+        exterior_evidence = (
+            f"Exterior screen {exterior_summary.get('summary_json')}; "
+            f"all excluded numerically="
+            f"{exterior_summary.get('all_supports_excluded_numerically')}; "
+            f"minimum exterior gap={'' if not gaps else min(gaps)}; "
+            f"satellite exterior only={exterior_summary.get('satellite_exterior_only')}."
+        )
+        if (
+            raw_status == "boundary_closed_satellite_tube_lemma_pending"
+            and exterior_summary.get("all_supports_excluded_numerically")
+        ):
+            raw_status = "raw_below_tube_exterior_rounded_certificate_packaged"
+            raw_next_action = (
+                "State the raw-below lemma as a rounded certificate-form tube/exterior "
+                "package.  For final theorem-grade form, intervalize the satellite-tube "
+                "coefficient ledger and replace the exterior screen by an outward interval "
+                "certificate."
+            )
+    skeleton_status = "reduced_to_selector_bearing_skeleton_supports"
+    skeleton_evidence = (
+        f"The skeleton bridge ledger has "
+        f"{skeleton_support_summary['skeleton_support_count']} supports: "
+        f"{skeleton_support_summary['no_selector_support_count']} are closed by "
+        f"S4=0 and strip membership, leaving "
+        f"{skeleton_support_summary['selector_bearing_support_count']} "
+        "selector-bearing skeleton supports."
+    )
+    skeleton_next = (
+        "Classify the remaining selector-bearing skeleton supports by endpoint chart "
+        "absorption or a finite local certificate."
+    )
+    if skeleton_screen_summary:
+        survivors = [
+            row for row in skeleton_screen_summary.get("support_summaries", [])
+            if row.get("best_feasible_gap_to_endpoint_threshold") is not None
+            and float(row["best_feasible_gap_to_endpoint_threshold"]) < 0.0
+        ]
+        skeleton_status = "reduced_to_screen_survivor_bridge_atoms"
+        skeleton_evidence += (
+            f" Skeleton survivor screen {skeleton_screen_summary.get('summary_json')}; "
+            f"above-endpoint screen survivors={len(survivors)}."
+        )
+        skeleton_next = (
+            "Package the skeleton survivor atoms, especially {10,26} and {10,20,26}, "
+            "as bridge charts with dynamic escape, or exclude them by local interval certificates."
+        )
+    if bridge_summary:
+        skeleton_status = "bridge_charts_rounded_certificate_packaged"
+        skeleton_evidence += (
+            f" Rounded bridge certificate {bridge_summary.get('summary_json')}; "
+            f"rows={bridge_summary.get('certified_row_count')}; "
+            f"all escape signs certified={bridge_summary.get('all_certified_escape_signs')}; "
+            f"minimum certified radius={bridge_summary.get('minimum_certified_radius')} "
+            f"on {bridge_summary.get('weakest_chart')}."
+        )
+        skeleton_next = (
+            "For final theorem-grade form, replace the rounded float derivative budgets "
+            "by interval/rational outward enclosures; no new bridge search is indicated."
+        )
+    single_band_evidence = "No single-band selector residual screen was parsed."
+    single_band_next = (
+        "Classify the selector-bearing single-band residual supports and define an analytic "
+        "residual-mass tube."
+    )
+    if single_band_screen_summary:
+        single_band_rows = single_band_screen_summary.get("support_summaries", [])
+        above = [
+            row
+            for row in single_band_rows
+            if row.get("best_feasible_gap_to_endpoint_threshold") is not None
+            and float(row["best_feasible_gap_to_endpoint_threshold"]) < 0.0
+        ]
+        near = [
+            row
+            for row in single_band_rows
+            if row.get("best_feasible_gap_to_endpoint_threshold") is not None
+            and 0.0 <= float(row["best_feasible_gap_to_endpoint_threshold"]) < 1.0e-3
+        ]
+        single_band_evidence = (
+            f"Single-band screen {single_band_screen_summary.get('summary_json')}; "
+            f"supports screened={len(single_band_rows)}; "
+            f"above endpoint={len(above)}; within 1e-3 below={len(near)}. "
+            f"Minimum residual X-fraction among above-endpoint candidates="
+            f"{single_band_screen_summary.get('above_endpoint_min_residual_x_fraction')} "
+            f"on {single_band_screen_summary.get('above_endpoint_min_residual_x_fraction_support')}. "
+            "This shows the scalar G4 strip alone is insufficient; the finite tube "
+            "must include a residual-mass/leakage coordinate."
+        )
+        single_band_next = (
+            "Replace the numerical warning by an analytic residual-mass threshold: "
+            "inside the tube prove R<R_*, outside the tube charge transition leakage "
+            "to the finite-atlas defect budget."
+        )
+    residual_status = "reduced_to_selector_bearing_single_band_and_mixed_residuals"
+    residual_next = single_band_next
+    if residual_tube_screen_summary:
+        single_band_evidence += (
+            f" Targeted residual tube screen {residual_tube_screen_summary.get('summary_json')}; "
+            f"delta_res<={residual_tube_screen_summary.get('residual_tube_max_delta')}; "
+            f"supports={residual_tube_screen_summary.get('support_count')}; "
+            f"all excluded={residual_tube_screen_summary.get('all_excluded_against_endpoint')}; "
+            f"minimum gap={residual_tube_screen_summary.get('minimum_endpoint_gap')} "
+            f"on {residual_tube_screen_summary.get('tightest_support')}."
+        )
+        if residual_tube_screen_summary.get("all_excluded_against_endpoint"):
+            residual_status = "residual_tube_delta003_numerically_closed_packaging_pending"
+            residual_next = (
+                "Upgrade the delta_res<=0.03 residual-tube screen to an analytic or interval "
+                "certificate, then state the exterior leakage/defect budget."
+            )
+    if residual_tube_certificate:
+        above_supports = [
+            str(value) for value in residual_tube_certificate.get("above_endpoint_supports", [])
+        ]
+        tangent_supports = {
+            str(value) for value in residual_boundary_tangent.get("certified_supports", [])
+        }
+        missing_tangent = sorted(set(above_supports) - tangent_supports)
+        single_band_evidence += (
+            f" Constrained residual-tube replay {residual_tube_certificate.get('summary_json')}; "
+            f"delta_res<={residual_tube_certificate.get('delta_max')}; "
+            f"supports={residual_tube_certificate.get('support_count')}; "
+            f"above endpoint={residual_tube_certificate.get('above_endpoint_count')} "
+            f"({', '.join(above_supports)}); "
+            f"minimum positive gap among non-escape residual supports="
+            f"{residual_tube_certificate.get('minimum_positive_gap_to_endpoint')} "
+            f"on {residual_tube_certificate.get('minimum_positive_gap_support')}; "
+            f"max constraint violation={residual_tube_certificate.get('max_constraint_violation')}."
+        )
+        if residual_boundary_tangent:
+            single_band_evidence += (
+                f" Residual-boundary tangent certificates parsed="
+                f"{residual_boundary_tangent.get('certified_row_count')}; "
+                f"all escape signs certified="
+                f"{residual_boundary_tangent.get('all_certified_escape_signs')}; "
+                f"minimum certified radius="
+                f"{residual_boundary_tangent.get('minimum_certified_radius')} "
+                f"on {residual_boundary_tangent.get('weakest_chart')}."
+            )
+        if (
+            residual_tube_certificate.get("above_endpoint_count") == 0
+            and (
+                residual_tube_certificate.get("all_feasible_with_1e_minus_8")
+                or residual_tube_certificate.get("all_feasible_with_1e_minus_7")
+            )
+        ):
+            residual_status = "residual_tube_closed_by_constrained_replay"
+            residual_next = (
+                "Promote the constrained replay to outward interval form and state the "
+                "residual-mass tube as an exclusion lemma."
+            )
+        elif (
+            above_supports
+            and not missing_tangent
+            and residual_boundary_tangent.get("all_certified_escape_signs")
+            and (
+                residual_tube_certificate.get("all_feasible_with_1e_minus_8")
+                or residual_tube_certificate.get("all_feasible_with_1e_minus_7")
+            )
+        ):
+            residual_status = "residual_boundary_escape_charts_packaged"
+            residual_next = (
+                "State the residual-mass lemma as: below-endpoint residual supports are "
+                "excluded by constrained replay, and the above-endpoint residual-boundary "
+                "atoms are finite one-sided escape charts.  Final theorem-grade form "
+                "should intervalize the rounded tangent budgets."
+            )
+        elif missing_tangent:
+            residual_status = "residual_boundary_escape_charts_incomplete"
+            residual_next = (
+                "Compute tangent certificates for the remaining above-endpoint residual "
+                f"supports: {', '.join(missing_tangent)}."
+            )
+
+    finite_tube_status = "defined_in_k34_finite_atlas_package"
+    finite_tube_evidence = (
+        "The finite window W34={8,...,31}, normalized strip -b4<=G4<=a3, "
+        "residual tube delta_res<=0.03, bridge boundary charts, and residual-boundary "
+        "charts are stated in the K34 finite-atlas package."
+    )
+    endpoint_status = "endpoint_charts_certificate_form_packaged"
+    endpoint_evidence = (
+        "U3 is imported from the Paper 2 exact k=3 Krawczyk/KKT chart; "
+        "U4 is the Paper 3 radius-0.30 full finite k4 chart with "
+        "G4<=-2.57935480298416e-05 and DG4[F]<=-0.31253357722405578."
+    )
+    cover_ready = (
+        raw_status == "raw_below_tube_exterior_rounded_certificate_packaged"
+        and skeleton_status == "bridge_charts_rounded_certificate_packaged"
+        and residual_status == "residual_boundary_escape_charts_packaged"
+        and bool(v13["quotient_gate_checks"]["passes"])
+    )
+    if cover_ready:
+        transition_status = "finite_atlas_certificate_form_ready_interval_polish_pending"
+        transition_next = (
+            "Integrate the theorem insert and decide the presentation standard: "
+            "certificate-form with repository ledgers, or fully outward-rounded interval "
+            "enclosures for the rounded bridge, residual, raw-below, and dense k4 tensor "
+            "inputs."
+        )
+    else:
+        transition_status = "blocked_by_cover"
+        transition_next = (
+            "After the finite-atlas cover, define epsilon_34 and V_34 and invoke "
+            "the one-coordinate transition gate across endpoint and bridge charts."
+        )
+
+    return [
+        {
+            "item": "Define K34 finite tube",
+            "status": finite_tube_status,
+            "evidence": finite_tube_evidence,
+        },
+        {
+            "item": "Define endpoint chart interiors U3 and U4",
+            "status": endpoint_status,
+            "evidence": endpoint_evidence,
+        },
+        {
+            "item": "V13 selector-bearing residual face",
+            "status": "closed",
+            "evidence": f"corrected endpoint gap {v13_gap:.18e}; quotient gate passes={v13['quotient_gate_checks']['passes']}",
+        },
+        {
+            "item": "Five raw-below selector-bearing supports",
+            "status": raw_status,
+            "evidence": (
+                f"{raw_evidence} Boundary ledger: {boundary_evidence} "
+                f"Interior ledger: {interior_evidence} Exterior ledger: {exterior_evidence}"
+            ),
+            "next_action": raw_next_action,
+            "selector_supports_seen_in_screen": [list(support) for support in selector_supports],
+        },
+        {
+            "item": "No-selector support exclusion",
+            "status": "closed_by_residual_support_ledger",
+            "evidence": (
+                f"The full residual support ledger has "
+                f"{residual_support_summary['residual_support_count']} supports: "
+                f"{residual_support_summary['no_selector_support_count']} have no selected-family "
+                f"signature, so S4=0 and strip membership gives R=G4<=a3. "
+                f"The analytic endpoint gap is "
+                f"{residual_support_summary['no_selector_endpoint_gap_if_in_strip']}."
+            ),
+        },
+        {
+            "item": "Skeleton bridge cover",
+            "status": skeleton_status,
+            "evidence": skeleton_evidence,
+            "next_action": skeleton_next,
+        },
+        {
+            "item": "Residual leakage/involution classification",
+            "status": residual_status,
+            "evidence": (
+                f"Classify the "
+                f"{residual_support_summary['selector_bearing_support_count']} selector-bearing "
+                "residual supports by selected signature (C->C->B, A->C->C, A->D->B); "
+                f"the other residual supports are closed by S4=0. {single_band_evidence}"
+            ),
+            "next_action": residual_next,
+        },
+        {
+            "item": "Positive transition-cost theorem",
+            "status": transition_status,
+            "next_action": transition_next,
+        },
+    ]
+
+
+def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
+    if not rows:
+        path.write_text("", encoding="utf-8")
+        return
+    fields = list(rows[0])
+    with path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer.writeheader()
+        for row in rows:
+            writer.writerow(row)
+
+
+def write_markdown(path: Path, payload: dict[str, Any]) -> None:
+    lines = [
+        "# K34 Transition Cover Audit",
+        "",
+        "This ledger is generated from existing Paper 3 artifacts.  It is not a new scan.",
+        "",
+        "## Headline",
+        "",
+        f"- V13 corrected endpoint gap: `{payload['v13_corrected_endpoint_gap']}`",
+        f"- V13 quotient gate passes: `{payload['v13_quotient_gate_passes']}`",
+        f"- Face-ledger rows: `{len(payload['face_ledger'])}`",
+        "",
+        "Caveat: `K34 signature` in the face-class ledger is a triad-row flag",
+        "for the broader K34 signature ledger, not just the three selected-family",
+        "signatures in `S4`.  The no-selector exclusion needed for the theorem is",
+        "support-level and must not be inferred from a single outside-ledger row in",
+        "a support that also has selector-bearing rows.",
+        "",
+        "## Proof Obligations",
+        "",
+        "| item | status | next action / evidence |",
+        "| :--- | :--- | :--- |",
+    ]
+    for row in payload["proof_obligations"]:
+        evidence = row.get("evidence") or ""
+        next_action = row.get("next_action") or ""
+        if evidence and next_action:
+            detail = f"{evidence} Next: {next_action}"
+        else:
+            detail = next_action or evidence
+        lines.append(f"| {row['item']} | {row['status']} | {detail} |")
+
+    skeleton_summary = payload["skeleton_support_summary"]
+    lines.extend(
+        [
+            "",
+            "## Skeleton Bridge Support Split",
+            "",
+            f"- Skeleton bridge supports: `{skeleton_summary['skeleton_support_count']}`",
+            f"- Selector-bearing skeleton supports: `{skeleton_summary['selector_bearing_support_count']}`",
+            f"- No-selector skeleton supports: `{skeleton_summary['no_selector_support_count']}`",
+            f"- Analytic no-selector endpoint gap in strip: `{skeleton_summary['no_selector_endpoint_gap_if_in_strip']}`",
+            "",
+            "Selector-bearing skeleton supports:",
+            "",
+            "| support | selected-family triads | selected-family signatures | status |",
+            "| :--- | ---: | :--- | :--- |",
+        ]
+    )
+    for row in payload["skeleton_support_ledger"]:
+        if not row["has_selected_family_signature"]:
+            continue
+        lines.append(
+            "| {support} | {count} | {signatures} | {status} |".format(
+                support=row["support"],
+                count=row["selected_family_effective_triad_count"],
+                signatures=", ".join(row["selected_family_signatures"]),
+                status=row["cover_status"],
+            )
+        )
+
+    skeleton_screen = payload.get("skeleton_screen_summary", {})
+    if skeleton_screen:
+        lines.extend(
+            [
+                "",
+                "Skeleton survivor screen:",
+                "",
+                f"- Summary JSON: `{skeleton_screen.get('summary_json', '')}`",
+                "",
+                "| support | best R | G4 | endpoint gap |",
+                "| :--- | ---: | ---: | ---: |",
+            ]
+        )
+        for row in skeleton_screen.get("support_summaries", []):
+            best = row.get("best_feasible") or {}
+            lines.append(
+                "| {support} | {R:.17e} | {G4:.17e} | {gap:.17e} |".format(
+                    support=" ".join(str(value) for value in row.get("support", [])),
+                    R=float(best.get("R", float("nan"))),
+                    G4=float(best.get("G4", float("nan"))),
+                    gap=float(row.get("best_feasible_gap_to_endpoint_threshold", float("nan"))),
+                )
+            )
+
+    bridge_cert = payload.get("bridge_certificate_summary", {})
+    if bridge_cert:
+        lines.extend(
+            [
+                "",
+                "Skeleton bridge rounded certificate:",
+                "",
+                f"- Summary JSON: `{bridge_cert.get('summary_json', '')}`",
+                f"- Certified rows: `{bridge_cert.get('certified_row_count', '')}`",
+                f"- All escape signs certified: `{bridge_cert.get('all_certified_escape_signs', '')}`",
+                f"- Minimum certified radius: `{bridge_cert.get('minimum_certified_radius', '')}` on `{bridge_cert.get('weakest_chart', '')}`",
+                f"- Slack/padding: value `{bridge_cert.get('value_rel_slack', '')}`, grad `{bridge_cert.get('grad_rel_pad', '')}`, Hessian `{bridge_cert.get('hessian_rel_pad', '')}`, radius factor `{bridge_cert.get('radius_safety_factor', '')}`",
+                "",
+                "| chart | G4 | DG4[F] | certified radius | interpretation |",
+                "| :--- | ---: | ---: | ---: | :--- |",
+            ]
+        )
+        for row in bridge_cert.get("rows", []):
+            lines.append(
+                "| {chart} | {G4:.17e} | {T:.17e} | {radius:.17e} | {interp} |".format(
+                    chart=row.get("chart", row.get("support", "")),
+                    G4=float(row.get("G4", float("nan"))),
+                    T=float(row.get("full_DG4_F", float("nan"))),
+                    radius=float(row.get("cert_sign_preserving_l2_radius", float("nan"))),
+                    interp=row.get("interpretation", ""),
+                )
+            )
+
+    support_counts = payload["mixed_support_summary"]
+    lines.extend(
+        [
+            "",
+            "## Mixed Support Split",
+            "",
+            f"- Mixed residual shell supports: `{support_counts['mixed_residual_support_count']}`",
+            f"- Selector-bearing supports: `{support_counts['selector_bearing_support_count']}`",
+            f"- No-selector supports: `{support_counts['no_selector_support_count']}`",
+            f"- Analytic no-selector endpoint gap in strip: `{support_counts['no_selector_endpoint_gap_if_in_strip']}`",
+            "",
+            "Selector-bearing supports:",
+            "",
+            "| support | selected-family triads | selected-family signatures | status |",
+            "| :--- | ---: | :--- | :--- |",
+        ]
+    )
+    for row in payload["mixed_support_ledger"]:
+        if not row["has_selected_family_signature"]:
+            continue
+        lines.append(
+            "| {support} | {count} | {signatures} | {status} |".format(
+                support=row["support"],
+                count=row["selected_family_effective_triad_count"],
+                signatures=", ".join(row["selected_family_signatures"]),
+                status=row["cover_status"],
+            )
+        )
+
+    residual_summary = payload["residual_support_summary"]
+    lines.extend(
+        [
+            "",
+            "## All Residual Support Split",
+            "",
+            f"- Residual shell supports: `{residual_summary['residual_support_count']}`",
+            f"- Selector-bearing residual supports: `{residual_summary['selector_bearing_support_count']}`",
+            f"- No-selector residual supports: `{residual_summary['no_selector_support_count']}`",
+            f"- Analytic no-selector endpoint gap in strip: `{residual_summary['no_selector_endpoint_gap_if_in_strip']}`",
+            "",
+            "Top selector-bearing residual supports:",
+            "",
+            "| support | selected-family triads | residual bands | selected-family signatures | status |",
+            "| :--- | ---: | :--- | :--- | :--- |",
+        ]
+    )
+    selector_rows = [
+        row for row in payload["residual_support_ledger"] if row["has_selected_family_signature"]
+    ]
+    for row in sorted(
+        selector_rows,
+        key=lambda item: (-int(item["selected_family_effective_triad_count"]), item["support"]),
+    )[:20]:
+        lines.append(
+            "| {support} | {count} | {bands} | {signatures} | {status} |".format(
+                support=row["support"],
+                count=row["selected_family_effective_triad_count"],
+                bands=", ".join(row["residual_bands"]),
+                signatures=", ".join(row["selected_family_signatures"]),
+                status=row["cover_status"],
+            )
+        )
+
+    leakage_summary = payload["residual_leakage_budget_summary"]
+    lines.extend(
+        [
+            "",
+            "## Residual Leakage Tube Budget",
+            "",
+            f"- Selector-bearing residual budgets: `{leakage_summary['selector_bearing_budget_count']}`",
+            f"- Maximum one-residual-slot coefficient C1: `{leakage_summary['maximum_c1_one_residual_slot']}`",
+            f"- Maximum two-residual-slot coefficient C2: `{leakage_summary['maximum_c2_two_residual_slots']}`",
+            f"- Maximum three-residual-slot coefficient C3: `{leakage_summary['maximum_c3_three_residual_slots']}`",
+            f"- Maximum coarse leakage at delta=0.01: `{leakage_summary['maximum_coarse_cauchy_at_delta_0p01']}`",
+            f"- Maximum coarse leakage at delta=0.05: `{leakage_summary['maximum_coarse_cauchy_at_delta_0p05']}`",
+            f"- Maximum coarse leakage at delta=0.10: `{leakage_summary['maximum_coarse_cauchy_at_delta_0p10']}`",
+            "",
+            "| support | residual shells | C1 | C2 | C3 | leakage at 0.01 | leakage at 0.05 | leakage at 0.10 |",
+            "| :--- | :--- | ---: | ---: | ---: | ---: | ---: | ---: |",
+        ]
+    )
+    for row in payload["residual_leakage_budget_ledger"][:20]:
+        lines.append(
+            "| {support} | {residual_shells} | {c1:.6e} | {c2:.6e} | {c3:.6e} | {l01:.6e} | {l05:.6e} | {l10:.6e} |".format(
+                support=row["support"],
+                residual_shells=row["residual_shells"],
+                c1=float(row["coarse_cauchy_c1_one_residual_slot"]),
+                c2=float(row["coarse_cauchy_c2_two_residual_slots"]),
+                c3=float(row["coarse_cauchy_c3_three_residual_slots"]),
+                l01=float(row["coarse_cauchy_at_delta_0p01"]),
+                l05=float(row["coarse_cauchy_at_delta_0p05"]),
+                l10=float(row["coarse_cauchy_at_delta_0p10"]),
+            )
+        )
+
+    single_band_summary = payload.get("single_band_screen_summary", {})
+    if single_band_summary:
+        single_band_rows = single_band_summary.get("support_summaries", [])
+        above = [
+            row
+            for row in single_band_rows
+            if row.get("best_feasible_gap_to_endpoint_threshold") is not None
+            and float(row["best_feasible_gap_to_endpoint_threshold"]) < 0.0
+        ]
+        near = [
+            row
+            for row in single_band_rows
+            if row.get("best_feasible_gap_to_endpoint_threshold") is not None
+            and 0.0 <= float(row["best_feasible_gap_to_endpoint_threshold"]) < 1.0e-3
+        ]
+        lines.extend(
+            [
+                "",
+                "## Single-Band Selector Residual Screen",
+                "",
+                f"- Summary JSON: `{single_band_summary.get('summary_json', '')}`",
+                f"- Supports screened: `{len(single_band_rows)}`",
+                f"- Above endpoint in scalar strip screen: `{len(above)}`",
+                f"- Within `1e-3` below endpoint: `{len(near)}`",
+                (
+                    "- Minimum residual `X` fraction among above-endpoint candidates: "
+                    f"`{single_band_summary.get('above_endpoint_min_residual_x_fraction', '')}` "
+                    f"on `{single_band_summary.get('above_endpoint_min_residual_x_fraction_support', '')}`"
+                ),
+                "",
+                "Interpretation: the scalar `G4` strip alone is not the finite tube. "
+                "The K34 tube needs a residual-mass/leakage coordinate.",
+                "",
+                "| support | residual shells | residual X frac | best R | G4 | endpoint gap | mode |",
+                "| :--- | :--- | ---: | ---: | ---: | ---: | :--- |",
+            ]
+        )
+        for row in sorted(
+            above,
+            key=lambda item: float(item["best_feasible_gap_to_endpoint_threshold"]),
+        )[:12]:
+            best = row.get("best_feasible") or {}
+            lines.append(
+                "| {support} | {residual_shells} | {delta} | {R:.17e} | {G4:.17e} | {gap:.17e} | {mode} |".format(
+                    support=" ".join(str(value) for value in row.get("support", [])),
+                    residual_shells=" ".join(str(value) for value in row.get("residual_shells", [])),
+                    delta=(
+                        ""
+                        if best.get("residual_x_fraction") in ("", None)
+                        else f"{float(best['residual_x_fraction']):.17e}"
+                    ),
+                    R=float(best.get("R", float("nan"))),
+                    G4=float(best.get("G4", float("nan"))),
+                    gap=float(row.get("best_feasible_gap_to_endpoint_threshold", float("nan"))),
+                    mode=best.get("mode", ""),
+                )
+            )
+
+    residual_tube_summary = payload.get("residual_tube_screen_summary", {})
+    if residual_tube_summary:
+        tube_rows = residual_tube_summary.get("support_summaries", [])
+        lines.extend(
+            [
+                "",
+                "## Residual Tube Targeted Screen",
+                "",
+                f"- Summary JSON: `{residual_tube_summary.get('summary_json', '')}`",
+                f"- Residual tube max delta: `{residual_tube_summary.get('residual_tube_max_delta', '')}`",
+                f"- Supports screened: `{residual_tube_summary.get('support_count', '')}`",
+                f"- All excluded against endpoint: `{residual_tube_summary.get('all_excluded_against_endpoint', '')}`",
+                f"- Minimum endpoint gap: `{residual_tube_summary.get('minimum_endpoint_gap', '')}` on `{residual_tube_summary.get('tightest_support', '')}`",
+                "",
+                "| support | residual shells | residual delta | best R | G4 | endpoint gap | mode |",
+                "| :--- | :--- | ---: | ---: | ---: | ---: | :--- |",
+            ]
+        )
+        for row in sorted(
+            tube_rows,
+            key=lambda item: float(item.get("best_feasible_gap_to_endpoint_threshold", float("inf"))),
+        ):
+            best = row.get("best_feasible") or {}
+            lines.append(
+                "| {support} | {residual_shells} | {delta} | {R:.17e} | {G4:.17e} | {gap:.17e} | {mode} |".format(
+                    support=" ".join(str(value) for value in row.get("support", [])),
+                    residual_shells=" ".join(str(value) for value in row.get("residual_shells", [])),
+                    delta=best.get("residual_delta", ""),
+                    R=float(best.get("R", float("nan"))),
+                    G4=float(best.get("G4", float("nan"))),
+                    gap=float(row.get("best_feasible_gap_to_endpoint_threshold", float("nan"))),
+                    mode=best.get("mode", ""),
+                )
+            )
+
+    residual_cert = payload.get("residual_tube_certificate_summary", {})
+    if residual_cert:
+        lines.extend(
+            [
+                "",
+                "## Constrained Residual Tube Certificate",
+                "",
+                f"- Summary JSON: `{residual_cert.get('summary_json', '')}`",
+                f"- Residual tube max delta: `{residual_cert.get('delta_max', '')}`",
+                f"- Supports replayed: `{residual_cert.get('support_count', '')}`",
+                f"- Above-endpoint residual-boundary atoms: `{residual_cert.get('above_endpoint_count', '')}`",
+                f"- Above-endpoint supports: `{', '.join(residual_cert.get('above_endpoint_supports', []))}`",
+                f"- Minimum positive endpoint gap outside escape atoms: `{residual_cert.get('minimum_positive_gap_to_endpoint', '')}` on `{residual_cert.get('minimum_positive_gap_support', '')}`",
+                f"- Maximum constraint violation: `{residual_cert.get('max_constraint_violation', '')}`",
+                "",
+                "| support | residual shells | R | G4 | delta_res | endpoint gap | violation |",
+                "| :--- | :--- | ---: | ---: | ---: | ---: | ---: |",
+            ]
+        )
+        for row in residual_cert.get("rows", []):
+            lines.append(
+                "| {support} | {residual_shells} | {R:.17e} | {G4:.17e} | {delta:.17e} | {gap:.17e} | {viol:.3e} |".format(
+                    support=row.get("support", ""),
+                    residual_shells=row.get("residual_shells", ""),
+                    R=float(row.get("R", 0.0)),
+                    G4=float(row.get("G4", 0.0)),
+                    delta=float(row.get("residual_delta", 0.0)),
+                    gap=float(row.get("gap_to_endpoint", 0.0)),
+                    viol=float(row.get("violation", 0.0)),
+                )
+            )
+
+    residual_tangent = payload.get("residual_boundary_tangent_summary", {})
+    if residual_tangent:
+        lines.extend(
+            [
+                "",
+                "## Residual-Boundary Escape Charts",
+                "",
+                f"- Certified supports: `{', '.join(residual_tangent.get('certified_supports', []))}`",
+                f"- All escape signs certified: `{residual_tangent.get('all_certified_escape_signs', '')}`",
+                f"- Minimum certified radius: `{residual_tangent.get('minimum_certified_radius', '')}` on `{residual_tangent.get('weakest_chart', '')}`",
+                "",
+                "| support | R | G4 | DG4[F] | certified radius | interpretation |",
+                "| :--- | ---: | ---: | ---: | ---: | :--- |",
+            ]
+        )
+        for row in residual_tangent.get("rows", []):
+            lines.append(
+                "| {support} | {R:.17e} | {G4:.17e} | {T:.17e} | {rho:.17e} | {interp} |".format(
+                    support=row.get("support", ""),
+                    R=float(row.get("R", 0.0)),
+                    G4=float(row.get("G4", 0.0)),
+                    T=float(row.get("full_DG4_F", 0.0)),
+                    rho=float(row.get("cert_sign_preserving_l2_radius", 0.0)),
+                    interp=row.get("interpretation", ""),
+                )
+            )
+
+    raw_summary = payload["raw_below_support_summary"]
+    lines.extend(
+        [
+            "",
+            "## Raw-Below Selector Supports",
+            "",
+            f"- Parsed raw-below logs: `{raw_summary['raw_below_log_count']}`",
+            f"- All below endpoint by certified upper value: `{raw_summary['all_below_endpoint']}`",
+            f"- All global replay pass: `{raw_summary['all_global_replay_pass']}`",
+            f"- Hessian skipped in all logs: `{raw_summary['all_hessian_skipped']}`",
+            f"- Minimum endpoint gap: `{raw_summary['minimum_endpoint_gap_using_certified_upper']}` on `{raw_summary['minimum_gap_support']}`",
+            "",
+            "| support | certified upper | endpoint gap | projected grad | global cert | packaging status |",
+            "| :--- | ---: | ---: | ---: | :--- | :--- |",
+        ]
+    )
+    for row in payload["raw_below_support_ledger"]:
+        lines.append(
+            "| {support} | {upper} | {gap} | {grad} | {global_cert} | {packaging} |".format(
+                support=row["support"],
+                upper=row["certified_upper"],
+                gap=row["endpoint_gap_using_certified_upper"],
+                grad=row["projected_grad_norm"],
+                global_cert=row["global_cert"],
+                packaging=row["packaging_status"],
+            )
+        )
+
+    boundary_summary = payload["raw_below_boundary_summary"]
+    lines.extend(
+        [
+            "",
+            "## Raw-Below Strip-Boundary Ledger",
+            "",
+            f"- Boundary faces parsed: `{boundary_summary['raw_below_boundary_face_count']}` / `{boundary_summary['expected_boundary_face_count']}`",
+            f"- Complete boundary ledger: `{boundary_summary['complete_boundary_face_ledger']}`",
+            f"- All boundary values below endpoint: `{boundary_summary['all_below_endpoint']}`",
+            f"- All interval endpoint gaps positive: `{boundary_summary['all_interval_endpoint_gap_lower_positive']}`",
+            f"- Minimum boundary gap: `{boundary_summary['minimum_boundary_gap_to_endpoint']}` on `{boundary_summary['tightest_boundary_face']}`",
+            f"- Maximum boundary R: `{boundary_summary['maximum_boundary_R']}`",
+            f"- Maximum boundary constraint error: `{boundary_summary['maximum_constraint_abs']}`",
+            "",
+            "| support | boundary | R | G4 | constraint | endpoint gap | interval gap positive |",
+            "| :--- | :--- | ---: | ---: | ---: | ---: | :---: |",
+        ]
+    )
+    for row in payload["raw_below_boundary_ledger"]:
+        lines.append(
+            "| {support} | {boundary} | {R:.17e} | {G4:.17e} | {constraint:.3e} | {gap:.17e} | {interval} |".format(
+                support=row["support"],
+                boundary=row["boundary"],
+                R=float(row["R"]),
+                G4=float(row["G4"]),
+                constraint=float(row["constraint_abs"]),
+                gap=float(row["gap_to_endpoint"]),
+                interval=row["interval_endpoint_gap_lower_positive"],
+            )
+        )
+
+    interior_summary = payload["raw_below_interior_summary"]
+    lines.extend(
+        [
+            "",
+            "## Raw-Below Interior Quotient Diagnostic",
+            "",
+            f"- Summary JSON: `{interior_summary.get('summary_json', '')}`",
+            f"- Active quotient Hessian strictly negative in all cases: `{interior_summary.get('all_active_quotient_hessians_negative', '')}`",
+            f"- Inactive log-amplitude KKT sign nonpositive in all cases: `{interior_summary.get('all_inactive_loga_grad_nonpositive', '')}`",
+            f"- Minimum certified endpoint gap: `{interior_summary.get('minimum_endpoint_gap_using_certified_upper', '')}`",
+            f"- Maximum quotient Hessian eigenvalue: `{interior_summary.get('maximum_quotient_hessian_eig', '')}`",
+            f"- Maximum satellite X fraction after keeping three core modes: `{interior_summary.get('maximum_satellite_x_fraction', '')}`",
+            f"- Maximum observed positive satellite correction: `{interior_summary.get('maximum_observed_positive_satellite_correction', '')}`",
+            f"- One-satellite channel vanishes in all cases: `{interior_summary.get('all_one_satellite_channels_vanish', '')}`",
+            f"- Maximum two-plus satellite absolute contribution at stored point: `{interior_summary.get('maximum_two_plus_satellite_abs_contribution_at_npz', '')}`",
+            f"- Maximum two-plus satellite coarse Cauchy coefficient sum: `{interior_summary.get('maximum_two_plus_satellite_coarse_cauchy_coefficient_sum', '')}`",
+            f"- Satellite release Hessian of `-R` positive in all cases: `{interior_summary.get('all_satellite_release_hessians_positive', '')}`",
+            f"- Minimum satellite release Hessian eigenvalue of `-R`: `{interior_summary.get('minimum_satellite_release_hessian_eig_minus_R', '')}`",
+            f"- Minimum crude cubic half-gap tube delta: `{interior_summary.get('minimum_cubic_halfgap_tube_delta', '')}`",
+            f"- Maximum observed fraction of that tube: `{interior_summary.get('maximum_observed_fraction_over_cubic_halfgap_tube', '')}`",
+            f"- Minimum absolute two-plus half-gap tube delta: `{interior_summary.get('minimum_two_plus_abs_halfgap_tube_delta', '')}`",
+            f"- Maximum observed fraction of the absolute two-plus tube: `{interior_summary.get('maximum_observed_fraction_over_two_plus_abs_halfgap_tube', '')}`",
+            "",
+            "| support | active/total modes | endpoint gap | core gap | satellite X frac | cubic sat/tube | abs 2+ sat/tube | sat Hessian min eig | max quotient Hessian eig |",
+            "| :--- | :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
+        ]
+    )
+    for row in interior_summary.get("rows", []):
+        lines.append(
+            "| {support} | {active}/{total} | {gap:.17e} | {core_gap:.17e} | {sat:.3e} | {tube_ratio:.3e} | {abs_tube_ratio:.3e} | {sat_eig:.3e} | {eig:.3e} |".format(
+                support=row["support"],
+                active=int(row["active_mode_count"]),
+                total=int(row["mode_count"]),
+                gap=float(row["endpoint_gap_using_certified_upper"]),
+                core_gap=float(row.get("core_endpoint_gap", float("nan"))),
+                sat=float(row.get("satellite_x_fraction", float("nan"))),
+                tube_ratio=float(row.get("observed_satellite_fraction_over_cubic_halfgap_tube", float("nan"))),
+                abs_tube_ratio=float(
+                    row.get("observed_satellite_fraction_over_two_plus_abs_halfgap_tube", float("nan"))
+                ),
+                sat_eig=float(row.get("satellite_release_min_eig_minus_R", float("nan"))),
+                eig=float(row["quotient_hessian_max_eig"]),
+            )
+        )
+
+    exterior_summary = payload.get("raw_below_exterior_summary", {})
+    lines.extend(
+        [
+            "",
+            "## Raw-Below Exterior-Of-Tube Screen",
+            "",
+            f"- Summary JSON: `{exterior_summary.get('summary_json', '')}`",
+            f"- Satellite exterior only: `{exterior_summary.get('satellite_exterior_only', '')}`",
+            f"- All supports excluded numerically: `{exterior_summary.get('all_supports_excluded_numerically', '')}`",
+            "",
+            "| support | best exterior R | G4 | endpoint gap | satellite delta | tube delta |",
+            "| :--- | ---: | ---: | ---: | ---: | ---: |",
+        ]
+    )
+    for row in exterior_summary.get("support_summaries", []):
+        best = row.get("best_feasible") or {}
+        lines.append(
+            "| {support} | {R:.17e} | {G4:.17e} | {gap:.17e} | {delta:.3e} | {tube:.3e} |".format(
+                support=" ".join(str(value) for value in row.get("support", [])),
+                R=float(best.get("R", float("nan"))),
+                G4=float(best.get("G4", float("nan"))),
+                gap=float(row.get("best_feasible_gap_to_endpoint_threshold", float("nan"))),
+                delta=float(best.get("satellite_delta", float("nan"))),
+                tube=float(best.get("satellite_tube_delta", float("nan"))),
+            )
+        )
+
+    lines.extend(
+        [
+            "",
+            "## Face-Class Ledger",
+            "",
+            "| face class | residual band | outside slots | K34 signature | effective triads | supports | status |",
+            "| :--- | :--- | ---: | :---: | ---: | ---: | :--- |",
+        ]
+    )
+    for row in payload["face_ledger"]:
+        lines.append(
+            "| {face_class} | {residual_band} | {outside_skeleton_slot_count} | {selected} | "
+            "{eff} | {supports} | {status} |".format(
+                face_class=row["face_class"],
+                residual_band=row["residual_band"],
+                outside_skeleton_slot_count=row["outside_skeleton_slot_count"],
+                selected="yes" if row["in_k34_signature_ledger"] else "no",
+                eff=row["effective_ordered_triad_count"],
+                supports=row["support_count"],
+                status=row["cover_status"],
+            )
+        )
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--label", default="k34_transition_cover_audit")
+    parser.add_argument("--catalogue-dir", type=Path, default=DEFAULT_CATALOGUE_DIR)
+    parser.add_argument("--selector-screen-json", type=Path, default=DEFAULT_SELECTOR_SCREEN)
+    parser.add_argument("--v13-summary-json", type=Path, default=DEFAULT_V13)
+    parser.add_argument("--raw-below-log-glob", default=DEFAULT_RAW_BELOW_LOG_GLOB)
+    parser.add_argument("--raw-below-boundary-glob", default=DEFAULT_RAW_BELOW_BOUNDARY_GLOB)
+    parser.add_argument("--raw-below-interior-glob", default=DEFAULT_RAW_BELOW_INTERIOR_GLOB)
+    parser.add_argument("--raw-below-exterior-glob", default=DEFAULT_RAW_BELOW_EXTERIOR_GLOB)
+    parser.add_argument("--skeleton-screen-glob", default=DEFAULT_SKELETON_SCREEN_GLOB)
+    parser.add_argument("--bridge-certificate-glob", default=DEFAULT_BRIDGE_CERTIFICATE_GLOB)
+    parser.add_argument("--single-band-screen-glob", default=DEFAULT_SINGLE_BAND_SCREEN_GLOB)
+    parser.add_argument("--residual-tube-screen-glob", default=DEFAULT_RESIDUAL_TUBE_SCREEN_GLOB)
+    parser.add_argument("--residual-tube-certificate-glob", default=DEFAULT_RESIDUAL_TUBE_CERTIFICATE_GLOB)
+    parser.add_argument("--residual-boundary-tangent-glob", default=DEFAULT_RESIDUAL_BOUNDARY_TANGENT_GLOB)
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = parse_args()
+    run_paths = make_run_paths(__file__, args.label)
+    snapshot_source(__file__, run_paths)
+
+    catalogue_json = read_json(args.catalogue_dir / "20260612_182508_k34_transition_catalogue.json")
+    face_rows = read_csv(args.catalogue_dir / "20260612_182508_k34_ordered_shell_faces.csv")
+    selector_screen = read_json(args.selector_screen_json)
+    v13 = read_json(args.v13_summary_json)
+
+    face_ledger = build_face_ledger(face_rows)
+    mixed_support_ledger = build_mixed_support_ledger(face_rows)
+    skeleton_support_ledger = build_skeleton_bridge_support_ledger(face_rows)
+    skeleton_selector_support_count = sum(
+        1 for row in skeleton_support_ledger if row["has_selected_family_signature"]
+    )
+    skeleton_support_summary = {
+        "skeleton_support_count": len(skeleton_support_ledger),
+        "selector_bearing_support_count": skeleton_selector_support_count,
+        "no_selector_support_count": len(skeleton_support_ledger) - skeleton_selector_support_count,
+        "no_selector_endpoint_gap_if_in_strip": K4_ENDPOINT_THRESHOLD - A3_G4_UPPER,
+    }
+    residual_support_ledger = build_residual_support_ledger(face_rows)
+    residual_selector_support_count = sum(
+        1 for row in residual_support_ledger if row["has_selected_family_signature"]
+    )
+    residual_support_summary = {
+        "residual_support_count": len(residual_support_ledger),
+        "selector_bearing_support_count": residual_selector_support_count,
+        "no_selector_support_count": len(residual_support_ledger) - residual_selector_support_count,
+        "no_selector_endpoint_gap_if_in_strip": K4_ENDPOINT_THRESHOLD - A3_G4_UPPER,
+    }
+    residual_leakage_budget_ledger = build_residual_leakage_budget_ledger(residual_support_ledger)
+    residual_leakage_budget_summary = {
+        "selector_bearing_budget_count": len(residual_leakage_budget_ledger),
+        "maximum_c1_one_residual_slot": max(
+            (float(row["coarse_cauchy_c1_one_residual_slot"]) for row in residual_leakage_budget_ledger),
+            default=0.0,
+        ),
+        "maximum_c2_two_residual_slots": max(
+            (float(row["coarse_cauchy_c2_two_residual_slots"]) for row in residual_leakage_budget_ledger),
+            default=0.0,
+        ),
+        "maximum_c3_three_residual_slots": max(
+            (float(row["coarse_cauchy_c3_three_residual_slots"]) for row in residual_leakage_budget_ledger),
+            default=0.0,
+        ),
+        "maximum_coarse_cauchy_at_delta_0p01": max(
+            (float(row["coarse_cauchy_at_delta_0p01"]) for row in residual_leakage_budget_ledger),
+            default=0.0,
+        ),
+        "maximum_coarse_cauchy_at_delta_0p05": max(
+            (float(row["coarse_cauchy_at_delta_0p05"]) for row in residual_leakage_budget_ledger),
+            default=0.0,
+        ),
+        "maximum_coarse_cauchy_at_delta_0p10": max(
+            (float(row["coarse_cauchy_at_delta_0p10"]) for row in residual_leakage_budget_ledger),
+            default=0.0,
+        ),
+    }
+    raw_below_support_ledger = parse_raw_below_logs(str(args.raw_below_log_glob))
+    raw_below_support_summary = raw_below_summary(raw_below_support_ledger)
+    raw_below_allowed_supports = {
+        str(row["support"]).replace(",", " ") for row in raw_below_support_ledger
+    }
+    raw_below_boundary_ledger = parse_raw_below_boundary_summaries(
+        str(args.raw_below_boundary_glob),
+        allowed_supports=raw_below_allowed_supports,
+    )
+    raw_below_boundary_summary_payload = raw_below_boundary_summary(raw_below_boundary_ledger)
+    raw_below_interior_summary = parse_latest_summary(str(args.raw_below_interior_glob))
+    raw_below_exterior_summary = parse_latest_summary(str(args.raw_below_exterior_glob))
+    skeleton_screen_summary = parse_latest_summary(str(args.skeleton_screen_glob))
+    bridge_certificate_payload = parse_latest_summary(str(args.bridge_certificate_glob))
+    bridge_certificate_summary_payload = (
+        bridge_certificate_summary(bridge_certificate_payload) if bridge_certificate_payload else {}
+    )
+    single_band_screen_summary = enrich_single_band_residual_summary(
+        parse_latest_summary(str(args.single_band_screen_glob))
+    )
+    residual_tube_screen_summary = targeted_screen_summary(
+        parse_latest_summary(str(args.residual_tube_screen_glob))
+    )
+    residual_tube_certificate_summary_payload = residual_tube_certificate_summary(
+        merge_residual_tube_certificate_payloads(
+            parse_all_summaries(str(args.residual_tube_certificate_glob))
+        )
+    )
+    residual_boundary_tangent_summary_payload = residual_boundary_tangent_summary(
+        parse_all_summaries(str(args.residual_boundary_tangent_glob))
+    )
+    proof_obligations = build_obligations(
+        selector_screen,
+        v13,
+        skeleton_support_summary,
+        skeleton_screen_summary,
+        bridge_certificate_summary_payload,
+        single_band_screen_summary,
+        residual_tube_screen_summary,
+        residual_tube_certificate_summary_payload,
+        residual_boundary_tangent_summary_payload,
+        residual_support_summary,
+        raw_below_support_summary,
+        raw_below_boundary_summary_payload,
+        raw_below_interior_summary,
+        raw_below_exterior_summary,
+    )
+    selector_support_count = sum(1 for row in mixed_support_ledger if row["has_selected_family_signature"])
+    mixed_support_summary = {
+        "mixed_residual_support_count": len(mixed_support_ledger),
+        "selector_bearing_support_count": selector_support_count,
+        "no_selector_support_count": len(mixed_support_ledger) - selector_support_count,
+        "no_selector_endpoint_gap_if_in_strip": K4_ENDPOINT_THRESHOLD - A3_G4_UPPER,
+    }
+    payload = {
+        "catalogue": str(args.catalogue_dir),
+        "face_class_counts": catalogue_json["effective_face_class_counts"],
+        "outside_skeleton_slot_count_counts": catalogue_json["effective_outside_skeleton_slot_count_counts"],
+        "residual_band_effective_counts": catalogue_json["residual_band_effective_counts"],
+        "shell_windows": catalogue_json["shell_windows"],
+        "band_leakage_bound": catalogue_json["band_leakage_bound"],
+        "v13_corrected_endpoint_gap": v13["quotient_gate_checks"]["observed"][
+            "min_endpoint_gap_after_residual_correction"
+        ],
+        "v13_quotient_gate_passes": v13["quotient_gate_checks"]["passes"],
+        "face_ledger": face_ledger,
+        "skeleton_support_ledger": skeleton_support_ledger,
+        "skeleton_support_summary": skeleton_support_summary,
+        "skeleton_screen_summary": skeleton_screen_summary,
+        "bridge_certificate_summary": bridge_certificate_summary_payload,
+        "single_band_screen_summary": single_band_screen_summary,
+        "residual_tube_screen_summary": residual_tube_screen_summary,
+        "residual_tube_certificate_summary": residual_tube_certificate_summary_payload,
+        "residual_boundary_tangent_summary": residual_boundary_tangent_summary_payload,
+        "mixed_support_ledger": mixed_support_ledger,
+        "mixed_support_summary": mixed_support_summary,
+        "residual_support_ledger": residual_support_ledger,
+        "residual_support_summary": residual_support_summary,
+        "residual_leakage_budget_ledger": residual_leakage_budget_ledger,
+        "residual_leakage_budget_summary": residual_leakage_budget_summary,
+        "raw_below_support_ledger": raw_below_support_ledger,
+        "raw_below_support_summary": raw_below_support_summary,
+        "raw_below_boundary_ledger": raw_below_boundary_ledger,
+        "raw_below_boundary_summary": raw_below_boundary_summary_payload,
+        "raw_below_interior_summary": raw_below_interior_summary,
+        "raw_below_exterior_summary": raw_below_exterior_summary,
+        "proof_obligations": proof_obligations,
+    }
+
+    json_path = write_json(run_paths.file("k34_transition_cover_audit", ".json"), payload)
+    csv_path = run_paths.file("k34_transition_cover_face_ledger", ".csv")
+    write_csv(csv_path, face_ledger)
+    skeleton_support_csv_path = run_paths.file("k34_transition_skeleton_support_ledger", ".csv")
+    write_csv(skeleton_support_csv_path, skeleton_support_ledger)
+    support_csv_path = run_paths.file("k34_transition_mixed_support_ledger", ".csv")
+    write_csv(support_csv_path, mixed_support_ledger)
+    residual_support_csv_path = run_paths.file("k34_transition_residual_support_ledger", ".csv")
+    write_csv(residual_support_csv_path, residual_support_ledger)
+    residual_leakage_csv_path = run_paths.file("k34_transition_residual_leakage_budget_ledger", ".csv")
+    write_csv(residual_leakage_csv_path, residual_leakage_budget_ledger)
+    raw_support_csv_path = run_paths.file("k34_transition_raw_below_support_ledger", ".csv")
+    write_csv(raw_support_csv_path, raw_below_support_ledger)
+    raw_boundary_csv_path = run_paths.file("k34_transition_raw_below_boundary_ledger", ".csv")
+    write_csv(raw_boundary_csv_path, raw_below_boundary_ledger)
+    md_path = run_paths.file("k34_transition_cover_audit", ".md")
+    write_markdown(md_path, payload)
+
+    print(f"run_dir={run_paths.run_dir}")
+    print(f"json={json_path}")
+    print(f"csv={csv_path}")
+    print(f"skeleton_support_csv={skeleton_support_csv_path}")
+    print(f"support_csv={support_csv_path}")
+    print(f"residual_support_csv={residual_support_csv_path}")
+    print(f"residual_leakage_csv={residual_leakage_csv_path}")
+    print(f"raw_support_csv={raw_support_csv_path}")
+    print(f"raw_boundary_csv={raw_boundary_csv_path}")
+    print(f"md={md_path}")
+    print(f"v13_corrected_gap={payload['v13_corrected_endpoint_gap']:.18e}")
+    print(f"face_ledger_rows={len(face_ledger)}")
+    print(f"skeleton_supports={skeleton_support_summary['skeleton_support_count']}")
+    print(f"skeleton_no_selector_supports={skeleton_support_summary['no_selector_support_count']}")
+    print(f"mixed_supports={mixed_support_summary['mixed_residual_support_count']}")
+    print(f"no_selector_supports={mixed_support_summary['no_selector_support_count']}")
+    print(f"residual_supports={residual_support_summary['residual_support_count']}")
+    print(f"residual_no_selector_supports={residual_support_summary['no_selector_support_count']}")
+    print(f"residual_leakage_budget_count={residual_leakage_budget_summary['selector_bearing_budget_count']}")
+    print(f"residual_leakage_max_c1={residual_leakage_budget_summary['maximum_c1_one_residual_slot']}")
+    print(f"raw_below_logs={raw_below_support_summary['raw_below_log_count']}")
+    print(f"raw_below_min_gap={raw_below_support_summary['minimum_endpoint_gap_using_certified_upper']}")
+    print(f"raw_below_boundary_faces={raw_below_boundary_summary_payload['raw_below_boundary_face_count']}")
+    print(f"raw_below_boundary_min_gap={raw_below_boundary_summary_payload['minimum_boundary_gap_to_endpoint']}")
+    print(f"single_band_screen_summary={single_band_screen_summary.get('summary_json', '')}")
+    print(f"raw_below_interior_summary={raw_below_interior_summary.get('summary_json', '')}")
+    print(
+        "raw_below_interior_max_quotient_eig="
+        f"{raw_below_interior_summary.get('maximum_quotient_hessian_eig', '')}"
+    )
+
+
+if __name__ == "__main__":
+    main()

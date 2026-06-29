@@ -1,0 +1,279 @@
+support,effective_ordered_triad_count,ordered_shell_face_rows,selected_family_effective_triad_count,has_selected_family_signature,residual_bands,all_effective_signatures,selected_family_signatures,cover_status,analytic_endpoint_gap_if_in_strip
+9 26 29,1296,6,0,False,['i3_residual_only:1296'],"['B->A->C:216', 'B->C->A:216', 'A->B->C:216', 'A->C->B:216', 'C->B->A:216', 'C->A->B:216']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 26 29,1152,6,0,False,['i3_residual_only:1152'],"['B->A->C:192', 'B->C->A:192', 'A->B->C:192', 'A->C->B:192', 'C->B->A:192', 'C->A->B:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 14 21,864,6,0,False,['i3_residual_only:864'],"['B->A->B:288', 'B->B->A:288', 'A->B->B:288']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 14 29,864,6,0,False,['i3_residual_only:864'],"['B->A->C:144', 'B->C->A:144', 'A->B->C:144', 'A->C->B:144', 'C->B->A:144', 'C->A->B:144']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 18 29,864,6,0,False,['i3_residual_only:864'],"['B->D->C:144', 'B->C->D:144', 'D->B->C:144', 'D->C->B:144', 'C->B->D:144', 'C->D->B:144']",[],closed_no_selector_support_exclusion,0.009637796977544695
+14 24 26,864,6,0,False,['i4_residual_only:864'],['A->A->A:864'],[],closed_no_selector_support_exclusion,0.009637796977544695
+19 21 26,864,6,0,False,['i4_residual_only:864'],"['B->B->A:288', 'B->A->B:288', 'A->B->B:288']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 11 14,864,6,0,False,['i3_residual_only:864'],"['B->B->A:288', 'B->A->B:288', 'A->B->B:288']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 11 26,864,6,0,False,['i3_residual_only:864'],"['B->B->A:288', 'B->A->B:288', 'A->B->B:288']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 14 17,864,6,0,False,['i3_residual_only:864'],"['B->A->C:144', 'B->C->A:144', 'A->B->C:144', 'A->C->B:144', 'C->B->A:144', 'C->A->B:144']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 14 29,864,6,0,False,['i3_residual_only:864'],"['B->A->C:144', 'B->C->A:144', 'A->B->C:144', 'A->C->B:144', 'C->B->A:144', 'C->A->B:144']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 17 26,864,6,0,False,['i3_residual_only:864'],"['B->C->A:144', 'B->A->C:144', 'C->B->A:144', 'C->A->B:144', 'A->B->C:144', 'A->C->B:144']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 17 18,720,6,0,False,['i3_residual_only:720'],"['B->C->D:120', 'B->D->C:120', 'C->B->D:120', 'C->D->B:120', 'D->B->C:120', 'D->C->B:120']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 18 27,720,6,0,False,['i3_residual_only:720'],"['B->D->B:240', 'B->B->D:240', 'D->B->B:240']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 11 21,576,6,0,False,['i3_residual_only:576'],"['C->B->B:192', 'B->C->B:192', 'B->B->C:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 14 24,576,6,0,False,['i4_residual_only:576'],"['C->A->A:192', 'A->C->A:192', 'A->A->C:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 14 17,576,6,0,False,['i3_residual_only:576'],"['B->A->C:96', 'B->C->A:96', 'A->B->C:96', 'A->C->B:96', 'C->B->A:96', 'C->A->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 17 26,576,6,0,False,['i3_residual_only:576'],"['B->C->A:96', 'B->A->C:96', 'C->B->A:96', 'C->A->B:96', 'A->B->C:96', 'A->C->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 17 30,576,6,0,False,['mixed_i3_i4_residual:576'],"['B->C->B:192', 'B->B->C:192', 'C->B->B:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 20 27,576,6,0,False,['i3_residual_only:576'],"['B->C->B:192', 'B->B->C:192', 'C->B->B:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 21 26,576,6,0,False,['i3_residual_only:576'],"['B->B->A:192', 'B->A->B:192', 'A->B->B:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 21 30,576,6,0,False,['mixed_i3_i4_residual:576'],['B->B->B:576'],[],closed_no_selector_support_exclusion,0.009637796977544695
+11 25 26,576,6,0,False,['i3_residual_only:576'],"['B->C->A:96', 'B->A->C:96', 'C->B->A:96', 'C->A->B:96', 'A->B->C:96', 'A->C->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+12 14 26,576,6,0,False,['i3_residual_only:576'],"['B->A->A:192', 'A->B->A:192', 'A->A->B:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+13 14 27,576,6,0,False,['i3_residual_only:576'],"['C->A->B:96', 'C->B->A:96', 'A->C->B:96', 'A->B->C:96', 'B->C->A:96', 'B->A->C:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+13 18 21,576,6,0,False,['i3_residual_only:576'],"['C->D->B:96', 'C->B->D:96', 'D->C->B:96', 'D->B->C:96', 'B->C->D:96', 'B->D->C:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+13 19 26,576,6,0,False,['mixed_i3_i4_residual:576'],"['C->B->A:96', 'C->A->B:96', 'B->C->A:96', 'B->A->C:96', 'A->C->B:96', 'A->B->C:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+14 14 30,576,3,0,False,['i4_residual_only:576'],"['A->A->B:192', 'A->B->A:192', 'B->A->A:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+14 19 21,576,6,0,False,['i4_residual_only:576'],"['A->B->B:192', 'B->A->B:192', 'B->B->A:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+14 19 25,576,6,0,False,['i4_residual_only:576'],"['A->B->C:96', 'A->C->B:96', 'B->A->C:96', 'B->C->A:96', 'C->A->B:96', 'C->B->A:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+14 20 30,576,6,0,False,['i4_residual_only:576'],"['A->C->B:96', 'A->B->C:96', 'C->A->B:96', 'C->B->A:96', 'B->A->C:96', 'B->C->A:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+14 22 30,576,6,0,False,['i4_residual_only:576'],"['A->B->B:192', 'B->A->B:192', 'B->B->A:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+14 26 30,576,6,0,False,['i4_residual_only:576'],"['A->A->B:192', 'A->B->A:192', 'B->A->A:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+17 21 24,576,6,0,False,['i4_residual_only:576'],"['C->B->A:96', 'C->A->B:96', 'B->C->A:96', 'B->A->C:96', 'A->C->B:96', 'A->B->C:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+17 21 30,576,6,0,False,['i4_residual_only:576'],"['C->B->B:192', 'B->C->B:192', 'B->B->C:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+19 21 30,576,6,0,False,['i4_residual_only:576'],['B->B->B:576'],[],closed_no_selector_support_exclusion,0.009637796977544695
+19 26 29,576,6,0,False,['i4_residual_only:576'],"['B->A->C:96', 'B->C->A:96', 'A->B->C:96', 'A->C->B:96', 'C->B->A:96', 'C->A->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+19 29 30,576,6,0,False,['i4_residual_only:576'],"['B->C->B:192', 'B->B->C:192', 'C->B->B:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+21 24 29,576,6,0,False,['i4_residual_only:576'],"['B->A->C:96', 'B->C->A:96', 'A->B->C:96', 'A->C->B:96', 'C->B->A:96', 'C->A->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+22 27 29,576,6,0,False,['i4_residual_only:576'],"['B->B->C:192', 'B->C->B:192', 'C->B->B:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+26 26 30,576,3,0,False,['i4_residual_only:576'],"['A->A->B:192', 'A->B->A:192', 'B->A->A:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 14 21,576,6,0,False,['i3_residual_only:576'],"['B->A->B:192', 'B->B->A:192', 'A->B->B:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 14 25,576,6,0,False,['i3_residual_only:576'],"['B->A->C:96', 'B->C->A:96', 'A->B->C:96', 'A->C->B:96', 'C->B->A:96', 'C->A->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 18 21,576,6,0,False,['i3_residual_only:576'],"['B->D->B:192', 'B->B->D:192', 'D->B->B:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 19 26,576,6,0,False,['mixed_i3_i4_residual:576'],"['B->B->A:192', 'B->A->B:192', 'A->B->B:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 19 30,576,6,0,False,['mixed_i3_i4_residual:576'],['B->B->B:576'],[],closed_no_selector_support_exclusion,0.009637796977544695
+9 21 24,576,6,0,False,['mixed_i3_i4_residual:576'],"['B->B->A:192', 'B->A->B:192', 'A->B->B:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 21 26,576,6,0,False,['i3_residual_only:576'],"['B->B->A:192', 'B->A->B:192', 'A->B->B:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 25 30,576,6,0,False,['mixed_i3_i4_residual:576'],"['B->C->B:192', 'B->B->C:192', 'C->B->B:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 27 30,576,6,0,False,['mixed_i3_i4_residual:576'],['B->B->B:576'],[],closed_no_selector_support_exclusion,0.009637796977544695
+10 13 17,432,6,0,False,['i3_residual_only:432'],['C->C->C:432'],[],closed_no_selector_support_exclusion,0.009637796977544695
+10 13 29,432,6,0,False,['i3_residual_only:432'],['C->C->C:432'],[],closed_no_selector_support_exclusion,0.009637796977544695
+11 19 24,432,6,0,False,['mixed_i3_i4_residual:432'],"['B->B->A:144', 'B->A->B:144', 'A->B->B:144']",[],closed_no_selector_support_exclusion,0.009637796977544695
+13 17 20,432,6,0,False,['i3_residual_only:432'],['C->C->C:432'],[],closed_no_selector_support_exclusion,0.009637796977544695
+17 18 19,432,6,0,False,['i4_residual_only:432'],"['C->D->B:72', 'C->B->D:72', 'D->C->B:72', 'D->B->C:72', 'B->C->D:72', 'B->D->C:72']",[],closed_no_selector_support_exclusion,0.009637796977544695
+17 22 27,432,6,0,False,['i4_residual_only:432'],"['C->B->B:144', 'B->C->B:144', 'B->B->C:144']",[],closed_no_selector_support_exclusion,0.009637796977544695
+19 24 27,432,6,0,False,['i4_residual_only:432'],"['B->A->B:144', 'B->B->A:144', 'A->B->B:144']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 11 27,432,6,0,False,['i3_residual_only:432'],"['D->B->B:144', 'B->D->B:144', 'B->B->D:144']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 9 17,432,6,0,False,['i3_residual_only:432'],"['D->B->C:72', 'D->C->B:72', 'B->D->C:72', 'B->C->D:72', 'C->D->B:72', 'C->B->D:72']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 9 29,432,6,0,False,['i3_residual_only:432'],"['D->B->C:72', 'D->C->B:72', 'B->D->C:72', 'B->C->D:72', 'C->D->B:72', 'C->B->D:72']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 24 25,432,6,0,False,['mixed_i3_i4_residual:432'],"['B->A->C:72', 'B->C->A:72', 'A->B->C:72', 'A->C->B:72', 'C->B->A:72', 'C->A->B:72']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 9 18,360,3,0,False,['i3_residual_only:360'],"['B->B->D:120', 'B->D->B:120', 'D->B->B:120']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 12 14,288,6,0,False,['i3_residual_only:288'],"['C->B->A:48', 'C->A->B:48', 'B->C->A:48', 'B->A->C:48', 'A->C->B:48', 'A->B->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 12 30,288,6,0,False,['mixed_i3_i4_residual:288'],"['C->B->B:96', 'B->C->B:96', 'B->B->C:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 14 22,288,6,0,False,['i4_residual_only:288'],"['C->A->B:48', 'C->B->A:48', 'A->C->B:48', 'A->B->C:48', 'B->C->A:48', 'B->A->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 14 30,288,6,0,False,['i4_residual_only:288'],"['C->A->B:48', 'C->B->A:48', 'A->C->B:48', 'A->B->C:48', 'B->C->A:48', 'B->A->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 18 22,288,6,0,False,['i4_residual_only:288'],"['C->D->B:48', 'C->B->D:48', 'D->C->B:48', 'D->B->C:48', 'B->C->D:48', 'B->D->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 18 24,288,6,0,False,['i4_residual_only:288'],"['C->D->A:48', 'C->A->D:48', 'D->C->A:48', 'D->A->C:48', 'A->C->D:48', 'A->D->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 18 30,288,6,0,False,['i4_residual_only:288'],"['C->D->B:48', 'C->B->D:48', 'D->C->B:48', 'D->B->C:48', 'B->C->D:48', 'B->D->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 22 26,288,6,0,False,['i4_residual_only:288'],"['C->B->A:48', 'C->A->B:48', 'B->C->A:48', 'B->A->C:48', 'A->C->B:48', 'A->B->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 24 26,288,6,0,False,['i4_residual_only:288'],"['C->A->A:96', 'A->C->A:96', 'A->A->C:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 24 30,288,6,0,False,['i4_residual_only:288'],"['C->A->B:48', 'C->B->A:48', 'A->C->B:48', 'A->B->C:48', 'B->C->A:48', 'B->A->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 26 30,288,6,0,False,['i4_residual_only:288'],"['C->A->B:48', 'C->B->A:48', 'A->C->B:48', 'A->B->C:48', 'B->C->A:48', 'B->A->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 30 30,288,3,0,False,['i4_residual_only:288'],"['C->B->B:96', 'B->C->B:96', 'B->B->C:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 11 20,288,3,0,False,['i3_residual_only:288'],"['B->B->C:96', 'B->C->B:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 11 24,288,3,0,False,['mixed_i3_i4_residual:288'],"['B->B->A:96', 'B->A->B:96', 'A->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 13 14,288,6,0,False,['i3_residual_only:288'],"['B->C->A:48', 'B->A->C:48', 'C->B->A:48', 'C->A->B:48', 'A->B->C:48', 'A->C->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 13 18,288,6,0,False,['i3_residual_only:288'],"['B->C->D:48', 'B->D->C:48', 'C->B->D:48', 'C->D->B:48', 'D->B->C:48', 'D->C->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 13 22,288,6,0,False,['mixed_i3_i4_residual:288'],"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 13 26,288,6,0,False,['i3_residual_only:288'],"['B->C->A:48', 'B->A->C:48', 'C->B->A:48', 'C->A->B:48', 'A->B->C:48', 'A->C->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 13 30,288,6,0,False,['mixed_i3_i4_residual:288'],"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 16 19,288,6,0,False,['mixed_i3_i4_residual:288'],['B->B->B:288'],[],closed_no_selector_support_exclusion,0.009637796977544695
+11 17 22,288,6,0,False,['mixed_i3_i4_residual:288'],"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 18 25,288,6,0,False,['i3_residual_only:288'],"['B->D->C:48', 'B->C->D:48', 'D->B->C:48', 'D->C->B:48', 'C->B->D:48', 'C->D->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 19 20,288,6,0,False,['mixed_i3_i4_residual:288'],"['B->B->C:96', 'B->C->B:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 21 22,288,6,0,False,['mixed_i3_i4_residual:288'],['B->B->B:288'],[],closed_no_selector_support_exclusion,0.009637796977544695
+11 22 25,288,6,0,False,['mixed_i3_i4_residual:288'],"['B->B->C:96', 'B->C->B:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 24 27,288,6,0,False,['mixed_i3_i4_residual:288'],"['B->A->B:96', 'B->B->A:96', 'A->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 29 30,288,6,0,False,['mixed_i3_i4_residual:288'],"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+12 13 21,288,6,0,False,['i3_residual_only:288'],"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+12 18 30,288,6,0,False,['mixed_i3_i4_residual:288'],"['B->D->B:96', 'B->B->D:96', 'D->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+12 19 27,288,6,0,False,['mixed_i3_i4_residual:288'],['B->B->B:288'],[],closed_no_selector_support_exclusion,0.009637796977544695
+12 20 24,288,6,0,False,['mixed_i3_i4_residual:288'],"['B->C->A:48', 'B->A->C:48', 'C->B->A:48', 'C->A->B:48', 'A->B->C:48', 'A->C->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+12 21 29,288,6,0,False,['i3_residual_only:288'],"['B->B->C:96', 'B->C->B:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+12 22 26,288,6,0,False,['mixed_i3_i4_residual:288'],"['B->B->A:96', 'B->A->B:96', 'A->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+12 26 30,288,6,0,False,['mixed_i3_i4_residual:288'],"['B->A->B:96', 'B->B->A:96', 'A->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+13 14 19,288,6,0,False,['mixed_i3_i4_residual:288'],"['C->A->B:48', 'C->B->A:48', 'A->C->B:48', 'A->B->C:48', 'B->C->A:48', 'B->A->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+13 14 21,288,6,0,False,['i3_residual_only:288'],"['C->A->B:48', 'C->B->A:48', 'A->C->B:48', 'A->B->C:48', 'B->C->A:48', 'B->A->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+13 18 19,288,6,0,False,['mixed_i3_i4_residual:288'],"['C->D->B:48', 'C->B->D:48', 'D->C->B:48', 'D->B->C:48', 'B->C->D:48', 'B->D->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+13 18 29,288,6,0,False,['i3_residual_only:288'],"['C->D->C:96', 'C->C->D:96', 'D->C->C:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+13 20 25,288,6,0,False,['i3_residual_only:288'],['C->C->C:288'],[],closed_no_selector_support_exclusion,0.009637796977544695
+13 21 24,288,6,0,False,['mixed_i3_i4_residual:288'],"['C->B->A:48', 'C->A->B:48', 'B->C->A:48', 'B->A->C:48', 'A->C->B:48', 'A->B->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+13 21 26,288,6,0,False,['i3_residual_only:288'],"['C->B->A:48', 'C->A->B:48', 'B->C->A:48', 'B->A->C:48', 'A->C->B:48', 'A->B->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+13 21 30,288,6,0,False,['mixed_i3_i4_residual:288'],"['C->B->B:96', 'B->C->B:96', 'B->B->C:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+13 26 27,288,6,0,False,['i3_residual_only:288'],"['C->A->B:48', 'C->B->A:48', 'A->C->B:48', 'A->B->C:48', 'B->C->A:48', 'B->A->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+13 27 30,288,6,0,False,['mixed_i3_i4_residual:288'],"['C->B->B:96', 'B->C->B:96', 'B->B->C:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+14 16 22,288,6,0,False,['i4_residual_only:288'],"['A->B->B:96', 'B->A->B:96', 'B->B->A:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+14 17 19,288,6,0,False,['i4_residual_only:288'],"['A->C->B:48', 'A->B->C:48', 'C->A->B:48', 'C->B->A:48', 'B->A->C:48', 'B->C->A:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+14 18 24,288,6,0,False,['i4_residual_only:288'],"['A->D->A:96', 'A->A->D:96', 'D->A->A:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+14 19 29,288,6,0,False,['i4_residual_only:288'],"['A->B->C:48', 'A->C->B:48', 'B->A->C:48', 'B->C->A:48', 'C->A->B:48', 'C->B->A:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+14 20 22,288,6,0,False,['i4_residual_only:288'],"['A->C->B:48', 'A->B->C:48', 'C->A->B:48', 'C->B->A:48', 'B->A->C:48', 'B->C->A:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+14 22 26,288,6,0,False,['i4_residual_only:288'],"['A->B->A:96', 'A->A->B:96', 'B->A->A:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+14 24 30,288,6,0,False,['i4_residual_only:288'],"['A->A->B:96', 'A->B->A:96', 'B->A->A:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+17 19 22,288,6,0,False,['i4_residual_only:288'],"['C->B->B:96', 'B->C->B:96', 'B->B->C:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+17 19 26,288,6,0,False,['i4_residual_only:288'],"['C->B->A:48', 'C->A->B:48', 'B->C->A:48', 'B->A->C:48', 'A->C->B:48', 'A->B->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+17 19 30,288,6,0,False,['i4_residual_only:288'],"['C->B->B:96', 'B->C->B:96', 'B->B->C:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+17 21 22,288,6,0,False,['i4_residual_only:288'],"['C->B->B:96', 'B->C->B:96', 'B->B->C:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+18 19 21,288,6,0,False,['i4_residual_only:288'],"['D->B->B:96', 'B->D->B:96', 'B->B->D:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+18 19 25,288,6,0,False,['i4_residual_only:288'],"['D->B->C:48', 'D->C->B:48', 'B->D->C:48', 'B->C->D:48', 'C->D->B:48', 'C->B->D:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+18 19 29,288,6,0,False,['i4_residual_only:288'],"['D->B->C:48', 'D->C->B:48', 'B->D->C:48', 'B->C->D:48', 'C->D->B:48', 'C->B->D:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+18 20 30,288,6,0,False,['i4_residual_only:288'],"['D->C->B:48', 'D->B->C:48', 'C->D->B:48', 'C->B->D:48', 'B->D->C:48', 'B->C->D:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+18 30 30,288,3,0,False,['i4_residual_only:288'],"['D->B->B:96', 'B->D->B:96', 'B->B->D:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+19 19 20,288,3,0,False,['i4_residual_only:288'],"['B->B->C:96', 'B->C->B:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+19 20 27,288,6,0,False,['i4_residual_only:288'],"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+19 22 29,288,6,0,False,['i4_residual_only:288'],"['B->B->C:96', 'B->C->B:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+19 25 26,288,6,0,False,['i4_residual_only:288'],"['B->C->A:48', 'B->A->C:48', 'C->B->A:48', 'C->A->B:48', 'A->B->C:48', 'A->C->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+20 22 26,288,6,0,False,['i4_residual_only:288'],"['C->B->A:48', 'C->A->B:48', 'B->C->A:48', 'B->A->C:48', 'A->C->B:48', 'A->B->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+20 22 30,288,6,0,False,['i4_residual_only:288'],"['C->B->B:96', 'B->C->B:96', 'B->B->C:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+21 21 22,288,3,0,False,['i4_residual_only:288'],['B->B->B:288'],[],closed_no_selector_support_exclusion,0.009637796977544695
+21 21 30,288,3,0,False,['i4_residual_only:288'],['B->B->B:288'],[],closed_no_selector_support_exclusion,0.009637796977544695
+21 22 27,288,6,0,False,['i4_residual_only:288'],['B->B->B:288'],[],closed_no_selector_support_exclusion,0.009637796977544695
+21 24 25,288,6,0,False,['i4_residual_only:288'],"['B->A->C:48', 'B->C->A:48', 'A->B->C:48', 'A->C->B:48', 'C->B->A:48', 'C->A->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+21 25 30,288,6,0,False,['i4_residual_only:288'],"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+21 27 30,288,6,0,False,['i4_residual_only:288'],['B->B->B:288'],[],closed_no_selector_support_exclusion,0.009637796977544695
+21 29 30,288,6,0,False,['i4_residual_only:288'],"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+22 22 26,288,3,0,False,['i4_residual_only:288'],"['B->B->A:96', 'B->A->B:96', 'A->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+22 24 26,288,6,0,False,['i4_residual_only:288'],"['B->A->A:96', 'A->B->A:96', 'A->A->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+22 24 30,288,6,0,False,['i4_residual_only:288'],"['B->A->B:96', 'B->B->A:96', 'A->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+22 26 30,288,6,0,False,['i4_residual_only:288'],"['B->A->B:96', 'B->B->A:96', 'A->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+24 26 26,288,3,0,False,['i4_residual_only:288'],['A->A->A:288'],[],closed_no_selector_support_exclusion,0.009637796977544695
+24 26 30,288,6,0,False,['i4_residual_only:288'],"['A->A->B:96', 'A->B->A:96', 'B->A->A:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+24 27 27,288,3,0,False,['i4_residual_only:288'],"['A->B->B:96', 'B->A->B:96', 'B->B->A:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+25 27 30,288,6,0,False,['i4_residual_only:288'],"['C->B->B:96', 'B->C->B:96', 'B->B->C:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+26 30 30,288,3,0,False,['i4_residual_only:288'],"['A->B->B:96', 'B->A->B:96', 'B->B->A:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+27 29 30,288,6,0,False,['i4_residual_only:288'],"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 10 22,288,6,0,False,['i4_residual_only:288'],"['D->C->B:48', 'D->B->C:48', 'C->D->B:48', 'C->B->D:48', 'B->D->C:48', 'B->C->D:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 10 30,288,6,0,False,['i4_residual_only:288'],"['D->C->B:48', 'D->B->C:48', 'C->D->B:48', 'C->B->D:48', 'B->D->C:48', 'B->C->D:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 11 19,288,6,0,False,['mixed_i3_i4_residual:288'],"['D->B->B:96', 'B->D->B:96', 'B->B->D:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 12 20,288,6,0,False,['i3_residual_only:288'],"['D->B->C:48', 'D->C->B:48', 'B->D->C:48', 'B->C->D:48', 'C->D->B:48', 'C->B->D:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 13 29,288,6,0,False,['i3_residual_only:288'],"['D->C->C:96', 'C->D->C:96', 'C->C->D:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 19 27,288,6,0,False,['i4_residual_only:288'],"['D->B->B:96', 'B->D->B:96', 'B->B->D:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 22 30,288,6,0,False,['i4_residual_only:288'],"['D->B->B:96', 'B->D->B:96', 'B->B->D:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 9 13,288,6,0,False,['i3_residual_only:288'],"['D->B->C:48', 'D->C->B:48', 'B->D->C:48', 'B->C->D:48', 'C->D->B:48', 'C->B->D:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 9 21,288,6,0,False,['i3_residual_only:288'],"['D->B->B:96', 'B->D->B:96', 'B->B->D:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 10 11,288,6,0,False,['i3_residual_only:288'],"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 10 19,288,6,0,False,['mixed_i3_i4_residual:288'],"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 10 21,288,6,0,False,['i3_residual_only:288'],"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 10 27,288,6,0,False,['i3_residual_only:288'],"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 11 30,288,6,0,False,['mixed_i3_i4_residual:288'],['B->B->B:288'],[],closed_no_selector_support_exclusion,0.009637796977544695
+9 12 17,288,6,0,False,['i3_residual_only:288'],"['B->B->C:96', 'B->C->B:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 12 25,288,6,0,False,['i3_residual_only:288'],"['B->B->C:96', 'B->C->B:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 13 14,288,6,0,False,['i3_residual_only:288'],"['B->C->A:48', 'B->A->C:48', 'C->B->A:48', 'C->A->B:48', 'A->B->C:48', 'A->C->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 13 18,288,6,0,False,['i3_residual_only:288'],"['B->C->D:48', 'B->D->C:48', 'C->B->D:48', 'C->D->B:48', 'D->B->C:48', 'D->C->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 13 22,288,6,0,False,['mixed_i3_i4_residual:288'],"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 13 24,288,6,0,False,['mixed_i3_i4_residual:288'],"['B->C->A:48', 'B->A->C:48', 'C->B->A:48', 'C->A->B:48', 'A->B->C:48', 'A->C->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 13 26,288,6,0,False,['i3_residual_only:288'],"['B->C->A:48', 'B->A->C:48', 'C->B->A:48', 'C->A->B:48', 'A->B->C:48', 'A->C->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 13 30,288,6,0,False,['mixed_i3_i4_residual:288'],"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 14 19,288,6,0,False,['mixed_i3_i4_residual:288'],"['B->A->B:96', 'B->B->A:96', 'A->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 14 27,288,6,0,False,['i3_residual_only:288'],"['B->A->B:96', 'B->B->A:96', 'A->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 17 18,288,6,0,False,['i3_residual_only:288'],"['B->C->D:48', 'B->D->C:48', 'C->B->D:48', 'C->D->B:48', 'D->B->C:48', 'D->C->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 17 22,288,6,0,False,['mixed_i3_i4_residual:288'],"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 17 30,288,6,0,False,['mixed_i3_i4_residual:288'],"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 18 19,288,6,0,False,['mixed_i3_i4_residual:288'],"['B->D->B:96', 'B->B->D:96', 'D->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 20 21,288,6,0,False,['i3_residual_only:288'],"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 21 22,288,6,0,False,['mixed_i3_i4_residual:288'],['B->B->B:288'],[],closed_no_selector_support_exclusion,0.009637796977544695
+9 22 27,288,6,0,False,['mixed_i3_i4_residual:288'],['B->B->B:288'],[],closed_no_selector_support_exclusion,0.009637796977544695
+9 22 29,288,6,0,False,['mixed_i3_i4_residual:288'],"['B->B->C:96', 'B->C->B:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 24 29,288,6,0,False,['mixed_i3_i4_residual:288'],"['B->A->C:48', 'B->C->A:48', 'A->B->C:48', 'A->C->B:48', 'C->B->A:48', 'C->A->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 26 27,288,6,0,False,['i3_residual_only:288'],"['B->A->B:96', 'B->B->A:96', 'A->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 29 30,288,6,0,False,['mixed_i3_i4_residual:288'],"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 9 10,288,3,0,False,['i3_residual_only:288'],"['B->B->C:96', 'B->C->B:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 9 26,288,3,0,False,['i3_residual_only:288'],"['B->B->A:96', 'B->A->B:96', 'A->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 9 30,288,3,0,False,['mixed_i3_i4_residual:288'],['B->B->B:288'],[],closed_no_selector_support_exclusion,0.009637796977544695
+8 11 11,216,3,0,False,['i3_residual_only:216'],"['D->B->B:72', 'B->D->B:72', 'B->B->D:72']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 11 12,144,3,0,False,['i3_residual_only:144'],['B->B->B:144'],[],closed_no_selector_support_exclusion,0.009637796977544695
+11 12 19,144,6,0,False,['mixed_i3_i4_residual:144'],['B->B->B:144'],[],closed_no_selector_support_exclusion,0.009637796977544695
+11 12 27,144,6,0,False,['i3_residual_only:144'],['B->B->B:144'],[],closed_no_selector_support_exclusion,0.009637796977544695
+12 18 22,144,6,0,False,['mixed_i3_i4_residual:144'],"['B->D->B:48', 'B->B->D:48', 'D->B->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+12 21 21,144,3,0,False,['i3_residual_only:144'],['B->B->B:144'],[],closed_no_selector_support_exclusion,0.009637796977544695
+12 27 27,144,3,0,False,['i3_residual_only:144'],['B->B->B:144'],[],closed_no_selector_support_exclusion,0.009637796977544695
+13 13 18,144,3,0,False,['i3_residual_only:144'],"['C->C->D:48', 'C->D->C:48', 'D->C->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+13 18 25,144,6,0,False,['i3_residual_only:144'],"['C->D->C:48', 'C->C->D:48', 'D->C->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+13 20 29,144,6,0,False,['i3_residual_only:144'],['C->C->C:144'],[],closed_no_selector_support_exclusion,0.009637796977544695
+14 14 24,144,3,0,False,['i4_residual_only:144'],['A->A->A:144'],[],closed_no_selector_support_exclusion,0.009637796977544695
+16 19 27,144,6,0,False,['i4_residual_only:144'],['B->B->B:144'],[],closed_no_selector_support_exclusion,0.009637796977544695
+16 24 24,144,3,0,False,['i4_residual_only:144'],"['B->A->A:48', 'A->B->A:48', 'A->A->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+16 30 30,144,3,0,False,['i4_residual_only:144'],['B->B->B:144'],[],closed_no_selector_support_exclusion,0.009637796977544695
+18 18 22,144,3,0,False,['i4_residual_only:144'],"['D->D->B:48', 'D->B->D:48', 'B->D->D:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+18 18 24,144,3,0,False,['i4_residual_only:144'],"['D->D->A:48', 'D->A->D:48', 'A->D->D:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+20 30 30,144,3,0,False,['i4_residual_only:144'],"['C->B->B:48', 'B->C->B:48', 'B->B->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+22 25 27,144,6,0,False,['i4_residual_only:144'],"['B->C->B:48', 'B->B->C:48', 'C->B->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+22 30 30,144,3,0,False,['i4_residual_only:144'],['B->B->B:144'],[],closed_no_selector_support_exclusion,0.009637796977544695
+8 13 13,144,3,0,False,['i3_residual_only:144'],"['D->C->C:48', 'C->D->C:48', 'C->C->D:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 13 17,144,6,0,False,['i3_residual_only:144'],"['D->C->C:48', 'C->D->C:48', 'C->C->D:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 13 25,144,6,0,False,['i3_residual_only:144'],"['D->C->C:48', 'C->D->C:48', 'C->C->D:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 19 19,144,3,0,False,['i4_residual_only:144'],"['D->B->B:48', 'B->D->B:48', 'B->B->D:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 24 24,144,3,0,False,['i4_residual_only:144'],"['D->A->A:48', 'A->D->A:48', 'A->A->D:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 8 24,144,3,0,False,['i4_residual_only:144'],"['D->D->A:48', 'D->A->D:48', 'A->D->D:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 11 18,144,6,0,False,['i3_residual_only:144'],"['B->B->D:48', 'B->D->B:48', 'D->B->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 11 22,144,6,0,False,['mixed_i3_i4_residual:144'],['B->B->B:144'],[],closed_no_selector_support_exclusion,0.009637796977544695
+9 16 17,144,6,0,False,['i3_residual_only:144'],"['B->B->C:48', 'B->C->B:48', 'C->B->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 16 25,144,6,0,False,['i3_residual_only:144'],"['B->B->C:48', 'B->C->B:48', 'C->B->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 19 22,144,6,0,False,['mixed_i3_i4_residual:144'],['B->B->B:144'],[],closed_no_selector_support_exclusion,0.009637796977544695
+9 9 12,144,3,0,False,['i3_residual_only:144'],['B->B->B:144'],[],closed_no_selector_support_exclusion,0.009637796977544695
+9 9 16,144,3,0,False,['i3_residual_only:144'],['B->B->B:144'],[],closed_no_selector_support_exclusion,0.009637796977544695
+9 9 20,144,3,0,False,['i3_residual_only:144'],"['B->B->C:48', 'B->C->B:48', 'C->B->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 9 24,144,3,0,False,['mixed_i3_i4_residual:144'],"['B->B->A:48', 'B->A->B:48', 'A->B->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+12 12 16,72,3,0,False,['i3_residual_only:72'],['B->B->B:72'],[],closed_no_selector_support_exclusion,0.009637796977544695
+16 22 22,72,3,0,False,['i4_residual_only:72'],['B->B->B:72'],[],closed_no_selector_support_exclusion,0.009637796977544695
+17 29 30,1152,6,384,True,['i4_residual_only:1152'],"['C->C->B:384', 'C->B->C:384', 'B->C->C:384']",['C->C->B:384'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+9 20 29,864,6,288,True,['i3_residual_only:864'],"['B->C->C:288', 'C->B->C:288', 'C->C->B:288']",['C->C->B:288'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+10 17 19,576,6,192,True,['i4_residual_only:576'],"['C->C->B:192', 'C->B->C:192', 'B->C->C:192']",['C->C->B:192'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+10 19 29,576,6,192,True,['i4_residual_only:576'],"['C->B->C:192', 'C->C->B:192', 'B->C->C:192']",['C->C->B:192'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+13 17 26,576,6,192,True,['i3_residual_only:576'],"['C->C->A:192', 'C->A->C:192', 'A->C->C:192']",['A->C->C:192'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+13 17 30,576,6,192,True,['mixed_i3_i4_residual:576'],"['C->C->B:192', 'C->B->C:192', 'B->C->C:192']",['C->C->B:192'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+13 29 30,576,6,192,True,['mixed_i3_i4_residual:576'],"['C->C->B:192', 'C->B->C:192', 'B->C->C:192']",['C->C->B:192'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+17 24 29,576,6,192,True,['i4_residual_only:576'],"['C->A->C:192', 'C->C->A:192', 'A->C->C:192']",['A->C->C:192'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+18 24 30,576,6,96,True,['i4_residual_only:576'],"['D->A->B:96', 'D->B->A:96', 'A->D->B:96', 'A->B->D:96', 'B->D->A:96', 'B->A->D:96']",['A->D->B:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+24 25 29,576,6,192,True,['i4_residual_only:576'],"['A->C->C:192', 'C->A->C:192', 'C->C->A:192']",['A->C->C:192'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+29 29 30,576,3,192,True,['i4_residual_only:576'],"['C->C->B:192', 'C->B->C:192', 'B->C->C:192']",['C->C->B:192'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+8 26 30,576,6,96,True,['i4_residual_only:576'],"['D->A->B:96', 'D->B->A:96', 'A->D->B:96', 'A->B->D:96', 'B->D->A:96', 'B->A->D:96']",['A->D->B:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+9 10 29,576,6,192,True,['i3_residual_only:576'],"['B->C->C:192', 'C->B->C:192', 'C->C->B:192']",['C->C->B:192'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+13 25 26,432,6,144,True,['i3_residual_only:432'],"['C->C->A:144', 'C->A->C:144', 'A->C->C:144']",['A->C->C:144'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+9 17 20,432,6,144,True,['i3_residual_only:432'],"['B->C->C:144', 'C->B->C:144', 'C->C->B:144']",['C->C->B:144'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+10 11 13,288,6,96,True,['i3_residual_only:288'],"['C->B->C:96', 'C->C->B:96', 'B->C->C:96']",['C->C->B:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+10 11 17,288,6,96,True,['i3_residual_only:288'],"['C->B->C:96', 'C->C->B:96', 'B->C->C:96']",['C->C->B:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+10 11 25,288,6,96,True,['i3_residual_only:288'],"['C->B->C:96', 'C->C->B:96', 'B->C->C:96']",['C->C->B:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+10 11 29,288,6,96,True,['i3_residual_only:288'],"['C->B->C:96', 'C->C->B:96', 'B->C->C:96']",['C->C->B:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+10 13 19,288,6,96,True,['mixed_i3_i4_residual:288'],"['C->C->B:96', 'C->B->C:96', 'B->C->C:96']",['C->C->B:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+10 13 27,288,6,96,True,['i3_residual_only:288'],"['C->C->B:96', 'C->B->C:96', 'B->C->C:96']",['C->C->B:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+10 20 22,288,6,96,True,['i4_residual_only:288'],"['C->C->B:96', 'C->B->C:96', 'B->C->C:96']",['C->C->B:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+12 13 29,288,6,96,True,['i3_residual_only:288'],"['B->C->C:96', 'C->B->C:96', 'C->C->B:96']",['C->C->B:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+12 14 18,288,6,48,True,['i3_residual_only:288'],"['B->A->D:48', 'B->D->A:48', 'A->B->D:48', 'A->D->B:48', 'D->B->A:48', 'D->A->B:48']",['A->D->B:48'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+12 17 17,288,3,96,True,['i3_residual_only:288'],"['B->C->C:96', 'C->B->C:96', 'C->C->B:96']",['C->C->B:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+12 29 29,288,3,96,True,['i3_residual_only:288'],"['B->C->C:96', 'C->B->C:96', 'C->C->B:96']",['C->C->B:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+13 13 14,288,3,96,True,['i3_residual_only:288'],"['C->C->A:96', 'C->A->C:96', 'A->C->C:96']",['A->C->C:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+13 14 17,288,6,96,True,['i3_residual_only:288'],"['C->A->C:96', 'C->C->A:96', 'A->C->C:96']",['A->C->C:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+13 14 25,288,6,96,True,['i3_residual_only:288'],"['C->A->C:96', 'C->C->A:96', 'A->C->C:96']",['A->C->C:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+13 14 29,288,6,96,True,['i3_residual_only:288'],"['C->A->C:96', 'C->C->A:96', 'A->C->C:96']",['A->C->C:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+13 16 29,288,6,96,True,['i3_residual_only:288'],"['C->B->C:96', 'C->C->B:96', 'B->C->C:96']",['C->C->B:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+13 17 24,288,6,96,True,['mixed_i3_i4_residual:288'],"['C->C->A:96', 'C->A->C:96', 'A->C->C:96']",['A->C->C:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+13 20 21,288,6,96,True,['i3_residual_only:288'],"['C->C->B:96', 'C->B->C:96', 'B->C->C:96']",['C->C->B:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+13 22 25,288,6,96,True,['mixed_i3_i4_residual:288'],"['C->B->C:96', 'C->C->B:96', 'B->C->C:96']",['C->C->B:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+13 22 29,288,6,96,True,['mixed_i3_i4_residual:288'],"['C->B->C:96', 'C->C->B:96', 'B->C->C:96']",['C->C->B:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+13 26 29,288,6,96,True,['i3_residual_only:288'],"['C->A->C:96', 'C->C->A:96', 'A->C->C:96']",['A->C->C:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+14 18 22,288,6,48,True,['i4_residual_only:288'],"['A->D->B:48', 'A->B->D:48', 'D->A->B:48', 'D->B->A:48', 'B->A->D:48', 'B->D->A:48']",['A->D->B:48'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+14 18 30,288,6,48,True,['i4_residual_only:288'],"['A->D->B:48', 'A->B->D:48', 'D->A->B:48', 'D->B->A:48', 'B->A->D:48', 'B->D->A:48']",['A->D->B:48'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+17 17 22,288,3,96,True,['i4_residual_only:288'],"['C->C->B:96', 'C->B->C:96', 'B->C->C:96']",['C->C->B:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+17 17 24,288,3,96,True,['i4_residual_only:288'],"['C->C->A:96', 'C->A->C:96', 'A->C->C:96']",['A->C->C:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+17 22 25,288,6,96,True,['i4_residual_only:288'],"['C->B->C:96', 'C->C->B:96', 'B->C->C:96']",['C->C->B:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+17 22 29,288,6,96,True,['i4_residual_only:288'],"['C->B->C:96', 'C->C->B:96', 'B->C->C:96']",['C->C->B:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+17 25 30,288,6,96,True,['i4_residual_only:288'],"['C->C->B:96', 'C->B->C:96', 'B->C->C:96']",['C->C->B:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+18 22 24,288,6,48,True,['i4_residual_only:288'],"['D->B->A:48', 'D->A->B:48', 'B->D->A:48', 'B->A->D:48', 'A->D->B:48', 'A->B->D:48']",['A->D->B:48'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+18 22 26,288,6,48,True,['i4_residual_only:288'],"['D->B->A:48', 'D->A->B:48', 'B->D->A:48', 'B->A->D:48', 'A->D->B:48', 'A->B->D:48']",['A->D->B:48'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+18 26 30,288,6,48,True,['i4_residual_only:288'],"['D->A->B:48', 'D->B->A:48', 'A->D->B:48', 'A->B->D:48', 'B->D->A:48', 'B->A->D:48']",['A->D->B:48'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+20 20 24,288,3,96,True,['i4_residual_only:288'],"['C->C->A:96', 'C->A->C:96', 'A->C->C:96']",['A->C->C:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+22 29 29,288,3,96,True,['i4_residual_only:288'],"['B->C->C:96', 'C->B->C:96', 'C->C->B:96']",['C->C->B:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+8 14 30,288,6,48,True,['i4_residual_only:288'],"['D->A->B:48', 'D->B->A:48', 'A->D->B:48', 'A->B->D:48', 'B->D->A:48', 'B->A->D:48']",['A->D->B:48'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+8 22 26,288,6,48,True,['i4_residual_only:288'],"['D->B->A:48', 'D->A->B:48', 'B->D->A:48', 'B->A->D:48', 'A->D->B:48', 'A->B->D:48']",['A->D->B:48'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+9 10 17,288,6,96,True,['i3_residual_only:288'],"['B->C->C:96', 'C->B->C:96', 'C->C->B:96']",['C->C->B:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+9 13 20,288,6,96,True,['i3_residual_only:288'],"['B->C->C:96', 'C->B->C:96', 'C->C->B:96']",['C->C->B:96'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+10 10 22,144,3,48,True,['i4_residual_only:144'],"['C->C->B:48', 'C->B->C:48', 'B->C->C:48']",['C->C->B:48'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+12 17 25,144,6,48,True,['i3_residual_only:144'],"['B->C->C:48', 'C->B->C:48', 'C->C->B:48']",['C->C->B:48'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+13 13 26,144,3,48,True,['i3_residual_only:144'],"['C->C->A:48', 'C->A->C:48', 'A->C->C:48']",['A->C->C:48'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+8 16 24,144,6,24,True,['i4_residual_only:144'],"['D->B->A:24', 'D->A->B:24', 'B->D->A:24', 'B->A->D:24', 'A->D->B:24', 'A->B->D:24']",['A->D->B:24'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+9 10 13,144,6,48,True,['i3_residual_only:144'],"['B->C->C:48', 'C->B->C:48', 'C->C->B:48']",['C->C->B:48'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+9 10 25,144,6,48,True,['i3_residual_only:144'],"['B->C->C:48', 'C->B->C:48', 'C->C->B:48']",['C->C->B:48'],selector_bearing_residual_support_requires_certificate_or_taxonomy,
+13 13 16,72,3,24,True,['i3_residual_only:72'],"['C->C->B:24', 'C->B->C:24', 'B->C->C:24']",['C->C->B:24'],selector_bearing_residual_support_requires_certificate_or_taxonomy,

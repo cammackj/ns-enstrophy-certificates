@@ -1,0 +1,5 @@
+shared_distinct_shell_count,type_multiset_pair,pair_count
+0,B B C|A B C,238128283
+0,B C C|A B C,162328028
+1,B B C|A B C,13120253
+1,B C C|A B C,10609182

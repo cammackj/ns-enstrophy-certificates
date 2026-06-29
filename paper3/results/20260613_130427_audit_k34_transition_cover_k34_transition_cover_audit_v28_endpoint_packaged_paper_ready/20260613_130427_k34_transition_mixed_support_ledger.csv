@@ -1,0 +1,59 @@
+support,effective_ordered_triad_count,ordered_shell_face_rows,selected_family_effective_triad_count,has_selected_family_signature,all_effective_signatures,selected_family_signatures,cover_status,analytic_endpoint_gap_if_in_strip
+11 17 30,576,6,0,False,"['B->C->B:192', 'B->B->C:192', 'C->B->B:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 21 30,576,6,0,False,['B->B->B:576'],[],closed_no_selector_support_exclusion,0.009637796977544695
+13 19 26,576,6,0,False,"['C->B->A:96', 'C->A->B:96', 'B->C->A:96', 'B->A->C:96', 'A->C->B:96', 'A->B->C:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 19 26,576,6,0,False,"['B->B->A:192', 'B->A->B:192', 'A->B->B:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 19 30,576,6,0,False,['B->B->B:576'],[],closed_no_selector_support_exclusion,0.009637796977544695
+9 21 24,576,6,0,False,"['B->B->A:192', 'B->A->B:192', 'A->B->B:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 25 30,576,6,0,False,"['B->C->B:192', 'B->B->C:192', 'C->B->B:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 27 30,576,6,0,False,['B->B->B:576'],[],closed_no_selector_support_exclusion,0.009637796977544695
+11 19 24,432,6,0,False,"['B->B->A:144', 'B->A->B:144', 'A->B->B:144']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 24 25,432,6,0,False,"['B->A->C:72', 'B->C->A:72', 'A->B->C:72', 'A->C->B:72', 'C->B->A:72', 'C->A->B:72']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 12 30,288,6,0,False,"['C->B->B:96', 'B->C->B:96', 'B->B->C:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 11 24,288,3,0,False,"['B->B->A:96', 'B->A->B:96', 'A->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 13 22,288,6,0,False,"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 13 30,288,6,0,False,"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 16 19,288,6,0,False,['B->B->B:288'],[],closed_no_selector_support_exclusion,0.009637796977544695
+11 17 22,288,6,0,False,"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 19 20,288,6,0,False,"['B->B->C:96', 'B->C->B:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 21 22,288,6,0,False,['B->B->B:288'],[],closed_no_selector_support_exclusion,0.009637796977544695
+11 22 25,288,6,0,False,"['B->B->C:96', 'B->C->B:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 24 27,288,6,0,False,"['B->A->B:96', 'B->B->A:96', 'A->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+11 29 30,288,6,0,False,"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+12 18 30,288,6,0,False,"['B->D->B:96', 'B->B->D:96', 'D->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+12 19 27,288,6,0,False,['B->B->B:288'],[],closed_no_selector_support_exclusion,0.009637796977544695
+12 20 24,288,6,0,False,"['B->C->A:48', 'B->A->C:48', 'C->B->A:48', 'C->A->B:48', 'A->B->C:48', 'A->C->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+12 22 26,288,6,0,False,"['B->B->A:96', 'B->A->B:96', 'A->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+12 26 30,288,6,0,False,"['B->A->B:96', 'B->B->A:96', 'A->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+13 14 19,288,6,0,False,"['C->A->B:48', 'C->B->A:48', 'A->C->B:48', 'A->B->C:48', 'B->C->A:48', 'B->A->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+13 18 19,288,6,0,False,"['C->D->B:48', 'C->B->D:48', 'D->C->B:48', 'D->B->C:48', 'B->C->D:48', 'B->D->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+13 21 24,288,6,0,False,"['C->B->A:48', 'C->A->B:48', 'B->C->A:48', 'B->A->C:48', 'A->C->B:48', 'A->B->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+13 21 30,288,6,0,False,"['C->B->B:96', 'B->C->B:96', 'B->B->C:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+13 27 30,288,6,0,False,"['C->B->B:96', 'B->C->B:96', 'B->B->C:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 11 19,288,6,0,False,"['D->B->B:96', 'B->D->B:96', 'B->B->D:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 10 19,288,6,0,False,"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 11 30,288,6,0,False,['B->B->B:288'],[],closed_no_selector_support_exclusion,0.009637796977544695
+9 13 22,288,6,0,False,"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 13 24,288,6,0,False,"['B->C->A:48', 'B->A->C:48', 'C->B->A:48', 'C->A->B:48', 'A->B->C:48', 'A->C->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 13 30,288,6,0,False,"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 14 19,288,6,0,False,"['B->A->B:96', 'B->B->A:96', 'A->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 17 22,288,6,0,False,"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 17 30,288,6,0,False,"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 18 19,288,6,0,False,"['B->D->B:96', 'B->B->D:96', 'D->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 21 22,288,6,0,False,['B->B->B:288'],[],closed_no_selector_support_exclusion,0.009637796977544695
+9 22 27,288,6,0,False,['B->B->B:288'],[],closed_no_selector_support_exclusion,0.009637796977544695
+9 22 29,288,6,0,False,"['B->B->C:96', 'B->C->B:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 24 29,288,6,0,False,"['B->A->C:48', 'B->C->A:48', 'A->B->C:48', 'A->C->B:48', 'C->B->A:48', 'C->A->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 29 30,288,6,0,False,"['B->C->B:96', 'B->B->C:96', 'C->B->B:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 9 30,288,3,0,False,['B->B->B:288'],[],closed_no_selector_support_exclusion,0.009637796977544695
+11 12 19,144,6,0,False,['B->B->B:144'],[],closed_no_selector_support_exclusion,0.009637796977544695
+12 18 22,144,6,0,False,"['B->D->B:48', 'B->B->D:48', 'D->B->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+9 11 22,144,6,0,False,['B->B->B:144'],[],closed_no_selector_support_exclusion,0.009637796977544695
+9 19 22,144,6,0,False,['B->B->B:144'],[],closed_no_selector_support_exclusion,0.009637796977544695
+9 9 24,144,3,0,False,"['B->B->A:48', 'B->A->B:48', 'A->B->B:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+13 17 30,576,6,192,True,"['C->C->B:192', 'C->B->C:192', 'B->C->C:192']",['C->C->B:192'],selector_bearing_support_requires_certificate_or_existing_closure,
+13 29 30,576,6,192,True,"['C->C->B:192', 'C->B->C:192', 'B->C->C:192']",['C->C->B:192'],selector_bearing_support_requires_certificate_or_existing_closure,
+10 13 19,288,6,96,True,"['C->C->B:96', 'C->B->C:96', 'B->C->C:96']",['C->C->B:96'],selector_bearing_support_requires_certificate_or_existing_closure,
+13 17 24,288,6,96,True,"['C->C->A:96', 'C->A->C:96', 'A->C->C:96']",['A->C->C:96'],selector_bearing_support_requires_certificate_or_existing_closure,
+13 22 25,288,6,96,True,"['C->B->C:96', 'C->C->B:96', 'B->C->C:96']",['C->C->B:96'],selector_bearing_support_requires_certificate_or_existing_closure,
+13 22 29,288,6,96,True,"['C->B->C:96', 'C->C->B:96', 'B->C->C:96']",['C->C->B:96'],selector_bearing_support_requires_certificate_or_existing_closure,

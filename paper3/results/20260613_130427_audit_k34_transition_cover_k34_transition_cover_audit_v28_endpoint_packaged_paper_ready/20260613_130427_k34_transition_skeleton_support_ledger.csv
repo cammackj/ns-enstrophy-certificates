@@ -1,0 +1,58 @@
+support,effective_ordered_triad_count,ordered_shell_face_rows,selected_family_effective_triad_count,has_selected_family_signature,all_effective_signatures,selected_family_signatures,cover_status,analytic_endpoint_gap_if_in_strip
+14 21 29,1152,6,0,False,"['A->B->C:192', 'A->C->B:192', 'B->A->C:192', 'B->C->A:192', 'C->A->B:192', 'C->B->A:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+14 17 27,864,6,0,False,"['A->C->B:144', 'A->B->C:144', 'C->A->B:144', 'C->B->A:144', 'B->A->C:144', 'B->C->A:144']",[],closed_no_selector_support_exclusion,0.009637796977544695
+14 18 26,864,6,0,False,"['A->D->A:288', 'A->A->D:288', 'D->A->A:288']",[],closed_no_selector_support_exclusion,0.009637796977544695
+14 26 26,864,3,0,False,['A->A->A:864'],[],closed_no_selector_support_exclusion,0.009637796977544695
+14 27 29,864,6,0,False,"['A->B->C:144', 'A->C->B:144', 'B->A->C:144', 'B->C->A:144', 'C->A->B:144', 'C->B->A:144']",[],closed_no_selector_support_exclusion,0.009637796977544695
+14 14 26,576,3,0,False,['A->A->A:576'],[],closed_no_selector_support_exclusion,0.009637796977544695
+14 17 21,576,6,0,False,"['A->C->B:96', 'A->B->C:96', 'C->A->B:96', 'C->B->A:96', 'B->A->C:96', 'B->C->A:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+14 18 20,576,6,0,False,"['A->D->C:96', 'A->C->D:96', 'D->A->C:96', 'D->C->A:96', 'C->A->D:96', 'C->D->A:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 14 18,576,6,0,False,"['D->A->D:192', 'D->D->A:192', 'A->D->D:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 14 26,576,6,0,False,"['D->A->A:192', 'A->D->A:192', 'A->A->D:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 17 21,576,6,0,False,"['D->C->B:96', 'D->B->C:96', 'C->D->B:96', 'C->B->D:96', 'B->D->C:96', 'B->C->D:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 17 29,576,6,0,False,"['D->C->C:192', 'C->D->C:192', 'C->C->D:192']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 17 25,432,6,0,False,['C->C->C:432'],[],closed_no_selector_support_exclusion,0.009637796977544695
+10 17 29,432,6,0,False,['C->C->C:432'],[],closed_no_selector_support_exclusion,0.009637796977544695
+14 14 18,432,3,0,False,"['A->A->D:144', 'A->D->A:144', 'D->A->A:144']",[],closed_no_selector_support_exclusion,0.009637796977544695
+14 14 20,432,3,0,False,"['A->A->C:144', 'A->C->A:144', 'C->A->A:144']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 18 26,432,6,0,False,"['D->D->A:144', 'D->A->D:144', 'A->D->D:144']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 14 18,288,6,0,False,"['C->A->D:48', 'C->D->A:48', 'A->C->D:48', 'A->D->C:48', 'D->C->A:48', 'D->A->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 14 26,288,6,0,False,"['C->A->A:96', 'A->C->A:96', 'A->A->C:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 16 26,288,6,0,False,"['C->B->A:48', 'C->A->B:48', 'B->C->A:48', 'B->A->C:48', 'A->C->B:48', 'A->B->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 18 20,288,6,0,False,"['C->D->C:96', 'C->C->D:96', 'D->C->C:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 18 26,288,6,0,False,"['C->D->A:48', 'C->A->D:48', 'D->C->A:48', 'D->A->C:48', 'A->C->D:48', 'A->D->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 21 21,288,3,0,False,"['C->B->B:96', 'B->C->B:96', 'B->B->C:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 21 27,288,6,0,False,"['C->B->B:96', 'B->C->B:96', 'B->B->C:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 25 29,288,6,0,False,['C->C->C:288'],[],closed_no_selector_support_exclusion,0.009637796977544695
+10 26 26,288,3,0,False,"['C->A->A:96', 'A->C->A:96', 'A->A->C:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 29 29,288,3,0,False,['C->C->C:288'],[],closed_no_selector_support_exclusion,0.009637796977544695
+14 21 21,288,3,0,False,"['A->B->B:96', 'B->A->B:96', 'B->B->A:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+14 21 25,288,6,0,False,"['A->B->C:48', 'A->C->B:48', 'B->A->C:48', 'B->C->A:48', 'C->A->B:48', 'C->B->A:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+14 21 27,288,6,0,False,"['A->B->B:96', 'B->A->B:96', 'B->B->A:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+14 25 27,288,6,0,False,"['A->C->B:48', 'A->B->C:48', 'C->A->B:48', 'C->B->A:48', 'B->A->C:48', 'B->C->A:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 17 25,288,6,0,False,"['D->C->C:96', 'C->D->C:96', 'C->C->D:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 21 25,288,6,0,False,"['D->B->C:48', 'D->C->B:48', 'B->D->C:48', 'B->C->D:48', 'C->D->B:48', 'C->B->D:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 29 29,288,3,0,False,"['D->C->C:96', 'C->D->C:96', 'C->C->D:96']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 20 20,216,3,0,False,"['D->C->C:72', 'C->D->C:72', 'C->C->D:72']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 10 18,144,3,0,False,"['C->C->D:48', 'C->D->C:48', 'D->C->C:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 10 20,144,3,0,False,['C->C->C:144'],[],closed_no_selector_support_exclusion,0.009637796977544695
+10 16 18,144,6,0,False,"['C->B->D:24', 'C->D->B:24', 'B->C->D:24', 'B->D->C:24', 'D->C->B:24', 'D->B->C:24']",[],closed_no_selector_support_exclusion,0.009637796977544695
+10 25 25,144,3,0,False,['C->C->C:144'],[],closed_no_selector_support_exclusion,0.009637796977544695
+14 14 16,144,3,0,False,"['A->A->B:48', 'A->B->A:48', 'B->A->A:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 10 26,144,6,0,False,"['D->C->A:24', 'D->A->C:24', 'C->D->A:24', 'C->A->D:24', 'A->D->C:24', 'A->C->D:24']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 21 21,144,3,0,False,"['D->B->B:48', 'B->D->B:48', 'B->B->D:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 25 29,144,6,0,False,"['D->C->C:48', 'C->D->C:48', 'C->C->D:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 26 26,144,3,0,False,"['D->A->A:48', 'A->D->A:48', 'A->A->D:48']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 18 18,72,3,0,False,['D->D->D:72'],[],closed_no_selector_support_exclusion,0.009637796977544695
+8 27 27,72,3,0,False,"['D->B->B:24', 'B->D->B:24', 'B->B->D:24']",[],closed_no_selector_support_exclusion,0.009637796977544695
+8 8 16,72,3,0,False,"['D->D->B:24', 'D->B->D:24', 'B->D->D:24']",[],closed_no_selector_support_exclusion,0.009637796977544695
+14 25 29,864,6,288,True,"['A->C->C:288', 'C->A->C:288', 'C->C->A:288']",['A->C->C:288'],selector_bearing_skeleton_support_requires_endpoint_chart_or_certificate,
+10 17 21,576,6,192,True,"['C->C->B:192', 'C->B->C:192', 'B->C->C:192']",['C->C->B:192'],selector_bearing_skeleton_support_requires_endpoint_chart_or_certificate,
+10 21 29,576,6,192,True,"['C->B->C:192', 'C->C->B:192', 'B->C->C:192']",['C->C->B:192'],selector_bearing_skeleton_support_requires_endpoint_chart_or_certificate,
+14 17 17,576,3,192,True,"['A->C->C:192', 'C->A->C:192', 'C->C->A:192']",['A->C->C:192'],selector_bearing_skeleton_support_requires_endpoint_chart_or_certificate,
+14 17 29,576,6,192,True,"['A->C->C:192', 'C->A->C:192', 'C->C->A:192']",['A->C->C:192'],selector_bearing_skeleton_support_requires_endpoint_chart_or_certificate,
+10 20 26,432,6,144,True,"['C->C->A:144', 'C->A->C:144', 'A->C->C:144']",['A->C->C:144'],selector_bearing_skeleton_support_requires_endpoint_chart_or_certificate,
+10 10 26,288,3,96,True,"['C->C->A:96', 'C->A->C:96', 'A->C->C:96']",['A->C->C:96'],selector_bearing_skeleton_support_requires_endpoint_chart_or_certificate,
+10 25 27,288,6,96,True,"['C->C->B:96', 'C->B->C:96', 'B->C->C:96']",['C->C->B:96'],selector_bearing_skeleton_support_requires_endpoint_chart_or_certificate,
+10 27 29,288,6,96,True,"['C->B->C:96', 'C->C->B:96', 'B->C->C:96']",['C->C->B:96'],selector_bearing_skeleton_support_requires_endpoint_chart_or_certificate,
+14 17 25,288,6,96,True,"['A->C->C:96', 'C->A->C:96', 'C->C->A:96']",['A->C->C:96'],selector_bearing_skeleton_support_requires_endpoint_chart_or_certificate,

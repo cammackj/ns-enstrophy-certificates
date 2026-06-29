@@ -1,0 +1,56 @@
+Run started : 2026-05-24 12:16:54
+Script      : certify_block_maximum_gpu
+Log file    : archived certificate log
+Arguments   : --k 6 --full_block --precompute-triads --hessian-only scripts/gap3/results/2026-04-20/k6_full_xstar.npz --n_workers 20 --dps 50
+
+====================================================================
+  CERTIFICATION: C(I_6) [full-block] via interval arithmetic (mpmath, 50 dps)
+====================================================================
+
+  DCxA nucleus: n_D=72, n_C=80, n_A=104
+  Full block I_6 = [64, 127] (precompute_triads — all triads)
+  1964 modes, 2627472 triads
+  C(I_6) modes N=1964, triads T=2627472
+
+  [Step 1] Loading certified x* from scripts/gap3/results/2026-04-20/k6_full_xstar.npz (skipping optimisation) ...
+  Loaded x* (1964 modes), val=0.0204437931
+  Active modes: 1883/1964 (81 at loga=-8, excluded from grad/Hess checks)
+  Projected gradient norm: 8.154e-09
+  [auto-save] x* saved → archived-output/k6_full_xstar.npz  (val=0.0204437931)
+
+  [Step 2] mpmath evaluation at x* (50 dps) ...
+  mpmath R(x*) = 0.020443793141444540423697345148883435020001630064367  (111.0s)
+
+  CERTIFIED INTERVAL: C(I_6) in [0.02044379314, 0.02044379314]
+  Interval width: 1.268e-19
+
+  [Step 3] Hessian diagonal check at x* (50 dps) ...
+  Float64 FD pre-screen: 7532 entries, h=1e-04, neg threshold=-1e-06 ...
+  Pre-screen: 2257 definitively neg, 5275 borderline → mpmath  (4823.3s)
+  Building mode-triad index for fast Hessian ...
+  Precomputing u_pos for all modes ...
+  Precomputing B_partial for all modes (1 triad pass) ...
+  B_partial precomputed (168.6s)  R0 recheck=0.02044379314  R_mp=0.02044379314
+  Dispatching 5275 fast partial-sum mpmath evals across 20 workers ...
+  Fast partial-sum Hessian: 236.1s
+  Hessian noise threshold: 1.02e-19  (FD floor: 2.04e-12)
+  Hessian diagonal: 6885 neg / 647 flat / 0 pos  (5909.9s)
+  (Skipped 324 params for 81 bound-inactive modes)
+  No above-threshold positive entries — local max in active subspace confirmed
+  (647 flat entries within noise threshold: expected for phi at theta~pi/2 or psi at theta~0)
+
+  [Step 4] ISC check skipped (full-block: all block shells included)
+
+====================================================================
+  CERTIFICATION SUMMARY for C(I_6)
+====================================================================
+  Float64 optimal value :  0.0204437931
+  C(I_6) modes          :  1883/1964
+  Projected grad norm   :  8.154e-09
+  mpmath value (50 dps):  0.020443793141444540423697345148883435020001630064367
+  Certified interval    :  [0.02044379314, 0.02044379314]
+  Hessian (active only) :  6885 neg / 647 flat / 0 pos  (noise thresh 1.0e-19)
+
+  STATUS: C(I_6) LOCALLY CERTIFIED
+  C(I_6) = 0.020443793  [certified local max of full block I_6]
+  (Global cert not requested)

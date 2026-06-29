@@ -1,0 +1,201 @@
+{
+  "certificate_form_status": "ready_for_manuscript_review",
+  "endpoint_tangent_summary": {
+    "D_Psi56_at_k5": 0.17788831373664493,
+    "D_Psi56_at_k6": -0.6494956443403401,
+    "D_R_minus_Sigma5_at_k5": -0.9991243316477783,
+    "D_R_minus_Sigma5_at_k6": -1.874462559182906,
+    "D_R_minus_Sigma6_at_k5": -1.1770126453844232,
+    "D_R_minus_Sigma6_at_k6": -1.224966914842566,
+    "Psi56_k5": -0.009325268705047103,
+    "Psi56_k6": 0.002675267830940884,
+    "coordinate": "Psi56=S_{Sigma6_core}-S_{Sigma5_core}=(R-Sigma5_core)-(R-Sigma6_core)",
+    "k5_orientation": "toward_crossing",
+    "k6_orientation": "toward_crossing",
+    "min_abs_endpoint_tangent": 0.17788831373664493,
+    "passes_nonzero_tangent_gate": true,
+    "passes_short_crossing_orientation": true,
+    "source_short_crossing_time_linear_estimate": 0.05242204228689645,
+    "target_short_crossing_time_linear_estimate": 0.004118992720356144
+  },
+  "local_handoff_summary": {
+    "clean_product_loss": 0.7071067811865475,
+    "clean_product_loss_pair_count": 16336,
+    "local_handoff_pair_count": 16453,
+    "local_penalty_rows": [
+      {
+        "max_k5_balanced_product_penalty": 0.7071067811865476,
+        "max_k6_balanced_product_penalty": 0.7071067811865476,
+        "max_side_balanced_product_penalty": 0.7071067811865476,
+        "min_side_balanced_product_penalty": 0.7071067811865476,
+        "pair_count": 9559,
+        "replacement_shape": "clean_distinct",
+        "replacement_type": "A->B"
+      },
+      {
+        "max_k5_balanced_product_penalty": 0.7071067811865476,
+        "max_k6_balanced_product_penalty": 0.7071067811865476,
+        "max_side_balanced_product_penalty": 0.7071067811865476,
+        "min_side_balanced_product_penalty": 0.7071067811865476,
+        "pair_count": 6777,
+        "replacement_shape": "clean_distinct",
+        "replacement_type": "A->C"
+      },
+      {
+        "max_k5_balanced_product_penalty": 1.0,
+        "max_k6_balanced_product_penalty": 0.5,
+        "max_side_balanced_product_penalty": 1.0,
+        "min_side_balanced_product_penalty": 0.5,
+        "pair_count": 77,
+        "replacement_shape": "k5_duplicate;added_already_shared",
+        "replacement_type": "A->B"
+      },
+      {
+        "max_k5_balanced_product_penalty": 1.0,
+        "max_k6_balanced_product_penalty": 0.5,
+        "max_side_balanced_product_penalty": 1.0,
+        "min_side_balanced_product_penalty": 0.5,
+        "pair_count": 40,
+        "replacement_shape": "k5_duplicate;added_already_shared",
+        "replacement_type": "A->C"
+      }
+    ],
+    "overlap_remainder_pair_count": 117,
+    "replacement_shape_counts": {
+      "A->B|clean_distinct": 9559,
+      "A->B|k5_duplicate;added_already_shared": 77,
+      "A->C|clean_distinct": 6777,
+      "A->C|k5_duplicate;added_already_shared": 40
+    },
+    "replacement_type_counts": {
+      "A->B": 9636,
+      "A->C": 6817
+    },
+    "true_two_family_support_count": 0
+  },
+  "nonlocal_summary": {
+    "max_side_split_product_penalty": 0.7071067811865476,
+    "passes_sqrt2_split_bound": true,
+    "shared_one_pair_count": 943342,
+    "shared_zero_pair_count": 9153993,
+    "split_penalty_rows": [
+      {
+        "distinct_union_shell_count": 4,
+        "max_k5_split_product_penalty": 0.3535533905932738,
+        "max_k6_split_product_penalty": 0.3535533905932738,
+        "max_side_split_product_penalty": 0.3535533905932738,
+        "min_side_split_product_penalty": 0.3535533905932738,
+        "pair_count": 5115,
+        "shared_distinct_shell_count": 0
+      },
+      {
+        "distinct_union_shell_count": 5,
+        "max_k5_split_product_penalty": 0.3535533905932738,
+        "max_k6_split_product_penalty": 0.3535533905932738,
+        "max_side_split_product_penalty": 0.3535533905932738,
+        "min_side_split_product_penalty": 0.3535533905932738,
+        "pair_count": 441500,
+        "shared_distinct_shell_count": 0
+      },
+      {
+        "distinct_union_shell_count": 6,
+        "max_k5_split_product_penalty": 0.3535533905932738,
+        "max_k6_split_product_penalty": 0.3535533905932738,
+        "max_side_split_product_penalty": 0.3535533905932738,
+        "min_side_split_product_penalty": 0.3535533905932738,
+        "pair_count": 8707378,
+        "shared_distinct_shell_count": 0
+      },
+      {
+        "distinct_union_shell_count": 3,
+        "max_k5_split_product_penalty": 0.5,
+        "max_k6_split_product_penalty": 0.7071067811865476,
+        "max_side_split_product_penalty": 0.7071067811865476,
+        "min_side_split_product_penalty": 0.5,
+        "pair_count": 275,
+        "shared_distinct_shell_count": 1
+      },
+      {
+        "distinct_union_shell_count": 4,
+        "max_k5_split_product_penalty": 0.5000000000000001,
+        "max_k6_split_product_penalty": 0.7071067811865476,
+        "max_side_split_product_penalty": 0.7071067811865476,
+        "min_side_split_product_penalty": 0.5,
+        "pair_count": 24197,
+        "shared_distinct_shell_count": 1
+      },
+      {
+        "distinct_union_shell_count": 5,
+        "max_k5_split_product_penalty": 0.5000000000000001,
+        "max_k6_split_product_penalty": 0.5000000000000001,
+        "max_side_split_product_penalty": 0.5000000000000001,
+        "min_side_split_product_penalty": 0.5000000000000001,
+        "pair_count": 918870,
+        "shared_distinct_shell_count": 1
+      }
+    ],
+    "split_shape_count": 6,
+    "total_nonlocal_pair_count": 10097335
+  },
+  "preflight_json": "paper3\\results\\20260614_041043_calibrate_type_signature_envelopes_k56_preflight\\20260614_041043_k56_preflight.json",
+  "proof_obligations": [
+    {
+      "evidence": "Psi56 has opposite endpoint signs: Psi56(k5)=-0.009325268705047103, Psi56(k6)=0.002675267830940884; separation=0.012000536535987988.",
+      "gate": "endpoint-core transfer coordinate",
+      "status": "closed_certificate_form"
+    },
+    {
+      "evidence": "D Psi56(k5)[F]=0.17788831373664493 (toward_crossing), D Psi56(k6)[F]=-0.6494956443403401 (toward_crossing); min |D Psi56|=0.17788831373664493.",
+      "gate": "endpoint tangent collars",
+      "status": "closed_certificate_form"
+    },
+    {
+      "evidence": "Finite K56 support audit separates endpoint, k5-only, k6-only, overlap, and remainder roles; support role counts={'bridge_k5_source_side_only': 2918, 'bridge_k6_core_side_only': 3466, 'bridge_overlap_family_only': 1939, 'bridge_remainder_no_transfer_family': 3247, 'endpoint_chart': 5735}.",
+      "gate": "support-atlas separation",
+      "status": "closed_certificate_form"
+    },
+    {
+      "evidence": "16336 clean local handoff pairs use only A->B/A->C replacements and pay q=1/sqrt(2)=0.7071067811865475.",
+      "gate": "local clean product-loss handoffs",
+      "status": "closed_analytic_product_loss"
+    },
+    {
+      "evidence": "117 duplicate/added-already-shared local handoff pairs are overlap/remainder rows, not new true two-family branch rows.",
+      "gate": "local overlap/remainder handoffs",
+      "status": "closed_by_overlap_remainder_priority"
+    },
+    {
+      "evidence": "K56 support audit has true_two_family_support_count=0.",
+      "gate": "local true two-family branch row",
+      "status": "closed_empty"
+    },
+    {
+      "evidence": "10097335 nonlocal handoff pairs split by shared-shell count; max side split product penalty=0.7071067811865476.",
+      "gate": "nonlocal mass-splitting charts",
+      "status": "closed_certificate_form"
+    },
+    {
+      "evidence": "1939 overlap-only supports and 3247 no-transfer-family supports carry no independent Psi56 branch atom after row priority.",
+      "gate": "overlap and no-transfer remainder charts",
+      "status": "closed_by_transfer_coordinate"
+    },
+    {
+      "evidence": "After endpoint short-crossing collars, product-loss rows, empty true-branch row, and overlap/remainder priority, no unassigned K56 zero-defect crossing witness remains in the finite support audit.",
+      "gate": "charged zero-defect witness row",
+      "status": "closed_certificate_form"
+    },
+    {
+      "evidence": "The K56 package introduces no rank exception row; all finite support roles are assigned above.",
+      "gate": "X_rank exception row",
+      "status": "closed_empty"
+    }
+  ],
+  "status": "K56 transition finite certificate package",
+  "support_json": "paper3\\results\\20260614_042151_calibrate_type_signature_envelopes_k56_support_audit_compact\\20260614_042151_k56_support_audit.json",
+  "tangent_jsons": {
+    "k5_s5core": "paper3\\results\\20260614_093957_autodiff_k4_selector_derivatives_k56_tangent_k5_s5core_v1\\20260614_093957_k4_selector_autodiff_derivatives.json",
+    "k5_s6core": "paper3\\results\\20260614_093957_autodiff_k4_selector_derivatives_k56_tangent_k5_s6core_v1\\20260614_093957_k4_selector_autodiff_derivatives.json",
+    "k6_s5core": "paper3\\results\\20260614_093957_autodiff_k4_selector_derivatives_k56_tangent_k6_s5core_v1\\20260614_093957_k4_selector_autodiff_derivatives.json",
+    "k6_s6core": "paper3\\results\\20260614_093957_autodiff_k4_selector_derivatives_k56_tangent_k6_s6core_v1\\20260614_093957_k4_selector_autodiff_derivatives.json"
+  }
+}
